@@ -1,0 +1,10 @@
+.navbar-header > a{
+  font-family: 'Quicksand','sans-serif';
+  font-weight:lighter;
+}
+
+#brand-tagline {
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 500;
+}
