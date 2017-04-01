@@ -1,5 +1,5 @@
 .navbar-default {
-    background-color: #031F72;
+    background-color: #02195F;
     border-color: #031F72;
     border-radius: 0px;
 }
@@ -22,24 +22,28 @@
 }
 
 .navbar-nav > li>a{
-  font-family: 'Open Sans','sans-serif';
+  font-family: 'Roboto','sans-serif';
   font-weight: 600;
   font-size: 15px;
   color: white !important;
   margin: 2px 5px auto 5px;
+letter-spacing: 1.7px;
+}
+#separatorNav{
+  border-left: 0.1px solid white !important;
 }
 
 .navbar-nav >li:hover,.navbar-nav >li:active{
   background-color: #C5CAE9;
 }
 .navbar-nav >li>a:hover,.navbar-nav >li>a:active{
-  color: #283593 !important;
+  color: #3F51B5 !important;
 }
 
 @media (min-width: 768px){
 .navbar-right {
     float: right!important;
-    margin-top: 10px;
+    margin-top: 13px;
 }
 }
 

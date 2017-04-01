@@ -10,13 +10,16 @@
     <title>Prodi Informatika UMS</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awe some.min.css"> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}" />
+
     {% block css %}
     {% endblock css %}
-
+    <script src="https://use.fontawesome.com/03ed5c9479.js"></script>
 </head>
 
 <body>
@@ -39,11 +42,12 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="{% if actnav == 'beranda'%}active{% endif %}"><a href="#">BERANDA<span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">PROFIL</a></li>
-                    <li><a href="#">KURIKULUM</a></li>
+                    <!-- <li class="{% if actnav == 'beranda'%}active{% endif %}"><a href="{% url 'home:home' %}">BERANDA<span class="sr-only">(current)</span></a></li> -->
+                    <li><a href="{% url 'home:profil' %}">PROFIL</a></li>
+                    <li><a href="{% url 'home:profil' %}">STAFF</a></li>
+                    <li><a href="{% url 'home:kurikulum' %}">KURIKULUM</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">UKM <span class="caret"></span></a>
+                        <a href="{% url 'home:ukm' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">UKM <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
@@ -54,7 +58,7 @@
                             <li><a href="#">One more separated link</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">ALUMNI</a></li>
+                    <li><a href="{% url 'home:alumni' %}">ALUMNI</a></li>
                 </ul>
 
 
@@ -66,12 +70,74 @@
     {% block content %}
     {% endblock content %}
 
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 footerleft ">
+            <div class="logofooter"> <img src="{% static 'img/informatika1.png' %}" /></div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+            <p><i class="fa fa-map-pin"></i> JL. A Yani Tromol Pos 1 Pabelan Kartasura</p>
+            <p><i class="fa fa-phone"></i> Phone (Indonesia) : +62 9999 878 398</p>
+            <p><i class="fa fa-envelope"></i> E-mail : admin@informatika.ums.ac.id</p>
+
+          </div>
+          <div class="col-md-2 col-sm-6 paddingtop-bottom">
+            <h6 class="heading7">GENERAL LINKS</h6>
+            <ul class="footer-ul">
+              <li><a href="#"> Career</a></li>
+              <li><a href="#"> Privacy Policy</a></li>
+              <li><a href="#"> Terms & Conditions</a></li>
+              <li><a href="#"> Client Gateway</a></li>
+              <li><a href="#"> Ranking</a></li>
+              <li><a href="#"> Case Studies</a></li>
+              <li><a href="#"> Frequently Ask Questions</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 col-sm-6 paddingtop-bottom">
+            <h6 class="heading7">LATEST POST</h6>
+            <div class="post">
+              <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+              <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+              <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 paddingtop-bottom">
+            <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+              <div class="fb-xfbml-parse-ignore">
+                <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--footer start from here-->
+
+    <div class="copyright">
+      <div class="container">
+        <div class="col-md-6">
+          <p>© 2017 - Informatika UMS</p>
+        </div>
+        <div class="col-md-6">
+          <ul class="bottom_ul">
+            <li><a href="#">webenlance.com</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Faq's</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Site Map</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% block scripts %}
     {% endblock scripts %}
+
+
 
 </body>
 
