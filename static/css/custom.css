@@ -74,6 +74,7 @@ body{
   /*color: #333333;*/
   color: #424B54;
   white-space: normal;
+  font-size: 18px;
 }
 .dropdown-menu-large > li ul > li > a:hover,
 .dropdown-menu-large > li ul > li > a:focus {
@@ -102,6 +103,8 @@ body{
 .dropdown-menu-large .dropdown-header {
   color: #428bca;
   font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
 }
 
 @media (max-width: 768px) {
