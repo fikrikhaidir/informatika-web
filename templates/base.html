@@ -10,10 +10,8 @@
     <title>Prodi Informatika UMS</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awe some.min.css"> -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}" />
 
@@ -43,7 +41,68 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- <li class="{% if actnav == 'beranda'%}active{% endif %}"><a href="{% url 'home:home' %}">BERANDA<span class="sr-only">(current)</span></a></li> -->
-                    <li><a href="{% url 'home:profil' %}">PROFIL</a></li>
+                    <!-- <li><a href="{% url 'home:profil' %}">PROFIL</a></li> -->
+                    <li class="dropdown dropdown-large">
+                    				<a href="#" class="dropdown-toggle" data-toggle="dropdown">PROFIL </a>
+
+                    				<ul class="dropdown-menu dropdown-menu-large row">
+                    					<li class="col-sm-3">
+                    						<ul>
+                    							<li class="dropdown-header">Glyphicons</li>
+                    							<li><a href="#">Available glyphs</a></li>
+                    							<li class="disabled"><a href="#">How to use</a></li>
+                    							<li><a href="#">Examples</a></li>
+                    							<li class="divider"></li>
+                    							<li class="dropdown-header">Dropdowns</li>
+                    						  <li><a href="#">Alignment options</a></li>
+                    							<li><a href="#">Headers</a></li>
+                    							<li><a href="#">Disabled menu items</a></li>
+                    						</ul>
+                    					</li>
+                    					<li class="col-sm-3">
+                    						<ul>
+                    							<li class="dropdown-header">Button groups</li>
+                    							<li><a href="#">Basic example</a></li>
+                    							<li><a href="#">Button toolbar</a></li>
+                    							<li><a href="#">Sizing</a></li>
+                    							<li><a href="#">Nesting</a></li>
+                    							<li><a href="#">Vertical variation</a></li>
+                    							<li class="divider"></li>
+                    							<li class="dropdown-header">Button dropdowns</li>
+                    							<li><a href="#">Single button dropdowns</a></li>
+                    						</ul>
+                    					</li>
+                    					<li class="col-sm-3">
+                    						<ul>
+                    							<li class="dropdown-header">Input groups</li>
+                    							<li><a href="#">Basic example</a></li>
+                    							<li><a href="#">Sizing</a></li>
+                    							<li><a href="#">Checkboxes and radio addons</a></li>
+                    							<li class="divider"></li>
+                    							<li class="dropdown-header">Navs</li>
+                    							<li><a href="#">Tabs</a></li>
+                    							<li><a href="#">Pills</a></li>
+                    							<li><a href="#">Justified</a></li>
+                    						</ul>
+                    					</li>
+                    					<li class="col-sm-3">
+                    						<ul>
+                    							<li class="dropdown-header">Navbar</li>
+                    							<li><a href="#">Default navbar</a></li>
+                    							<li><a href="#">Buttons</a></li>
+                    							<li><a href="#">Text</a></li>
+                    							<li><a href="#">Non-nav links</a></li>
+                    							<li><a href="#">Component alignment</a></li>
+                    							<li><a href="#">Fixed to top</a></li>
+                    							<li><a href="#">Fixed to bottom</a></li>
+                    							<li><a href="#">Static top</a></li>
+                    							<li><a href="#">Inverted navbar</a></li>
+                    						</ul>
+                    					</li>
+                    				</ul>
+
+                    			</li>
+
                     <li><a href="{% url 'home:profil' %}">STAFF</a></li>
                     <li><a href="{% url 'home:kurikulum' %}">KURIKULUM</a></li>
                     <li class="dropdown">
@@ -123,7 +182,7 @@
             <li><a href="#">Informatika UMS 2017</a></li>
             <li><a href="#">About us</a></li>
             <li><a href="#">Blog</a></li>
-            <!-- <li><a href="#">Faq's</a></li> -->
+            <li><a href="#">Faq's</a></li>
             <li><a href="#">Contact us</a></li>
             <li><a href="#">Site Map</a></li>
           </ul>
@@ -134,6 +193,7 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/dropdown.js' %}"></script>
     {% block scripts %}
     {% endblock scripts %}
 
