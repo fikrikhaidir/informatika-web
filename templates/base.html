@@ -40,83 +40,73 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- <li class="{% if actnav == 'beranda'%}active{% endif %}"><a href="{% url 'home:home' %}">BERANDA<span class="sr-only">(current)</span></a></li> -->
-                    <!-- <li><a href="{% url 'home:profil' %}">PROFIL</a></li> -->
+                    <li><a href="{% url 'home:profil' %}">BERITA</a></li>
                     <li class="dropdown dropdown-large">
                     				<a href="#" class="dropdown-toggle" data-toggle="dropdown">PROFIL </a>
-
                     				<ul class="dropdown-menu dropdown-menu-large row">
-                    					<li class="col-sm-3">
+                    					<li class="col-sm-6">
                     						<ul>
-                    							<li class="dropdown-header">Glyphicons</li>
-                    							<li><a href="#">Available glyphs</a></li>
-                    							<li class="disabled"><a href="#">How to use</a></li>
-                    							<li><a href="#">Examples</a></li>
-                    							<li class="divider"></li>
-                    							<li class="dropdown-header">Dropdowns</li>
-                    						  <li><a href="#">Alignment options</a></li>
-                    							<li><a href="#">Headers</a></li>
-                    							<li><a href="#">Disabled menu items</a></li>
+                    							<li class="dropdown-header">Prodi Informatika</li>
+                                  <li class="divider"></li>
+                    							<li><a href="#">Sejarah</a></li>
+                    							<li><a href="#">Visi dan Misi</a></li>
+                    							<li><a href="#">Prestasi</a></li>
                     						</ul>
                     					</li>
-                    					<li class="col-sm-3">
+                    					<li class="col-sm-6">
                     						<ul>
-                    							<li class="dropdown-header">Button groups</li>
-                    							<li><a href="#">Basic example</a></li>
-                    							<li><a href="#">Button toolbar</a></li>
-                    							<li><a href="#">Sizing</a></li>
-                    							<li><a href="#">Nesting</a></li>
-                    							<li><a href="#">Vertical variation</a></li>
-                    							<li class="divider"></li>
-                    							<li class="dropdown-header">Button dropdowns</li>
-                    							<li><a href="#">Single button dropdowns</a></li>
-                    						</ul>
-                    					</li>
-                    					<li class="col-sm-3">
-                    						<ul>
-                    							<li class="dropdown-header">Input groups</li>
-                    							<li><a href="#">Basic example</a></li>
-                    							<li><a href="#">Sizing</a></li>
-                    							<li><a href="#">Checkboxes and radio addons</a></li>
-                    							<li class="divider"></li>
-                    							<li class="dropdown-header">Navs</li>
-                    							<li><a href="#">Tabs</a></li>
-                    							<li><a href="#">Pills</a></li>
-                    							<li><a href="#">Justified</a></li>
-                    						</ul>
-                    					</li>
-                    					<li class="col-sm-3">
-                    						<ul>
-                    							<li class="dropdown-header">Navbar</li>
-                    							<li><a href="#">Default navbar</a></li>
-                    							<li><a href="#">Buttons</a></li>
-                    							<li><a href="#">Text</a></li>
-                    							<li><a href="#">Non-nav links</a></li>
-                    							<li><a href="#">Component alignment</a></li>
-                    							<li><a href="#">Fixed to top</a></li>
-                    							<li><a href="#">Fixed to bottom</a></li>
-                    							<li><a href="#">Static top</a></li>
-                    							<li><a href="#">Inverted navbar</a></li>
+                    							<li class="dropdown-header">Staff Prodi Informatika</li>
+                                  <li class="divider"></li>
+                    							<li><a href="#">Staff dan Pengajar</a></li>
+                    							<li><a href="#">Penelitian</a></li>
                     						</ul>
                     					</li>
                     				</ul>
-
                     			</li>
-
-                    <li><a href="{% url 'home:profil' %}">STAFF</a></li>
-                    <li><a href="{% url 'home:kurikulum' %}">KURIKULUM</a></li>
-                    <li class="dropdown">
-                        <a href="{% url 'home:ukm' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">UKM <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
+                    <li class="dropdown dropdown-large">
+                    				<a href="#" class="dropdown-toggle" data-toggle="dropdown">KURIKULUM</a>
+                    				<ul class="dropdown-menu dropdown-menu-large row">
+                    					<li class="col-sm-6">
+                    						<ul>
+                    							<li class="dropdown-header">Kurikulum Informatika</li>
+                                  <li class="divider"></li>
+                    							<li><a href="#">Daftar Mata Kuliah</a></li>
+                    							<!-- <li><a href="#">Visi dan Misi</a></li>
+                    							<li><a href="#">Prestasi</a></li> -->
+                    						</ul>
+                    					</li>
+                    					<li class="col-sm-6">
+                    						<ul>
+                    							<li class="dropdown-header">Downloadable</li>
+                                  <li class="divider"></li>
+                    							<li><a href="#">Kalender Akademik</a></li>
+                    							<li><a href="#">Mata Kuliah dan SKS</a></li>
+                    						</ul>
+                    					</li>
+                    				</ul>
+                    			</li>
+                      <li class="dropdown dropdown-large">
+                      				<a href="#" class="dropdown-toggle" data-toggle="dropdown">UKM </a>
+                      				<ul class="dropdown-menu dropdown-menu-large row">
+                      					<li class="col-sm-6">
+                      						<ul>
+                      							<li class="dropdown-header">Prodi Informatika</li>
+                                    <li class="divider"></li>
+                      							<li><a href="#">Sejarah</a></li>
+                      							<li><a href="#">Visi dan Misi</a></li>
+                      							<li><a href="#">Prestasi</a></li>
+                      						</ul>
+                      					</li>
+                      					<li class="col-sm-6">
+                      						<ul>
+                      							<li class="dropdown-header">Staff Prodi Informatika</li>
+                                    <li class="divider"></li>
+                      							<li><a href="#">Staff dan Pengajar</a></li>
+                      							<li><a href="#">Penelitian</a></li>
+                      						</ul>
+                      					</li>
+                      				</ul>
+                      			</li>
                     <li><a href="{% url 'home:alumni' %}">ALUMNI</a></li>
                 </ul>
 
