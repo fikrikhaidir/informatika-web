@@ -112,12 +112,10 @@ letter-spacing: 1.7px;
   }
 }
 
-
-
 @media screen and (min-width: 768px){
   .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
       margin-right: 30px;
-      margin-left: 0;
+      margin-left: 18px;
   }
   .jumbotron {
       border-radius: 0px !important;
