@@ -5,13 +5,16 @@ def home(request):
     return render(request,"home.html")
 
 def kurikulum(request):
-    return render(request,"kurikulum.html")
+    return render(request,"kurikulum/kurikulum.html")
 
 def profil(request):
-    return render(request,"profil.html")
+    return render(request,"profil/profil.html")
 
 def ukm(request):
-    return render(request,"ukm.html")
+    return render(request,"ukm/ukm.html")
 
 def alumni(request):
-    return render(request,"alumni.html")
+    return render(request,"alumni/alumni.html")
+
+def dashboard(request):
+    return render(request,"admin/index.html")
