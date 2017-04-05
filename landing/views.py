@@ -8,12 +8,16 @@ def kurikulum(request):
     return render(request,"kurikulum/kurikulum.html")
 
 def profil(request):
-    return render(request,"profil/profil.html")
+    judul="PROFIL INFORMATIKA"
+    context={
+        'judul':judul,
+    }
+    return render(request,"profil/profil.html",context)
 
 def identitas(request):
-    judul = "Identitas Prodi Informatika"
+    judul = "TENTANG INFORMATIKA"
     context={
-        judul:judul,
+        'judul':judul,
     }
     return render(request,"profil/identitas.html",context)
 

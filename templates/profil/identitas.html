@@ -4,20 +4,24 @@
 {% block css %}
 <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static 'css/custom-pages.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
 {% endblock css %}
 
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid animated fadeIn" id="page-container">
 <br />
+  <div class="col-md-10 col-md-offset-1">
+
   <ol class="breadcrumb">
    <li class="breadcrumb-item"><a href="#">Beranda</a></li>
    <li class="breadcrumb-item"><a href="#">Profil</a></li>
    <li class="breadcrumb-item active">Identitas</li>
   </ol>
 
-<div class="page-header" style="letter-spacing:1.5px"><h1>Tentang Informatika <small>Serba-serbi prodi Informatika</small></h1> </div>
-
+<div class="page-header animated fadeIn"><h1 id="page-header">{{judul}} <small>Serba-serbi Prodi Informatika</small></h1> </div>
+  </div>
   <div class="col-md-10 col-md-offset-1">
 
 
