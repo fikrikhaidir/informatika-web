@@ -5,7 +5,6 @@ body{
 .navbar-default {
     background-color: #205081;
     border-color: #205081;
-    /*border-color: #031F72;*/
     border-radius: 0px;
 }
 .navbar{
@@ -33,13 +32,24 @@ body{
   color: white !important;
   margin: 2px 2px auto 0 2px;
   letter-spacing: 1.7px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
 }
 
-.navbar-nav >li:hover,.navbar-nav >li:active{
+.navbar-nav >li:hover,.navbar-nav >li:active,.navbar-nav>.open>a{
   background-color: #E7E7E7;
+  -webkit-border-radius:4px !important;
+  -moz-border-radius:4px !important;
+  border-radius: 4px !important;
+  -webkit-transition:all 0.3s ease-in-out !important;
+  -moz-transition:all 0.3s ease-in-out !important;
+  -o-transition:all 0.3s ease-in-out !important;
+  transition: all 0.3s ease-in-out !important;
 }
-.navbar-nav >li>a:hover,.navbar-nav >li>a:active{
-  color: #3D5AFE !important;
+.navbar-nav >li>a:hover,
+.navbar-nav >li>a:active,
+.navbar-nav >li>a:focus{
+  color: #428bca !important;
+  text-shadow: 0 1px 1px white;
 }
 
 @media (min-width: 768px){
@@ -105,6 +115,8 @@ body{
   font-size: 26px;
   font-weight: 600;
   letter-spacing: 1.8px;
+  text-shadow: 0 1px 1px rgba(231,231,231,0.5);
+
 }
 
 @media (max-width: 768px) {
@@ -124,6 +136,7 @@ body{
   }
   .dropdown-menu-large .dropdown-header {
     padding: 3px 15px !important;
+    font-size: 22px;
   }
 }
 

@@ -10,7 +10,6 @@
     <title>Prodi Informatika UMS</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}" />
@@ -48,7 +47,7 @@
                     						<ul>
                     							<li class="dropdown-header">Prodi Informatika</li>
                                   <li class="divider"></li>
-                    							<li><a href="#">Sejarah</a></li>
+                    							<li><a href="{% url 'home:profil' %}">Profil Prodi</a></li>
                     							<li><a href="#">Visi dan Misi</a></li>
                     							<li><a href="#">Prestasi</a></li>
                     						</ul>
@@ -70,9 +69,7 @@
                     						<ul>
                     							<li class="dropdown-header">Kurikulum Informatika</li>
                                   <li class="divider"></li>
-                    							<li><a href="#">Daftar Mata Kuliah</a></li>
-                    							<!-- <li><a href="#">Visi dan Misi</a></li>
-                    							<li><a href="#">Prestasi</a></li> -->
+                    							<li><a href="{% url 'home:kurikulum' %}">Daftar Mata Kuliah</a></li>
                     						</ul>
                     					</li>
                     					<li class="col-sm-6">
@@ -90,19 +87,16 @@
                       				<ul class="dropdown-menu dropdown-menu-large row">
                       					<li class="col-sm-6">
                       						<ul>
-                      							<li class="dropdown-header">Prodi Informatika</li>
+                      							<li class="dropdown-header">Unit Kegiatan Mahasiswa</li>
                                     <li class="divider"></li>
-                      							<li><a href="#">Sejarah</a></li>
-                      							<li><a href="#">Visi dan Misi</a></li>
-                      							<li><a href="#">Prestasi</a></li>
+                      							<li><a href="#">Fosti</a></li>
                       						</ul>
                       					</li>
                       					<li class="col-sm-6">
                       						<ul>
                       							<li class="dropdown-header">Staff Prodi Informatika</li>
                                     <li class="divider"></li>
-                      							<li><a href="#">Staff dan Pengajar</a></li>
-                      							<li><a href="#">Penelitian</a></li>
+                                    <li><a href="#">HIMATIF</a></li>
                       						</ul>
                       					</li>
                       				</ul>
@@ -130,7 +124,7 @@
             <p><i class="fa fa-envelope"></i> E-mail : admin@informatika.ums.ac.id</p>
 
           </div>
-          <div class="col-md-2 col-sm-6 paddingtop-bottom">
+          <div class="col-md-4 col-sm-6 paddingtop-bottom">
             <h6 class="heading7">GENERAL LINKS</h6>
             <ul class="footer-ul">
               <li><a href="#"> Career</a></li>
@@ -142,14 +136,7 @@
               <li><a href="#"> Frequently Ask Questions</a></li>
             </ul>
           </div>
-          <div class="col-md-3 col-sm-6 paddingtop-bottom">
-            <h6 class="heading7">LATEST POST</h6>
-            <div class="post">
-              <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-              <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-              <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-            </div>
-          </div>
+
           <div class="col-md-3 col-sm-6 paddingtop-bottom">
             <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
               <div class="fb-xfbml-parse-ignore">
@@ -168,14 +155,7 @@
           <p>© 2017 - Informatika UMS</p>
         </div>
         <div class="col-md-6">
-          <ul class="bottom_ul">
-            <li><a href="#">Informatika UMS 2017</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Faq's</a></li>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">Site Map</a></li>
-          </ul>
+
         </div>
       </div>
     </div>
