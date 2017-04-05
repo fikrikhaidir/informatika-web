@@ -10,6 +10,13 @@ def kurikulum(request):
 def profil(request):
     return render(request,"profil/profil.html")
 
+def identitas(request):
+    judul = "Identitas Prodi Informatika"
+    context={
+        judul:judul,
+    }
+    return render(request,"profil/identitas.html",context)
+
 def ukm(request):
     return render(request,"ukm/ukm.html")
 
