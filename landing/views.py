@@ -21,6 +21,21 @@ def identitas(request):
     }
     return render(request,"profil/identitas.html",context)
 
+def staff(request):
+    judul = "STAFF PENGAJAR"
+    context={
+        'judul':judul,
+    }
+    return render(request,"profil/staff.html",context)
+
+def visi(request):
+    judul = "VISI DAN MISI"
+    context = {
+        'judul':judul,
+    }
+    return render(request,"profil/visi.html",context)
+
+
 def ukm(request):
     return render(request,"ukm/ukm.html")
 
