@@ -41,20 +41,21 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'home:profil' %}">BERITA</a></li>
                     <li class="dropdown dropdown-large">
-                    				<a href="#" class="dropdown-toggle" data-toggle="dropdown">PROFIL </a>
+                    				<a class="dropdown-toggle" data-toggle="dropdown">PROFIL </a>
                     				<ul class="dropdown-menu dropdown-menu-large row">
                     					<li class="col-sm-6">
                     						<ul>
-                    							<li class="dropdown-header">Prodi Informatika</li>
+                    							<li class="dropdown-header">Profil Informatika</li>
                                   <li class="divider"></li>
-                    							<li><a href="{% url 'home:profil' %}">Profil Prodi</a></li>
+                    							<li><a href="{% url 'home:identitas' %}">Tentang Informatika UMS</a></li>
+                                  <li><a href="{% url 'home:profil' %}">Profil Prodi</a></li>
                     							<li><a href="#">Visi dan Misi</a></li>
                     							<li><a href="#">Prestasi</a></li>
                     						</ul>
                     					</li>
                     					<li class="col-sm-6">
                     						<ul>
-                    							<li class="dropdown-header">Staff Prodi Informatika</li>
+                    							<li class="dropdown-header">Profil Staff Informatika</li>
                                   <li class="divider"></li>
                     							<li><a href="#">Staff dan Pengajar</a></li>
                     							<li><a href="#">Penelitian</a></li>
@@ -94,7 +95,7 @@
                       					</li>
                       					<li class="col-sm-6">
                       						<ul>
-                      							<li class="dropdown-header">Staff Prodi Informatika</li>
+                      							<li class="dropdown-header">Himpunan Mahasiswa Prodi</li>
                                     <li class="divider"></li>
                                     <li><a href="#">HIMATIF</a></li>
                       						</ul>
@@ -103,15 +104,15 @@
                       			</li>
                     <li><a href="{% url 'home:alumni' %}">ALUMNI</a></li>
                 </ul>
-
-
             </div>
             <!-- /.navbar-collapse -->
         </div>
     </nav>
 
+    <!-- content -->
     {% block content %}
     {% endblock content %}
+    <!-- end content -->
 
     <footer>
       <div class="container">

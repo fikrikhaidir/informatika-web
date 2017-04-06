@@ -1,0 +1,25 @@
+.breadcrumb {
+    margin-bottom: 15px !important;
+    background-color: rgb(245, 245, 245);
+    padding: 13px 15px;
+    list-style: none;
+    border-radius: 4px;
+}
+
+#para-konten{
+  letter-spacing: 0.5px;
+  font-family:'PT Serif','sans-serif';
+  font-size: 16px;
+}
+
+#page-container{
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-delay: 0s;
+  -moz-animation-duration: 1.2s;
+  -moz-animation-delay: 0s;
+}
+
+#page-header{
+  letter-spacing: 1.4px;
+  font-weight:bold !important;
+}

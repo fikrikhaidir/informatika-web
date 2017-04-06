@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles   %}
+
+{% block css %}
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom-pages.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+{% endblock css %}
+
+
+{% block content %}
+<div class="container-fluid animated fadeIn" id="page-container">
+<br />
+  <div class="col-md-10 col-md-offset-1">
+
+  <ol class="breadcrumb">
+   <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+   <li class="breadcrumb-item"><a href="#">Profil</a></li>
+   <li class="breadcrumb-item active">Identitas</li>
+  </ol>
+
+<div class="page-header animated fadeIn"><h1 id="page-header">{{judul}} <small>Serba-serbi Prodi Informatika</small></h1> </div>
+  </div>
+  <div class="col-md-10 col-md-offset-1">
+
+
+  <h4>Program Studi&nbsp;&nbsp;&nbsp;:&nbsp;Informatika (Informatics)</h4>
+  <h4>Jenjang&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;S1 (Sarjana)</h4>
+  <h4>Tanggal Berdiri&nbsp; : 20 April 2007</h4>
+  <h4>No. SK Pendirian : Surat Keputusan (SK) Ijin Dirjen Dikti No. 930/D/T2007 Tanggal 20 April 2007</h4>
+  <br /><br />
+  <p>
+
+  <div class="col-md-5">
+    <img src="{% static 'img/lab/IMG_3112.jpg' %}" alt="..." class="img-thumbnail img-responsive pull-left">
+  </div>
+    <p class='text-justify lead' id="para-konten">Sejarah berdirinya Program Studi Informatika Universitas Muhammadiyah Surakarta (UMS) diawali dengan pemikiran perlunya mengembangkan konsentrasi Sistem Komputer dan Informatika Jurusan Teknik Elektro UMS dan meningkatkan statusnya menjadi program studi sendiri untuk mencukupi kebutuhan tenaga kerja di bidang teknologi informasi.   Secara formal, Program Studi Informatika UMS adalah Program Studi yang berdiri pada tahun 2007 melalui surat keputusan <b>(SK) Ijin Dirjen Dikti No. 930/D/T2007 Tanggal 20 April</b> dengan konsentrasi pada Perangkat Lunak (Software), meliputi: </p>
+      <ol class="list-unstyled" id="para-konten">
+        <li><b>&nbsp;1.&nbsp; Sistem Informasi</b></li>
+        <li><b>&nbsp;2.&nbsp; Sistem Jaringan Komputer</b></li>
+        <li><b>&nbsp;3.&nbsp; Rekayasa</b></li>
+      </ol>
+      <br />
+    <br />
+    <p class="text-justify" id="para-konten">Pada tanggal 29 Desember 2011, Program Studi Informatika mendapatkan akreditasi B (Baik) dari Badan Akreditasi Nasional Perguruan Tinggi melalui Surat Keputusan (SK) Nomor 047/BAN-PT/Ak-XIV/S1/XII/2011 tertanggal 29 Desember 2011.</p>
+    <p class="text-justify" id="para-konten">Untuk menyesuaikan dengan perkembangan teknologi dan kebutuhan dunia kerja, maka konsentrasi yang ada di program studi Informatika mengalami perluasan cakupan menjadi:</p>
+
+    <ol class="list-unstyled" id="para-konten">
+      <li><b>&nbsp;1.&nbsp; Sistem Informasi dan Entreprise (SIE)</b></li>
+      <li><b>&nbsp;2.&nbsp; Sistem Jaringan dan Multimedia (SJM)</b></li>
+      <li><b>&nbsp;3.&nbsp; Rakayasa Perangkat Lunak dan animasi (RPLA)</b></li>
+    </ol>
+    <br />
+
+      <div class="col-md-4">
+
+      </div>
+      <div class="col-md-4">
+
+      </div>
+      <div class="col-md-4">
+
+
+      </div>
+
+</div>
+
+</div> <!-- container-fluid -->
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}
