@@ -5,10 +5,17 @@ def home(request):
     return render(request,"home.html")
 
 def kurikulum(request):
-    return render(request,"kurikulum/kurikulum.html")
+    judul="KURIKULUM INFORMATIKA"
+    subJudul= "Kurikulum Program Studi Informatika"
+    context={
+        'judul':judul,
+        'subJudul':subJudul,
+    }
+    return render(request,"kurikulum/kurikulum.html",context)
 
 def profil(request):
     judul="PROFIL INFORMATIKA"
+    subJudul= ""
     context={
         'judul':judul,
     }
@@ -16,6 +23,7 @@ def profil(request):
 
 def identitas(request):
     judul = "TENTANG INFORMATIKA"
+    subJudul= ""
     context={
         'judul':judul,
     }
@@ -23,6 +31,7 @@ def identitas(request):
 
 def staff(request):
     judul = "STAFF PENGAJAR"
+    subJudul= ""
     context={
         'judul':judul,
     }
@@ -30,6 +39,7 @@ def staff(request):
 
 def visi(request):
     judul = "VISI DAN MISI"
+    subJudul= ""
     context = {
         'judul':judul,
     }

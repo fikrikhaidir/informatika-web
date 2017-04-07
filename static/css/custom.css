@@ -33,10 +33,13 @@ body{
   margin: 2px 2px auto 0 2px;
   letter-spacing: 1.7px;
   text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  /*-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;*/
+}
 }
 
 .navbar-nav >li:hover,.navbar-nav >li:active,.navbar-nav>.open>a{
-  background-color: #E7E7E7;
+  background-color: #E7E7E7 !important;
   -webkit-border-radius:4px !important;
   -moz-border-radius:4px !important;
   border-radius: 4px !important;
@@ -45,12 +48,18 @@ body{
   -o-transition:all 0.3s ease-in-out !important;
   transition: all 0.3s ease-in-out !important;
 }
-.navbar-nav >li>a:hover,
+/*.navbar-nav >li>a:hover,
 .navbar-nav >li>a:active,
 .navbar-nav >li>a:focus{
   color: #428bca !important;
   text-shadow: 0 1px 1px white;
+}*/
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+  color: #428bca !important;
+  text-shadow: 0 1px 1px white;
+
 }
+
 
 @media (min-width: 768px){
 .navbar-right {
@@ -156,7 +165,7 @@ body{
   }
 }
 
-.modal-backdrop{
+/*.modal-backdrop{
   z-index: 1099;
   position: inherit;
-}
+}*/
