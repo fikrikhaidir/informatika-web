@@ -55,7 +55,7 @@ def alumni_dashboard(request):
     'data_alumni':data_alumni,
     'title':'Data Alumni',
     }
-    return render(request,"admin/tables.html",context)
+    return render(request,"admin/alumni.html",context)
 
 def cetak_rekapan_alumni(request):
     # if not request.user.is_staff and not request.user.is_superuser:
