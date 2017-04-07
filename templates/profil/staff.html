@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block css %}
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom-pages.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/hover.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> {% endblock css %} {% block content %}
+<div class="container-fluid animated fadeIn" id="page-container">
+    <br />
+    <div class="col-md-10 col-md-offset-1">
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'home:profil' %}">Profil</a></li>
+            <li class="breadcrumb-item active">Staff Pengajar</li>
+        </ol>
+
+        <div class="page-header animated fadeIn">
+            <h1 id="page-header">{{judul}} <small>Profil Tenaga Pengajar Informatika UMS</small></h1> </div>
+    </div>
+    <div class="col-md-10 col-md-offset-1">
+        <h2> DOSEN TETAP </h2>
+
+        <div class="grid">
+            <figure class="effect-zoe img-responsive">
+                <img src="{% static 'img/dosen/IMG_1873.jpg' %}" alt="img25"/>
+                <figcaption>
+                    <h2>Husni <span>Thamrin</span></h2>
+                    <p class="icon-links">
+                        
+                    </p>
+                    <!-- <p class="description">Zoe never had the patience of her sisters. She deliberately punched the bear in his face.</p> -->
+                </figcaption>
+            </figure>
+            <figure class="effect-zoe">
+                <img src="{% static 'img/dosen/IMG_3003.jpg' %}" alt="img26" />
+                <figcaption>
+                    <h2>Heru <span>Supriyono</span></h2>
+                    <p class="icon-links">
+
+                    </p>
+                    <!-- <p class="description">Zoe never had the patience of her sisters. She deliberately punched the bear in his face.</p> -->
+                </figcaption>
+            </figure>
+            <figure class="effect-zoe">
+                <img src="{% static 'img/dosen/IMG_2995.jpg' %}" alt="img26" />
+                <figcaption>
+                    <h2>Aris <span>Rakhmadi</span></h2>
+                    <p class="icon-links">
+
+                    </p>
+                    <!-- <p class="description">Zoe never had the patience of her sisters. She deliberately punched the bear in his face.</p> -->
+                </figcaption>
+            </figure>
+            <!-- <figure class="effect-zoe">
+                <img src="https://static.pexels.com/photos/10664/b4d29be0fa6c806b5239556952d2e24d-large.jpg" alt="img26" />
+                <figcaption>
+                    <h2>Creative <span>Zoe</span></h2>
+                    <p class="icon-links">
+                        <a href="#"><span class="icon-heart"></span></a>
+                        <a href="#"><span class="icon-eye"></span></a>
+                        <a href="#"><span class="icon-paper-clip"></span></a>
+                    </p>
+
+                </figcaption>
+            </figure> -->
+        </div>
+        <!-- grid -->
+
+    </div>
+
+</div>
+<!-- container-fluid -->
+{% endblock content %} {% block scripts %} {% endblock scripts %}
