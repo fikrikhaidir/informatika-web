@@ -33,10 +33,10 @@ body{
   margin: 2px 2px auto 0 2px;
   letter-spacing: 1.7px;
   text-shadow: 0 1px 1px rgba(0,0,0,0.5);
-  /*-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;*/
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
-}
+
 
 .navbar-nav >li:hover,.navbar-nav >li:active,.navbar-nav>.open>a{
   background-color: #E7E7E7 !important;
@@ -48,12 +48,12 @@ body{
   -o-transition:all 0.3s ease-in-out !important;
   transition: all 0.3s ease-in-out !important;
 }
-/*.navbar-nav >li>a:hover,
+.navbar-nav >li>a:hover,
 .navbar-nav >li>a:active,
 .navbar-nav >li>a:focus{
   color: #428bca !important;
   text-shadow: 0 1px 1px white;
-}*/
+}
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
   color: #428bca !important;
   text-shadow: 0 1px 1px white;
@@ -154,18 +154,4 @@ body{
       margin-right: 30px;
       margin-left: 18px;
   }
-  .jumbotron {
-      border-radius: 0px !important;
-      padding-top: 150px;
-      padding-bottom: 150px;
-      width: 100%;
-      background: url('../img/222.jpg') no-repeat center center;
-      background-size: cover;
-      height : 100%;
-  }
 }
-
-/*.modal-backdrop{
-  z-index: 1099;
-  position: inherit;
-}*/

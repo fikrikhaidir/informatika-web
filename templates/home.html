@@ -27,7 +27,7 @@
 {% block content %}
 <!-- <div class="container-fluid"> -->
 
-  <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+  <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="5000" id="bs-carousel">
   <!-- Overlay -->
   <div class="overlay"></div>
 
@@ -47,7 +47,9 @@
             <h1>MEMBANGUN MASA DEPAN</h1>
             <h3>Persiapkan Masa Depan Anda Bersama Kami</h3>
         </hgroup>
-        <button class="btn btn-hero btn-lg" role="button">Pelajari Selengkapnya</button>
+        <a href="{% url 'home:identitas' %}" >
+          <button class="btn btn-hero btn-lg" role="button">Kenali & Pelajari</button>
+        </a>
       </div>
     </div>
     <div class="item slides">
@@ -57,7 +59,9 @@
             <h1>Belajar Langsung Dari Ahlinya</h1>
             <h3>Prodi Informatika Memiliki Banyak Tenaga Ahli</h3>
         </hgroup>
-        <button class="btn btn-hero btn-lg" role="button">Lihat Staff Pengajar</button>
+        <a href="{% url 'home:staff' %}" >
+          <button class="btn btn-hero btn-lg" role="button">Lihat Staff Pengajar</button>
+        </a>
       </div>
     </div>
     <div class="item slides">
@@ -67,7 +71,9 @@
             <h1>SESUAIKAN DIRIMU DENGAN ZAMAN</h1>
             <h3>Dengan Kurikulum Yang Selalu Diperbaharui</h3>
         </hgroup>
-        <button class="btn btn-hero btn-lg" role="button">Lihat Kurikulum</button>
+        <a href="{% url 'home:kurikulum' %}" >
+          <button class="btn btn-hero btn-lg" role="button">Lihat Kurikulum</button>
+        </a>
       </div>
     </div>
   </div>
