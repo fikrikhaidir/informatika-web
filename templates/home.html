@@ -4,19 +4,20 @@
 {% block css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/carouselhead.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/carousel.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <style>
     .fade-carousel .slides .slide-3 {
-      background-image: url("{% static 'img/p3.JPG' %}");
+      background-image: url("{% static 'img/a3.JPG' %}");
       background-repeat: no-repeat;
       background-size: cover;
     }
     .fade-carousel .slides .slide-2 {
-      background-image: url("{% static 'img/p2.jpg' %}");
+      background-image: url("{% static 'img/a2.jpg' %}");
       background-repeat: no-repeat;
       background-size: cover;
     }
     .fade-carousel .slides .slide-1 {
-      background-image: url("{% static 'img/p1.JPG' %}");
+      background-image: url("{% static 'img/a1.JPG' %}");
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -27,7 +28,7 @@
 {% block content %}
 <!-- <div class="container-fluid"> -->
 
-  <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+  <div class="carousel fade-carousel slide animated fadeIn" data-ride="carousel" data-interval="4000" id="bs-carousel">
   <!-- Overlay -->
   <div class="overlay"></div>
 
@@ -79,6 +80,54 @@
   </div>
 </div>
 <!-- </div> -->
+<div class="container-fluid" id="review-grid">
+
+<div class="row">
+<div class="col-md-12">
+  <div class="col-md-8">
+  <h1 style="font-weight:600">TEMPAT BELAJAR IDEAL</h1>
+  <p class="text-justify" id="review-konten">
+      Prodi Informatika tidak hanya menawarkan suasana akademik yang menantang. Dengan lokasi yang strategis, Prodi Informatika menyajikan atmosfir belajar yang tenang, santai dan kompetitif. Tidak jauh dari berbagai fasilitas-fasilitas umum dan gedung induk, gedung olah raga dan perpustakaan Universitas Muhammadiyah Surakarta.
+  </p>
+  <br>
+
+</div>
+
+</div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-4">
+    <img src="{% static 'img/g2.JPG' %}" alt="..." class="img-responsive">
+    <br />
+    <h4>LINGKUNGAN KAMPUS NYAMAN</h4>
+    <p id="text-justify" id="review-konten">
+        Program Studi Informatika UMS berdiri pada Kampus 2 Universitas Muhammadiyah Surakarta. Dengan gedung kokoh yang berlokasi tidak jauh dari Gedung Olah Raga dan Masjid, menjadikan Program Studi Informatika sebagai tempat yang nyaman untuk belajar dan beraktifitas. Lokasi yang tidak jauh dari danau dan taman juga menambah kehijauan lingkungan sekitar gedung program studi ini.
+    </p>
+    <br>
+  </div>
+  <div class="col-md-4">
+    <img src="{% static 'img/g1.JPG' %}" alt="..." class="img-responsive">
+    <br />
+    <h4>FASILITAS YANG LENGKAP</h4>
+    <p id="text-justify" id="review-konten">
+        Program Studi Informatika UMS berdiri pada Kampus 2 Universitas Muhammadiyah Surakarta. Dengan gedung kokoh yang berlokasi tidak jauh dari Gedung Olah Raga dan Masjid, menjadikan Program Studi Informatika sebagai tempat yang nyaman untuk belajar dan beraktifitas. Lokasi yang tidak jauh dari danau dan taman juga menambah kehijauan lingkungan sekitar gedung program studi ini.
+    </p>
+    <br>
+  </div><div class="col-md-4">
+    <img src="{% static 'img/g3.JPG' %}" alt="..." class="img-responsive">
+    <br />
+    <h4>KEGIATAN MAHASISWA YANG AKTIF</h4>
+    <p id="text-justify" id="review-konten">
+        Program Studi Informatika UMS berdiri pada Kampus 2 Universitas Muhammadiyah Surakarta. Dengan gedung kokoh yang berlokasi tidak jauh dari Gedung Olah Raga dan Masjid, menjadikan Program Studi Informatika sebagai tempat yang nyaman untuk belajar dan beraktifitas. Lokasi yang tidak jauh dari danau dan taman juga menambah kehijauan lingkungan sekitar gedung program studi ini.
+    </p>
+    <br>
+  </div>
+</div>
+</div>
+</div>
+
 
 <section id="carousel">
     <div class="container">

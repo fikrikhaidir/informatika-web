@@ -9,6 +9,10 @@ section {
     margin-bottom: 30px;
 }
 
+.quote > h3{
+  color: #414141;
+}
+
 /*-------------------------------*/
 /*    Carousel Fade Transition   */
 /*-------------------------------*/
@@ -32,7 +36,7 @@ section {
   bottom: 10px;
 }
 #fade-quote-carousel.carousel .carousel-indicators > li {
-  background-color: #e84a64;
+  background-color: #205081;
   border: none;
 }
 #fade-quote-carousel blockquote {
