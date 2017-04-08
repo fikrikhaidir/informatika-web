@@ -88,7 +88,8 @@
     font-size: 1em;
     font-weight: bolder;
     letter-spacing: 3px;
-
+    padding: 18px 30px;
+    border: 2px ghostwhite solid;
     -webkit-background-clip: padding-box;
     -moz-border-radius: 0px !important;
     -moz-background-clip: padding;
@@ -106,6 +107,13 @@
     zoom: 1;
     -webkit-backface-visibility: hidden;
 }
+
+.btn.btn-hero{
+  background-color: rgba(100, 100, 100, 0.4);
+
+}
+
+
 
 .btn.btn-hero:hover {
     -webkit-transition: 0.5s ease;
