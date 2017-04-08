@@ -18,55 +18,133 @@
     </div>
     <div class="col-md-10 col-md-offset-1">
         <h2> DOSEN TETAP </h2>
-
+        <hr />
         <div class="grid">
+            <div class="row">
+
+
+
+            {% for i in "xxx" %}
+            <div class="col-md-4">
+             <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
             <figure class="effect-zoe img-responsive">
                 <img src="{% static 'img/dosen/IMG_1873.jpg' %}" alt="img25"/>
                 <figcaption>
-                    <h2>Husni <span>Thamrin</span></h2>
-                    <p class="icon-links">
-                        
-                    </p>
-                    <!-- <p class="description">Zoe never had the patience of her sisters. She deliberately punched the bear in his face.</p> -->
+                  <center><h2>Husni <span>Thamrin</span></h2></center>
                 </figcaption>
-            </figure>
+            </figure></a>
+            </div>
+            {% endfor %}
+
+            {% for i in "xxx" %}
+           <div class="col-md-4">
             <figure class="effect-zoe">
                 <img src="{% static 'img/dosen/IMG_3003.jpg' %}" alt="img26" />
                 <figcaption>
                     <h2>Heru <span>Supriyono</span></h2>
-                    <p class="icon-links">
-
-                    </p>
-                    <!-- <p class="description">Zoe never had the patience of her sisters. She deliberately punched the bear in his face.</p> -->
                 </figcaption>
             </figure>
+          </div>
+          {% endfor %}
+
+
+
+            <!-- <div class="col-md-4">
             <figure class="effect-zoe">
                 <img src="{% static 'img/dosen/IMG_2995.jpg' %}" alt="img26" />
                 <figcaption>
                     <h2>Aris <span>Rakhmadi</span></h2>
-                    <p class="icon-links">
-
-                    </p>
-                    <!-- <p class="description">Zoe never had the patience of her sisters. She deliberately punched the bear in his face.</p> -->
                 </figcaption>
             </figure>
-            <!-- <figure class="effect-zoe">
-                <img src="https://static.pexels.com/photos/10664/b4d29be0fa6c806b5239556952d2e24d-large.jpg" alt="img26" />
-                <figcaption>
-                    <h2>Creative <span>Zoe</span></h2>
-                    <p class="icon-links">
-                        <a href="#"><span class="icon-heart"></span></a>
-                        <a href="#"><span class="icon-eye"></span></a>
-                        <a href="#"><span class="icon-paper-clip"></span></a>
-                    </p>
+          </div> -->
 
-                </figcaption>
-            </figure> -->
+          </div> <!-- row inside grid -->
+        </div>  <!-- grid -->
+    <br />
+    <br />
+    <br />
+    <h2 class="text-right">DOSEN PROFESI </h2>
+    <hr />
+
+    <div class="grid">
+        <div class="row">
+
+          {% for i in "xxx" %}
+          <div class="col-md-4">
+           <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
+          <figure class="effect-zoe img-responsive">
+              <img src="{% static 'img/dosen/IMG_1873.jpg' %}" alt="img25"/>
+              <figcaption>
+                <center><h2>Husni <span>Thamrin</span></h2></center>
+              </figcaption>
+          </figure></a>
+          </div>
+          {% endfor %}
+
+          {% for i in "xxx" %}
+         <div class="col-md-4">
+          <figure class="effect-zoe">
+              <img src="{% static 'img/dosen/IMG_3003.jpg' %}" alt="img26" />
+              <figcaption>
+                  <h2>Heru <span>Supriyono</span></h2>
+              </figcaption>
+          </figure>
         </div>
-        <!-- grid -->
+        {% endfor %}
 
-    </div>
+        </div> <!-- row inside grid -->
+      </div>  <!-- grid -->
 
-</div>
-<!-- container-fluid -->
+    </div> <!-- column -->
+
+
+</div><!-- container-fluid -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                   <h4 class="modal-title" id="myModalLabel">Detil Profil Pengajar</h4>
+                   </div>
+               <div class="modal-body">
+                   <center>
+                   <img src="{% static 'img/dosen/IMG_3003.jpg' %}" name="aboutme" width="140" height="140" border="0" class="img-rounded img-responsive"></a>
+                  <br />
+                   <h3 class="media-heading">Heru Supriyono <small>S.T.,M.Sc.,Ph.D.</small></h3>
+                    <h4>Lektor</h4>
+                    <span><strong>Skills: </strong></span>
+                    <span class="label label-success"> S1 : Teknik Elektro</span>
+                    <span class="label label-success"> S2 : Control System</span>
+                    <span class="label label-success"> S3 : Control System</span>
+                   </center>
+                   <hr>
+                   <p class="text-left"><strong><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pendidikan : </strong>
+                  <br>
+                  <ol class="list-unstyled">
+                    <li><b>&nbsp;S-1&nbsp; Universitas Gadjah Mada</b></li>
+                    <li><b>&nbsp;S-2&nbsp; University of Sheffield</b></li>
+                    <li><b>&nbsp;S-3&nbsp; University of Sheffield</b></li>
+                  </ol>
+                  </p>
+                  <
+
+                   <br>
+                   <p class="text-left"><strong>Bio: </strong><br>
+                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
+                   <br>
+               </div>
+               <div class="modal-footer">
+                   <center>
+                    <a type="button" class="btn btn-info" href="https://scholar.google.co.id/citations?user=MCZ0eicAAAAJ&hl=en&oi=ao">Cari Penelitian</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
+                    </center>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <br />
+   <br />
+<br />
 {% endblock content %} {% block scripts %} {% endblock scripts %}

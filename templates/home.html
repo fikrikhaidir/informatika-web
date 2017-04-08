@@ -2,22 +2,83 @@
 {% load staticfiles %}
 
 {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/carouselhead.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/carousel.css' %}" />
+    <style>
+    .fade-carousel .slides .slide-3 {
+      background-image: url("{% static 'img/w4.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .fade-carousel .slides .slide-2 {
+      background-image: url("{% static 'img/w2.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .fade-carousel .slides .slide-1 {
+      background-image: url("{% static 'img/w1.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    </style>
+
 {% endblock css %}
 
 {% block content %}
-<div class="container-fluid">
-  <div class="row">
+<!-- <div class="container-fluid"> -->
 
-    <div class="jumbotron">
-          <h1>Jumbotron</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc est, tempus et venenatis id, ornare sed lorem.Curabitur sed ipsum et odio interdum pharetra nec sed libero. Sed velit massa, consectetur in mollis eget, elementum eu diam.</p>
-          <p><a class="btn btn-primary btn-lg">Learn more</a></p>
-        </div>
+  <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="5000" id="bs-carousel">
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#bs-carousel" data-slide-to="1"></li>
+    <li data-target="#bs-carousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item slides active">
+      <div class="slide-1"></div>
+      <div class="hero">
+        <hgroup>
+            <h1>MEMBANGUN MASA DEPAN</h1>
+            <h3>Persiapkan Masa Depan Anda Bersama Kami</h3>
+        </hgroup>
+        <a href="{% url 'home:identitas' %}" >
+          <button class="btn btn-hero btn-lg" role="button">Kenali & Pelajari</button>
+        </a>
+      </div>
+    </div>
+    <div class="item slides">
+      <div class="slide-2"></div>
+      <div class="hero">
+        <hgroup>
+            <h1>Belajar Langsung Dari Ahlinya</h1>
+            <h3>Prodi Informatika Memiliki Banyak Tenaga Ahli</h3>
+        </hgroup>
+        <a href="{% url 'home:staff' %}" >
+          <button class="btn btn-hero btn-lg" role="button">Lihat Staff Pengajar</button>
+        </a>
+      </div>
+    </div>
+    <div class="item slides">
+      <div class="slide-3"></div>
+      <div class="hero">
+        <hgroup>
+            <h1>SESUAIKAN DIRIMU DENGAN ZAMAN</h1>
+            <h3>Dengan Kurikulum Yang Selalu Diperbaharui</h3>
+        </hgroup>
+        <a href="{% url 'home:kurikulum' %}" >
+          <button class="btn btn-hero btn-lg" role="button">Lihat Kurikulum</button>
+        </a>
+      </div>
+    </div>
   </div>
-
 </div>
-
+<!-- </div> -->
 
 <section id="carousel">
     <div class="container">

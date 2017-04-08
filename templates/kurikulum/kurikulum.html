@@ -1,14 +1,103 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load staticfiles   %}
 
 {% block css %}
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom-pages.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
 {% endblock css %}
 
-{% block content %}
 
+{% block content %}
+<div class="container-fluid animated fadeIn" id="page-container">
+<br />
+  <div class="col-md-10 col-md-offset-1">
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Beranda</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home:profil' %}">Profil</a></li>
+   <li class="breadcrumb-item active">Profil Prodi</li>
+  </ol>
+
+<div class="page-header animated fadeIn"><h1 id="page-header">{{judul}} <small>{{subJudul}}</small></h1> </div>
+  </div>
+  <div class="col-md-10 col-md-offset-1">
+
+  <br /><br />
+  <p>
+  <div class="row">
+  <div class="col-md-12">
+
+    <p class='text-justify lead' id="para-konten">Dalam tata kelola universitas, Program Studi Informatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalah:</p>
+
+		<div class="panel panel-primary">
+		    <div class="panel-heading">
+		        <h3>Daftar Mata Kuliah</h3>
+		    </div>
+		    <div id="toolbar-admin" class="panel-body">
+		        <div class="btn-toolbar" role="toolbar" aria-label="admin">
+                    <div class="btn-group pull-right" role="group">
+                        <button id="btn-online" class="btn btn-success">Wajib</button>
+                        <button id="btn-offline" class="btn btn-warning">Pilihan</button>
+                    </div>
+                </div>
+		    </div>
+		    <table class="table table-striped table-hover">
+		        <thead>
+		            <tr>
+		                <th>No.</th>
+		                <th>Semester</th>
+		                <th>Nama Mata Kuliah</th>
+		                <th>Kode MK. 2015</th>
+		                <th>SKS/Credit 2015</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr class="success">
+		                <td>1</td>
+		                <td>1</td>
+		                <td>Pemrograman Web</td>
+		                <td class="status">MK123</td>
+		                <td>test</td>
+		            </tr>
+		            <tr class="success">
+		                <td>2</td>
+		                <td>1</td>
+		                <td>Aljabar Linier</td>
+		                <td class="status">MK123</td>
+		                <td>test</td>
+		            </tr>
+		            <tr class="warning">
+		                <td>3</td>
+		                <td>1</td>
+		                <td>Kalkulus</td>
+		                <td class="status">MK123</td>
+		                <td>test</td>
+		            </tr>
+		            <tr class="warning">
+		                <td>4</td>
+		                <td>1</td>
+		                <td>Pengantar Sistem Informasi</td>
+		                <td class="status">MK123</td>
+		                <td>test</td>
+		            </tr>
+		            <tr class="warning">
+		                <td>5</td>
+		                <td>1</td>
+		                <td>Algoritma</td>
+		                <td class="status">MK123</td>
+		                <td>test</td>
+		            </tr>
+		        </tbody>
+		    </table>
+</div>
+</div>
+</div>
+</div>
+</div> <!-- container-fluid -->
 {% endblock content %}
 
-{% block scripts %}
 
+{% block scripts %}
 {% endblock scripts %}
