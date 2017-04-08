@@ -1,16 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import berita_model,alumni_model
-from .forms import alumni_form,berita_form
+from .models import alumni_model
+from .forms import alumni_form
 from django.contrib import messages
 from django.http import HttpResponse
 
-'''Keperluan Cetak'''
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import A4, landscape
-from reportlab.lib import colors
+
 
 
 def home(request):

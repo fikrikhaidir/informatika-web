@@ -1,44 +1,8 @@
 from django import forms
-from .models import berita_model, alumni_model
-from django.contrib.auth.models import User
+from .models import alumni_model
 from captcha.fields import CaptchaField
 
-class berita_form(forms.ModelForm):
-    tag_pilihan = (
-        ('Berita','Berita'),
-        ('Pengumuman','Pengumuman'),
-        )
-    tag = forms.ChoiceField(choices=tag_pilihan)
-    class Meta:
-        model = berita_model
-        fields = [
-            'judul',
-            'image',
-            'content',
-            'draft',
-            'publish',
-            
-        ]
-        label = {
-            'judul' : 'Judul Berita/Pengumuman',
-            'image' : 'Gambar',
-            'publish' : 'Tanggal di publish',
-            'draft' : 'Simpan ke konsep',
-            'content' : 'Isi Konten',
-        }
-        error_messages = {
-            'judul':{
-                'required':'Anda harus mengisi judul berita atau pengumuman'
-            },
-            'publish':{
-                'required':'Anda memastikan tanggal di publish'
-            },
-            'content':{
-                'required':'Isi konten harus diisi'
-            },
 
-
-        }
 
 
 
