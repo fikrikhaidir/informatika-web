@@ -51,7 +51,7 @@
                     							<li><a href="{% url 'home:identitas' %}">Tentang Informatika UMS</a></li>
                                   <li><a href="{% url 'home:profil' %}">Profil Prodi</a></li>
                     							<li><a href="{% url 'home:visi' %}">Visi dan Misi</a></li>
-                    							<li><a href="#">Prestasi</a></li>
+                    							<li><a href="{% url 'home:prestasi' %}">Prestasi</a></li>
                     						</ul>
                     					</li>
                     					<li class="col-sm-6">
@@ -59,7 +59,6 @@
                     							<li class="dropdown-header">Profil Staff Informatika</li>
                                   <li class="divider"></li>
                     							<li><a href="{% url 'home:staff' %}">Staff dan Pengajar</a></li>
-                    							<li><a href="#">Penelitian</a></li>
                     						</ul>
                     					</li>
                     				</ul>
@@ -79,7 +78,7 @@
                                       <ul>
                                         <li class="dropdown-header">Media</li>
                                         <li class="divider"></li>
-                                        <li><a href="#">Galeri</a></li>
+                                        <li><a href="{% url 'home:galeri' %}">Galeri</a></li>
                                       </ul>
                                     </li>
                                   </ul>
@@ -140,7 +139,7 @@
         <div class="row">
           <div class="col-md-4 col-sm-6 footerleft ">
             <div class="logofooter"> <img src="{% static 'img/informatika1.png' %}" /></div>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+            <p class="">Program Studi Informatika Universitas Muhammadiyah Surakarta, Bagian dari Fakultas Komunikasi dan Informatika Universitas Muhammadiyah Surakarta. Terletak di Kampus 2 UMS.</p>
             <p><i class="fa fa-map-pin"></i> JL. A Yani Tromol Pos 1 Pabelan Kartasura</p>
             <p><i class="fa fa-phone"></i> Phone (Indonesia) : +62 9999 878 398</p>
             <p><i class="fa fa-envelope"></i> E-mail : admin@informatika.ums.ac.id</p>

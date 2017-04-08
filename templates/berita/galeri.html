@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load staticfiles   %}
+
+{% block css %}
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom-pages.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+{% endblock css %}
+
+
+{% block content %}
+<div class="container-fluid animated fadeIn" id="page-container">
+<br />
+  <div class="col-md-10 col-md-offset-1">
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Beranda</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home:profil' %}">Berita</a></li>
+   <li class="breadcrumb-item active">Galeri</li>
+  </ol>
+
+<div class="page-header animated fadeIn"><h1 id="page-header">{{judul}} <small>{{subJudul}}</small></h1> </div>
+  </div>
+  <div class="col-md-10 col-md-offset-1">
+    <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 1" href="#aboutModal" data-toggle="modal" data-target="#myModal"><img class="thumbnail img-responsive" src="{% static 'img/g2.JPG' %}"></a></div>
+      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 2" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/2255EE"></a></div>
+      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 3" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/449955/FFF"></a></div>
+      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 4" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/992233"></a></div>
+      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 5" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/2255EE"></a></div>
+      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 6" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/449955/FFF"></a></div>
+      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 8" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/777"></a></div>
+      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 9" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/992233"></a></div>
+      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 10" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/EEE"></a></div>
+      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 11" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/449955/FFF"></a></div>
+      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 12" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/DDD"></a></div>
+      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 13" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/992233"></a></div>
+  </div>
+
+</div> <!-- container-fluid -->
+<div tabindex="-1" class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+		<button class="close" type="button" data-dismiss="modal">×</button>
+		<h3 class="modal-title">Foto</h3>
+	</div>
+	<div class="modal-body">
+    <img src="{% static 'img/g2.JPG' %}" alt="..." class="img-responsive">
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" data-dismiss="modal">Tutup</button>
+	</div>
+   </div>
+  </div>
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}
