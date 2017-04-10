@@ -9,9 +9,6 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Data Staff <small>Semua Data Staff Prodi Informatika</small>
-                        </h1>
                         <ol class="breadcrumb">
                         <li>
                                 <i class="fa fa-dashboard"></i> Dashboard
@@ -23,12 +20,15 @@
                                 <i class=""></i> Staff Informatika
                             </li>
                         </ol>
+                        <h1 class="page-header">
+                            Data Staff <small>Semua Data Staff Prodi Informatika</small>
+                        </h1>
                     </div>
 
 
                     <div class="col-lg-12">
                      <a href="{% url 'dashboard:tambah_staff' %}" class="btn btn-primary"><i class="fa fa-plus"></i>Tambah Staff</a><br/><br/>
-               
+
                 <div class="table-responsive">
                     <table class="table">
                         <tr class="info">
@@ -39,7 +39,7 @@
                             <td><strong>Universitas Asal</strong></td>
                             <td><strong>Bidang Keahlian</strong></td>
                             <td><strong>Option</strong></td>
-                            
+
                         </tr>
                         {% for dt in staff  %}
                         <tr class="default">
@@ -54,14 +54,14 @@
 
                         </tr>
                          {% endfor %}
-                         
+
                     </table>
                     </div>
 
 
-                   
+
                 </div>
-               
+
 
             </div>
             <!-- /.container-fluid -->
