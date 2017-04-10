@@ -7,7 +7,7 @@ from captcha.fields import CaptchaField
 
 
 class alumni_form(forms.ModelForm):
-    # captcha = CaptchaField()
+    captcha = CaptchaField()
 
     class Meta:
         model = alumni_model    

@@ -22,9 +22,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'landing',
     'dashboard',
+    # Third Party
     'captcha',
     'crispy_forms',
+    'stdimage',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -4,6 +4,8 @@ from .models import alumni_model
 from .forms import alumni_form
 from django.contrib import messages
 from django.http import HttpResponse
+from django.db.models import Q
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 
 
@@ -65,71 +67,15 @@ def alumni(request):
         messages.success(request,'Terima Kasih anda telah mengisi data alumni. Data anda sudah tersimpan.')
     context = {
     'form_alumni':form_alumni,
-    'title':'Alumni',
+    'title':'Form Alumni',
     }
     return render(request,'alumni/alumni.html',context)
-
-def alumni_dashboard(request):
-    data_alumni = alumni_model.objects.all()
-    context = {
-    'data_alumni':data_alumni,
-    'title':'Data Alumni',
-    }
-    return render(request,"admin/alumni.html",context)
-
-def cetak_rekapan_alumni(request):
-    # if not request.user.is_staff and not request.user.is_superuser:
-    #     raise Http404
-    # pengaturan respon berformat pdf
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="rekapan_alumni.pdf"'
-
-    # mengambil daftar kehadiran dan mengubahnya menjadi data ntuk tabel
-    data = alumni_model.objects.all()
-    table_data = []
-    table_data.append([ "NO","Nama","NIM","Konsentrasi","Pekerjaan","Posisi/Jabatan" ])
-    i = 1
-    for x in data:
-        table_data.append([ i,x.nama, x.nim, x.konsentrasi, x.pekerjaan,x.jabatan ])
-        i+=1
-
-
-    # membuat dokumen baru
-    doc = SimpleDocTemplate(response, pagesize=A4, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
-    styles = getSampleStyleSheet()
-
-    # pengaturan tabel di pdf
-    table_style = TableStyle([
-                               ('ALIGN',(1,1),(-2,-2),'LEFT'),
-                               ('FONT', (0, 0), (-1, 0), 'Helvetica-Bold'),
-                               ('VALIGN',(0,0),(0,-1),'TOP'),
-                               ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
-                               ('BOX', (0,0), (-1,-1), 0.25, colors.black),
-                           ])
-    pendaftar_table = Table(table_data)
-    pendaftar_table.setStyle(table_style)
-
-    # mengisi pdf
-    content = []
-    content.append(Paragraph('Daftar Rekapan Mahasiswa Alumni Informatika', styles['Title']))
-    content.append(Spacer(1,12))
-    content.append(Paragraph('Berikut ini adalah rekapannya' , styles['Normal']))
-    content.append(Spacer(1,12))
-    content.append(pendaftar_table)
-    content.append(Spacer(1,36))
-    # content.append(Paragraph('Mengetahui, ', styles['Normal']))
-    # content.append(Spacer(1,48))
-    # content.append(Paragraph('Wakil Dekan III ', styles['Normal']))
-
-    # menghasilkan pdf untk di download
-    doc.build(content)
-    return response
 
 
 
 
 def dashboard(request):
-    return render(request,"admin/index.html")
+    return render(request,"dashboard/index.html")
 
 '''Berita view'''
 # def berita_list(request):

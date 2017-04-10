@@ -1,5 +1,5 @@
 from django import forms
-from .models import berita_model
+from .models import berita_model,staff_model,gallery_model
 from django.contrib.auth.models import User
 
 
@@ -90,8 +90,8 @@ class staff_form(forms.ModelForm):
 
 class gallery_form(forms.ModelForm):
 	class Meta:
-		model=gallery_model,
-		fields='__all__'
+		model=gallery_model
+		fields="__all__"
 		error_messages = {
 		'judul':{
 		'required':'Anda harus mengisi judul foto'

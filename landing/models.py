@@ -10,8 +10,8 @@ class alumni_model(models.Model):
 	pekerjaan = models.CharField(default='', max_length=100)
 	jabatan = models.CharField(default='', max_length=100)
 
-	def __str__(self):
-		return self.nama
+	def __unicode__(self):
+		return '%s'% self.nama
 
 
 

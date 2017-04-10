@@ -147,17 +147,26 @@
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Umum</a>
-                    </li>
-                    <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Berita</a>
                     </li>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Pesan</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#staff"><i class="fa fa-user"></i> Staff <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="staff" class="collapse">
+                            <li>
+                                <a href="{% url 'dashboard:staff'%}">Staff Informatika</a>
+                            </li>
+                            <li>
+                                <a href="#">Dosen Tetap</a>
+                            </li>
+                            <li>
+                                <a href="#">Dosen Profesi</a>
+                            </li>
+                            
+                        </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Halaman <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#home"><i class="fa fa-fw fa-arrows-v"></i>Halaman<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="home" class="collapse">
                             <li>
                                 <a href="#">Profil</a>
                             </li>
@@ -168,52 +177,28 @@
                                 <a href="#">UKM</a>
                             </li>
                             <li>
-                                <a href="{% url 'home:alumni_dashboard' %}">Alumni</a>
+                                <a href="{% url 'dashboard:alumni_dashboard' %}">Alumni</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Gallery</a>
                     </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
+        {% block content %}
 
         <div id="page-wrapper">
 
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Dashboard <small>Statistics Overview</small>
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <!-- /.row -->
-                {% block content %}
-                {% endblock content %}
-                <!-- /.row -->
-
-            </div>
+            
             <!-- /.container-fluid -->
 
         </div>
         <!-- /#page-wrapper -->
-
+{% endblock content %}
     </div>
     <!-- /#wrapper -->
 

@@ -5,16 +5,18 @@ from django.utils.text import slugify
 from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.conf import settings
-from PIL import Image as img
-# import StringIO
-from django.core.files.uploadedfile import InMemoryUploadedFile
+from stdimage.models import StdImageField
+from stdimage.validators import MaxSizeValidator
+# from PIL import Image as img
+# import io
+# from django.core.files.uploadedfile import InMemoryUploadedFile
 # Create your models here.
 
 class berita_model(models.Model):
 	judul = models.CharField(default='', max_length=200)
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
 	slug = models.SlugField(unique=True)
-	image = models.ImageField(upload_to='upload/berita', default='', blank=True)
+	image = StdImageField(upload_to='upload/berita',validators=[MaxSizeValidator(1028, 768)],blank=True)
 	content = models.TextField()
 	draft = models.BooleanField(default=False)
 	publish = models.DateField(auto_now=False, auto_now_add=False)
@@ -66,30 +68,30 @@ class staff_model(models.Model):
 	bidang_keahlian1 = models.CharField(default='',null=False,max_length=50)
 	bidang_keahlian2 = models.CharField(default='',blank=True,max_length=50)
 	bidang_keahlian3 = models.CharField(default='',blank=True,max_length=50)
-	foto = models.ImageField(upload_to='upload/dosen',default='',blank=True)
+	foto = StdImageField(upload_to='upload/dosen',validators=[MaxSizeValidator(1028, 768)])
 
 	# def save(self,*args,**kwargs):
 	# 	if self.foto:
-	# 		image = img.open(StringIO.StringIO(self.foto.read()))
+	# 		image = img.open(io.StringIO(self.foto.read()))
 	# 		image.thumbnail((100,80),img.ANTIALIAS)
-	# 		output = StringIO.StringIO()
+	# 		output = io.StringIO()
 	# 		image.save(output,format='JPEG',quality=75)
 	# 		output.seek(0)
 	# 		self.foto=InMemoryUploadedFile(output,'ImageField',"%s.jpg" %self.foto.nama,  'image/jpeg', output.len, None)
 	# 	super(staff_model,self).save(*args,**kwargs)
 
-	def __str__(self):
-		return self.nama
+	def __unicode__(self):
+		return '%s' % self.nama
 
 
 class gallery_model(models.Model):
 	judul = models.CharField(default='',null=False,max_length=20)
 	caption = models.CharField(default='',null=False,max_length=300)
-	image = models.ImageField(upload_to='upload/gallery',default='',blank=True)
+	image = StdImageField(upload_to='upload/gallery',validators=[MaxSizeValidator(1028, 768)])
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
-	def __str__(self):
-		return self.judul
+	def __unicode__(self):
+		return '%s' % self.judul
 
 	class Meta:
 		ordering = ["-timestamp"]
