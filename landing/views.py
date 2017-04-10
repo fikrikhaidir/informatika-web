@@ -14,6 +14,15 @@ def home(request):
 
     return render(request,"home.html")
 
+def galeri(request):
+    judul="GALERI INFORMATIKA"
+    subJudul= "Galeri Kegiatan Informatika UMS"
+    context={
+        'judul':judul,
+        'subJudul':subJudul,
+    }
+    return render(request,"berita/galeri.html",context)
+
 def kurikulum(request):
     judul="KURIKULUM INFORMATIKA"
     subJudul= "Kurikulum Program Studi Informatika"
@@ -55,11 +64,22 @@ def visi(request):
     }
     return render(request,"profil/visi.html",context)
 
+def prestasi(request):
+    judul = "PRESTASI INFORMATIKA"
+    subJudul= ""
+    context={
+        'judul':judul,
+    }
+    return render(request,"profil/prestasi.html",context)
 
-def ukm(request):
-    return render(request,"ukm/ukm.html")
+def fosti(request):
+    return render(request,"ukm/fosti.html")
+
+def himatif(request):
+    return render(request,"ukm/himatif.html")
 
 def alumni(request):
+<<<<<<< HEAD
     form_alumni = alumni_form(request.POST or None)
     if form_alumni.is_valid():
         isi = form_alumni.save(commit=False)
@@ -108,3 +128,16 @@ def dashboard(request):
 #     return render(request,"dashboard/dashboard_berita_member.html",context)
 
 
+=======
+    judul = "MANAJEMEN ALUMNI"
+    subJudul= "Alumni ? Daftar Disini"
+    context={
+        'judul':judul,
+        'subJudul':subJudul,
+    }
+    return render(request,"alumni/alumni.html",context)
+
+def dashboard(request):
+
+    return render(request,"admin/index.html")
+>>>>>>> remotes/fikrikhaidir/informatika-web/master

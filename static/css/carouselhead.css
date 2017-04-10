@@ -28,7 +28,8 @@
     color: #fff;
     /*text-align: center;*/
     text-transform: uppercase;
-    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+    letter-spacing: 2px;
+    /*text-shadow: 1px 1px 0 rgba(0,0,0,.75);*/
       -webkit-transform: translate3d(-50%,-50%,0);
          -moz-transform: translate3d(-50%,-50%,0);
           -ms-transform: translate3d(-50%,-50%,0);
@@ -40,7 +41,7 @@
     font-weight: bold;
     margin: 0;
     padding: 0;
-
+    letter-spacing: 2px;
 }
 
 .fade-carousel .carousel-inner .item .hero {
@@ -88,7 +89,8 @@
     font-size: 1em;
     font-weight: bolder;
     letter-spacing: 3px;
-
+    padding: 18px 30px;
+    border: 2px ghostwhite solid;
     -webkit-background-clip: padding-box;
     -moz-border-radius: 0px !important;
     -moz-background-clip: padding;
@@ -106,6 +108,13 @@
     zoom: 1;
     -webkit-backface-visibility: hidden;
 }
+
+.btn.btn-hero{
+  background-color: rgba(100, 100, 100, 0.4);
+
+}
+
+
 
 .btn.btn-hero:hover {
     -webkit-transition: 0.5s ease;
