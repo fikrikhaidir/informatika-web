@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(berita_model)
 admin.site.register(staff_model)
 admin.site.register(gallery_model)
+admin.site.register(kurikulum_model)

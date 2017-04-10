@@ -18,7 +18,7 @@ def home(request):
 def galeri(request):
     judul="GALERI INFORMATIKA"
     subJudul= "Galeri Kegiatan Informatika UMS"
-    data_gallery = gallery_model.objects.all().order_by(-timestamp)
+    data_gallery = gallery_model.objects.all().order_by('-timestamp')
     context={
 
         'judul':judul,
@@ -46,7 +46,7 @@ def pengumuman(request):
     return render(request,"berita/pengumuman.html",context)
 
 def kurikulum(request):
-    data_kurikulum = kurikulum_models.objects.all()
+    data_kurikulum = kurikulum_model.objects.all()
     judul="KURIKULUM INFORMATIKA"
     subJudul= "Kurikulum Program Studi Informatika"
     context={
@@ -195,9 +195,3 @@ def pengumuman_list(request):
 
 
     return render(request,"berita/list_pengumuman.html",context)
-
-
-    
-
-
-
