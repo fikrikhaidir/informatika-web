@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Data Staff <small>Semua Data Staff</small>
+                            Data Staff <small>Semua Data Staff Prodi Informatika</small>
                         </h1>
                         <ol class="breadcrumb">
                         <li>
@@ -36,6 +36,7 @@
                             <td><strong>Nama</strong></td>
                             <td><strong>NIDN</strong></td>
                             <td><strong>Gelar Pendidikan</strong></td>
+                            <td><strong>Universitas Asal</strong></td>
                             <td><strong>Bidang Keahlian</strong></td>
                             <td><strong>Option</strong></td>
                             
@@ -45,9 +46,10 @@
                             <td>{{forloop.counter}}</td>
                             <td>{{dt.nama}}</td>
                             <td>{{dt.nidn}}</td>
-                            <td>{{dt.pendidikan2}}</td>
-                            <td>{{dt.bidang_keahlian2}}</td>
-                            <td><a href="{% url 'dashboard:detail_staff' dt.id %}" class="btn btn-primary"><i class="fa fa-eye"></i></a> <a href="{% url 'dashboard:hapus_staff' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <td>{{dt.gelar1}}<br/>{{dt.gelar2}}<br/>{{dt.gelar3}}</td>
+                            <td>{{dt.pendidikan1}}<br/>{{dt.pendidikan2}}<br/>{{dt.pendidikan3}}</td>
+                            <td>{{dt.bidang_keahlian1}}<br/>{{dt.bidang_keahlian2}}<br/>{{dt.bidang_keahlian3}}</td>
+                            <td><a href="{% url 'dashboard:detail_staff' dt.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a><a href="{% url 'dashboard:edit_staff' dt.id %}" class="btn btn-primary"><i class="fa fa-eye"></i></a> <a href="{% url 'dashboard:hapus_staff' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
 
                         </tr>

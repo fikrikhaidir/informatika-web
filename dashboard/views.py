@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import berita_model,gallery_model,staff_model
+from .models import berita_model,gallery_model,staff_model,kurikulum_model
 from landing.models import alumni_model
-from .forms import staff_form,berita_form,gallery_form
+from .forms import staff_form,berita_form,gallery_form,kurikulum_form
 from django.shortcuts import get_object_or_404,redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -88,7 +88,7 @@ def staff(request):
 def staff_detail(request,id=None):
     detail = get_object_or_404(staff_model,id=id)
     context={
-    'staff_detail':detail,
+    'obj':detail,
     'judul':'Staff Detail',
     }
     return render(request,'dashboard/staff/detail_staff.html',context)
@@ -98,7 +98,8 @@ def staff_tambah(request):
     if form_staff.is_valid():
         data_staff = form_staff.save(commit=False)
         data_staff.save()
-        messages.success(request,'Data staff sudah tersimpan')
+        # messages.success(request,'Data staff sudah tersimpan')
+        return redirect('dashboard:staff')
     context={
     'form_staff':form_staff,
     'judul':'Tambah Staff'
@@ -107,11 +108,12 @@ def staff_tambah(request):
 
 def staff_edit(request,id=None):
     data_staff = get_object_or_404(staff_model,id=id)
-    form_staff = form_staff(request.POST or None, request.FILES or None,instance=data_staff)
+    form_staff = staff_form(request.POST or None, request.FILES or None,instance=data_staff)
     if form_staff.is_valid():
         isi_staff = form_staff.save(commit=False)
         data_staff.save()
         messages.success(request,'Data staff berhasil diedit..')
+        return redirect('dashboard:staff')
     context={
     'form_staff':form_staff,
     'judul':'Edit Staff',
@@ -132,12 +134,22 @@ def gallery(request):
     'judul':'Gallery'
     }
     return render(request,'dashboard/gallery/list_gallery.html',context)
+
+def gallery_detail(request,id=None):
+    data = get_object_or_404(gallery_model,id=id)
+    context = {
+    'obj':data,
+    'judul':'Gallery Detail'
+    }
+    return render(request,'dashboard/gallery/detail_gallery.html',context)
+    
 def gallery_tambah(request):
     form_gallery = gallery_form(request.POST or None, request.FILES or None)
     if form_gallery.is_valid():
         data_gallery = form_gallery.save(commit=False)
         data_gallery.save()
-        messages.success(request,'Gallery sudah tersimpan..')
+        # messages.success(request,'Gallery sudah tersimpan..')
+        return redirect('dashboard:gallery')
     context={
     'form_gallery':form_gallery,
     'judul':'Tambah Gallery'
@@ -150,7 +162,8 @@ def gallery_edit(request,id=None):
     if form_gallery.is_valid():
         isi_gallery = form_gallery.save(commit=False)
         data_gallery.save()
-        messages.success(request,'Gallery berhasil diedit..')
+        # messages.success(request,'Gallery berhasil diedit..')
+        return redirect('dashboard:gallery')
     context={
     'form_gallery':form_gallery,
     'judul':'Edit Gallery',
@@ -160,7 +173,7 @@ def gallery_edit(request,id=None):
 def gallery_hapus(request,id=None):
     data_gallery = get_object_or_404(gallery_model,id=id)
     data_gallery.delete()
-    messages.success('Gallery berhasil dihapus')
+    # messages.success('Gallery berhasil dihapus')
     return redirect('dashboard:gallery')
 
 def berita_tambah(request):
@@ -169,6 +182,7 @@ def berita_tambah(request):
         data_berita=form_berita.save(commit=False)
         data_berita.save()
         messages.success(request,'Berita berhasil tersimpan..')
+        return redirect('dashboard:berita')
     context={
     'form_berita':form_berita,
     'judul':'Buat Berita',
@@ -182,6 +196,7 @@ def berita_edit(request,slug=None):
         isi_berita = form_berita.save(commit=False)
         isi_berita.save()
         messages.success(request,'Berita berhasil diedit')
+        return redirect('dashboard:berita')
     context={
     'form_berita':form_berita,
     'judul':'Edit Berita',
@@ -192,7 +207,7 @@ def berita_hapus(request,slug=None):
     data_berita = get_object_or_404(berita_model,slug=slug)
     data_berita.delete()
     messages.success(request,'Berita berhasil dihapus')
-    # return redirect
+    return redirect('dashboard:berita')
 
 def berita_detail(request,slug=None):
     data_berita=get_object_or_404(berita_model,slug=slug)
@@ -200,10 +215,10 @@ def berita_detail(request,slug=None):
     'obj':data_berita,
     'judul':'Detail Berita',
     }
-    return render(request,'dashboard/detail_berita.html',isi)
+    return render(request,'dashboard/berita/detail_berita.html',isi)
 
 def list_berita(request):
-    berita = berita_model.objects.filter(tag='berita')
+    berita = berita_model.objects.filter(tag='Berita')
     context={
     'berita':berita,
     'judul':'list berita'
@@ -211,13 +226,52 @@ def list_berita(request):
     return render(request,'dashboard/berita/berita.html',context)
 
 def list_pengumuman(request):
-    pengumuman = berita_model.objects.filter(tag='pengumuman')
+    pengumuman = berita_model.objects.filter(tag='Pengumuman')
     context={
     'pengumuman':pengumuman,
     'judul':'list pengumuman',
     }
     return render(request,'dashboard/berita/pengumuman.html',context)
 
+def kurikulum(request):
+    kurikulum = kurikulum_model.objects.all()
+    context={
+    'kurikulum':kurikulum,
+    'judul':'Kurikulum',
+    }
+    return render(request,'dashboard/kurikulum/list_kurikulum.html',context)
+
+def kurikulum_tambah(request):
+    form_kurikulum = kurikulum_form(request.POST or None)
+    if form_kurikulum.is_valid():
+        data_kurikulum = form_kurikulum.save(commit=False)
+        data_kurikulum.save()
+        return redirect('dashboard:kurikulum')
+    context={
+    'form_kurikulum':form_kurikulum,
+    'judul':'Form Kurikulum',
+    }
+    return render(request,'dashboard/kurikulum/buat_kurikulum.html',context)
+
+def kurikulum_edit(request,id=None):
+    data_edit = get_object_or_404(kurikulum_model,id=id)
+    form_kurikulum = kurikulum_form(request.POST or None, request.FILES or None,instance=data_edit)
+    if form_kurikulum.is_valid():
+        isi_kurikulum = form_kurikulum.save(commit=False)
+        data_edit.save()
+        # messages.success(request,'Gallery berhasil diedit..')
+        return redirect('dashboard:kurikulum')
+    context={
+    'form_kurikulum':form_kurikulum,
+    'judul':'Edit Kurikulum',
+    }
+    return render(request,'dashboard/kurikulum/buat_kurikulum.html',context)
+
+def kurikulum_hapus(request,id=None):
+    data_kurikulum = get_object_or_404(kurikulum_model,id=id)
+    data_kurikulum.delete()
+    # messages.success(request,'Berita berhasil dihapus')
+    return redirect('dashboard:kurikulum')
 
 
 

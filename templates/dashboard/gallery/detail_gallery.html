@@ -1,6 +1,5 @@
 {% extends 'dashboard/index.html' %}
 {% load staticfiles %}
-{% load crispy_forms_tags %}
 
 
 {% block content %}
@@ -11,34 +10,39 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Manajemen Berita <small>Semua Berita Prodi Informatika</small>
+                            Gallery <small>Semua Dokumentasi Gallery</small>
                         </h1>
                         <ol class="breadcrumb">
                         <li>
                                 <i class="fa fa-dashboard"></i> Dashboard
                             </li>
                             <li >
-                                <i class=""></i> Berita
+                                <i class=""></i> Gallery
                             </li>
                             <li class="active">
-                                <i class=""></i> Berita
+                                <i class=""></i> Detail Gallery
                             </li>
+                            
                         </ol>
                     </div>
                     <div class="col-lg-12">
-                    <div class="panel-body">
-                        <form method="POST" action="" enctype="multipart/form-data">
+                    <div class="panel panel-body">
+                    <div class="col-lg-6">
+                    <img src="{{obj.image.url}}" height="300" width="300">
 
-                            {% csrf_token %}
-                            {{ form_berita | crispy }}
-                            <input type="submit" class="btn btn-primary" value="Simpan">
-                            <!--<script>alert("Terima Kasih sudah mendaftar beasiswa, {{ user }}")</script>-->
+                    </div>
+                    <div class="col-lg-6">
+                        <h5>Judul : {{obj.judul}}</h5>
+                        <h5>Caption : {{obj.caption}}</h5>
+                    </div>
 
-                        </form>
+                    
+                    </div>
+                        
+                  
                     </div>
                
-           
-                    </div>
+          
 
 
                    

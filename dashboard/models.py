@@ -7,6 +7,7 @@ from django.utils.safestring import mark_safe
 from django.conf import settings
 from stdimage.models import StdImageField
 from stdimage.validators import MaxSizeValidator
+from django.core.validators import MaxValueValidator
 # from PIL import Image as img
 # import io
 # from django.core.files.uploadedfile import InMemoryUploadedFile
@@ -39,36 +40,41 @@ class berita_model(models.Model):
     #     return mark_safe(markdown_text)
 
 
-# def create_slug(instance, new_slug=None):
-#     slug = slugify(instance.judul)
-#     if new_slug is not None:
-#         slug = new_slug
-#     qs = berita.objects.filter(slug=slug).order_by("-id")
-#     exists = qs.exists()
-#     if exists:
-#         new_slug = "%s-%s" %(slug, qs.first().id)
-#         return create_slug(instance, new_slug=new_slug)
-#     return slug
+def create_slug(instance, new_slug=None):
+    slug = slugify(instance.judul)
+    if new_slug is not None:
+        slug = new_slug
+    qs = berita_model.objects.filter(slug=slug).order_by("-id")
+    exists = qs.exists()
+    if exists:
+        new_slug = "%s-%s" %(slug, qs.first().id)
+        return create_slug(instance, new_slug=new_slug)
+    return slug
 
 
-# def pre_save_berita_receiver(sender,instance,*args,**kwargs):
-#     if not instance.slug:
-#         instance.slug = create_slug(instance)
+def pre_save_berita_receiver(sender,instance,*args,**kwargs):
+    if not instance.slug:
+        instance.slug = create_slug(instance)
 
-# pre_save.connect(pre_save_berita_receiver,sender=berita)
+pre_save.connect(pre_save_berita_receiver,sender=berita_model)
 
 class staff_model(models.Model):
-	nama = models.CharField(default='',null=False,max_length=20)
-	nidn = models.CharField(default='',null=False,max_length=10)
-	jabatan = models.CharField(default='',null=False,max_length=30)
-	gelar = models.CharField(default='',null=False,max_length=30)
-	pendidikan1 = models.CharField(default='',null=False,max_length=30)
-	pendidikan2 = models.CharField(default='',blank=True,max_length=30)
-	pendidikan3 = models.CharField(default='',blank=True,max_length=30)
-	bidang_keahlian1 = models.CharField(default='',null=False,max_length=50)
-	bidang_keahlian2 = models.CharField(default='',blank=True,max_length=50)
-	bidang_keahlian3 = models.CharField(default='',blank=True,max_length=50)
-	foto = StdImageField(upload_to='upload/dosen',validators=[MaxSizeValidator(1028, 768)])
+	nama = models.CharField(default='',null=False,max_length=20,verbose_name='Nama Lengkap')
+	nama_display = models.CharField(default='',null=False,max_length=14,verbose_name='Nama yang Ditampilkan')
+	nidn = models.CharField(default='',null=False,max_length=10,verbose_name='NIDN')
+	jabatan = models.CharField(default='',null=False,max_length=30,verbose_name='Jabatan Akademik')
+	gelar1 = models.CharField(default='',null=False,max_length=30,verbose_name='Gelar Pendidikan S1')
+	gelar2 = models.CharField(default='',null=False,max_length=30,verbose_name='Gelar Pendidikan S2')  
+	gelar3 = models.CharField(default='',null=False,max_length=30,verbose_name='Gelar Pendidikan S3') 
+	pendidikan1 = models.CharField(default='',null=False,max_length=30,verbose_name='Universitas Jenjang SI')
+	pendidikan2 = models.CharField(default='',blank=True,max_length=30,verbose_name='Universitas Jenjang S2')
+	pendidikan3 = models.CharField(default='',blank=True,max_length=30,verbose_name='Universitas Jenjang S3')
+	bidang_keahlian1 = models.CharField(default='',null=False,max_length=50,verbose_name='Bidang Keahlian S1')
+	bidang_keahlian2 = models.CharField(default='',blank=True,max_length=50,verbose_name='Bidang Keahlian S2')
+	bidang_keahlian3 = models.CharField(default='',blank=True,max_length=50,verbose_name='Bidang Keahlian S3')
+	biografi = models.TextField(default='',blank=True,verbose_name='Biografi')
+	foto = StdImageField(upload_to='upload/dosen',validators=[MaxSizeValidator(1028, 768)],blank=True)
+
 
 	# def save(self,*args,**kwargs):
 	# 	if self.foto:
@@ -85,9 +91,9 @@ class staff_model(models.Model):
 
 
 class gallery_model(models.Model):
-	judul = models.CharField(default='',null=False,max_length=20)
-	caption = models.CharField(default='',null=False,max_length=300)
-	image = StdImageField(upload_to='upload/gallery',validators=[MaxSizeValidator(1028, 768)])
+	judul = models.CharField(default='',null=False,max_length=20,verbose_name='Judul Foto')
+	caption = models.CharField(default='',null=False,max_length=300,verbose_name='Caption Foto')
+	image = StdImageField(upload_to='upload/gallery',validators=[MaxSizeValidator(1028, 768)],verbose_name='Foto',blank=True)
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
 	def __unicode__(self):
@@ -96,4 +102,13 @@ class gallery_model(models.Model):
 	class Meta:
 		ordering = ["-timestamp"]
 	
+
+class kurikulum_model(models.Model):
+	semester = models.PositiveIntegerField(default='',null=False,validators=[MaxValueValidator(9)],verbose_name='Semester')
+	makul = models.CharField(default='',null=False,max_length=40,verbose_name='Nama Mata Kuliah')
+	kode = models.CharField(default='',null=False,max_length=5,verbose_name='Kode MK')
+	sks = models.PositiveIntegerField(default='',null=False,validators=[MaxValueValidator(9)],verbose_name='SKS')
+
+	def __unicode__(self):
+		return '%s' % self.makul
 

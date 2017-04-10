@@ -147,7 +147,16 @@
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Berita</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#berita"><i class="fa fa-user"></i> Berita <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="berita" class="collapse">
+                            <li>
+                                <a href="{% url 'dashboard:berita'%}">Berita</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'dashboard:pengumuman'%}">Pengumuman</a>
+                            </li>
+                            
+                        </ul>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#staff"><i class="fa fa-user"></i> Staff <i class="fa fa-fw fa-caret-down"></i></a>
@@ -171,7 +180,7 @@
                                 <a href="#">Profil</a>
                             </li>
                             <li>
-                                <a href="#">Kurikulum</a>
+                                <a href="{% url 'dashboard:kurikulum' %}">Kurikulum</a>
                             </li>
                             <li>
                                 <a href="#">UKM</a>
@@ -182,7 +191,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Gallery</a>
+                        <a href="{% url 'dashboard:gallery' %}"><i class="fa fa-fw fa-picture"></i> Gallery</a>
                     </li>
                     
                 </ul>
