@@ -1,6 +1,8 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
+
+
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
@@ -17,5 +19,15 @@ urlpatterns = [
     url(r'^ukm/fosti/$', views.fosti, name='fosti'),
     url(r'^ukm/himatif/$', views.himatif, name='himatif'),
     url(r'^alumni/$', views.alumni, name='alumni'),
+
+
+    
+
+    # url(r'^berita/$', views.listBerita, name='berita'),
+    # url(r'^adm/detail_berita/(?P<id>\d+)/$', views.detail_berita, name='detail_berita'),
+    # url(r'^timeline/$', views.view_timeline, name='timeline'),
+
+   
+
 
 ]

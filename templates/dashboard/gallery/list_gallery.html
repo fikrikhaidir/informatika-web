@@ -1,0 +1,70 @@
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+<div id="page-wrapper">
+<div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Gallery <small>Semua Dokumentasi Prodi Informatika</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                        <li>
+                                <i class="fa fa-dashboard"></i> Dashboard
+                            </li>
+                            <li >
+                                <i class="active"></i> Gallery
+                            </li>
+                            
+                        </ol>
+                    </div>
+
+
+                    <div class="col-lg-12">
+                     <a href="{% url 'dashboard:tambah_gallery' %}" class="btn btn-primary"><i class="fa fa-plus"></i>Tambah Gallery</a><br/><br/>
+               
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr class="info">
+                            <td><strong>No</strong></td>
+                            <td><strong>Judul</strong></td>
+                            <td><strong>Foto</strong></td>
+                            <td><strong>Caption</strong></td>
+                            <td><strong>Option</strong></td>
+                            
+                            
+                        </tr>
+                        {% for dt in gallery  %}
+                        <tr class="default">
+                            <td>{{forloop.counter}}</td>
+                            <td>{{dt.judul}}</td>
+                            <td>{{dt.img.url}}</td>
+                            <td>{{dt.caption}}</td>
+                            <td><a href="{% url 'dashboard:detail_gallery' dt.id %}" class="btn btn-primary"><i class="fa fa-eye"></i></a> <a href="{% url 'dashboard:edit_gallery' dt.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a><a href="{% url 'dashboard:hapus_gallery' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            </td>
+
+                        </tr>
+                         {% endfor %}
+                         
+                    </table>
+                    </div>
+
+
+                   
+                </div>
+               
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+
+    <!-- /#wrapper -->
+{% endblock content %}

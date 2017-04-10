@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles   %}
 
+{% load crispy_forms_tags %}
 {% block css %}
 <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static 'css/custom-pages.css' %}" />
@@ -10,6 +11,10 @@
 
 
 {% block content %}
+
+
+
+
 <div class="container-fluid animated fadeIn" id="page-container">
 <br />
   <div class="col-md-10 col-md-offset-1">
@@ -22,6 +27,21 @@
 <div class="page-header animated fadeIn"><h1 id="page-header">{{judul}} <small>{{subJudul}}</small></h1> </div>
   </div>
   <div class="col-md-10 col-md-offset-1">
+{% if messages %}
+<div class="alert alert-success">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</div>
+{% endif %}
+<form class="form-group" method="POST" action="" enctype="multipart/form-data">
+
+{% csrf_token %}
+{{ form_alumni | crispy }}
+<input type="submit" class="btn btn-primary" value="Simpan">
+                          
+
+</form>
 
 </div>
 </div>

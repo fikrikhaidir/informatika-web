@@ -20,7 +20,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'landing',
+    'dashboard',
+    # Third Party
+    'captcha',
+    'crispy_forms',
+    'stdimage',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,8 +69,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':'informatika',
-        'USER':'fikri',
-        'PASSWORD':'fikritampan',
+        'USER':'achmad',
+        'PASSWORD':'achmad123',
         'HOST':'localhost',
         'PORT':'',
     }

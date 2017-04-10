@@ -1,0 +1,58 @@
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div id="page-wrapper">
+<div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Manajemen Staff <small>Semua Staff Prodi Informatika</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                        <li>
+                                <i class="fa fa-dashboard"></i> Dashboard
+                            </li>
+                            <li >
+                                <i class=""></i> Staff
+                            </li>
+                            <li class="active">
+                                <i class=""></i> Alumni
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-12">
+                    <div class="panel-body">
+                        <form method="POST" action="" enctype="multipart/form-data">
+
+                            {% csrf_token %}
+                            {{ form_staff | crispy }}
+                            <input type="submit" class="btn btn-primary" value="Simpan">
+                            <!--<script>alert("Terima Kasih sudah mendaftar beasiswa, {{ user }}")</script>-->
+
+                        </form>
+                    </div>
+               
+           
+                    </div>
+
+
+                   
+                </div>
+               
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+
+    <!-- /#wrapper -->
+{% endblock content %}
+

@@ -1,0 +1,72 @@
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+<div id="page-wrapper">
+<div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Gallery <small>Semua Dokumentasi Prodi Informatika</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                        <li>
+                                <i class="fa fa-dashboard"></i> Dashboard
+                            </li>
+                            <li >
+                                <i class="active"></i> Gallery
+                            </li>
+                            
+                        </ol>
+                    </div>
+
+
+                    <div class="col-lg-12">
+                     <a href="{% url 'dashboard:tambah_kurikulum' %}" class="btn btn-primary"><i class="fa fa-plus"></i>Tambah Kurikulum</a><br/><br/>
+               
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr class="info">
+                            <td><strong>No</strong></td>
+                            <td><strong>Semester</strong></td>
+                            <td><strong>Nama Mata Kuliah</strong></td>
+                            <td><strong>Kode MK</strong></td>
+                            <td><strong>SKS</strong></td>
+                            <td><strong>Option</strong></td>
+                            
+                            
+                        </tr>
+                        {% for dt in kurikulum  %}
+                        <tr class="default">
+                            <td>{{forloop.counter}}</td>
+                            <td>{{dt.semester}}</td>
+                            <td>{{dt.makul}}</td>
+                            <td>{{dt.kode}}</td>
+                            <td>{{dt.sks}}</td>
+                            <td> <a href="{% url 'dashboard:edit_kurikulum' dt.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a><a href="{% url 'dashboard:hapus_kurikulum' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            </td>
+
+                        </tr>
+                         {% endfor %}
+                         
+                    </table>
+                    </div>
+
+
+                   
+                </div>
+               
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+
+    <!-- /#wrapper -->
+{% endblock content %}
