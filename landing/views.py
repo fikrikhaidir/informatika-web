@@ -23,6 +23,24 @@ def galeri(request):
     }
     return render(request,"berita/galeri.html",context)
 
+def berita(request):
+    judul="Berita"
+    subJudul= "Kabar Keadaan Terbaru Prodi Informatika"
+    context={
+        'judul':judul,
+        'subJudul':subJudul,
+    }
+    return render(request,"berita/berita.html",context)
+
+def pengumuman(request):
+    judul="Pengumuman"
+    subJudul= "Kabar Keadaan Terbaru Prodi Informatika"
+    context={
+        'judul':judul,
+        'subJudul':subJudul,
+    }
+    return render(request,"berita/pengumuman.html",context)
+
 def kurikulum(request):
     judul="KURIKULUM INFORMATIKA"
     subJudul= "Kurikulum Program Studi Informatika"
@@ -73,10 +91,22 @@ def prestasi(request):
     return render(request,"profil/prestasi.html",context)
 
 def fosti(request):
-    return render(request,"ukm/fosti.html")
+    judul = "FOSTI"
+    subJudul= "Forum Open Source Informatika"
+    context={
+        'judul':judul,
+        'subJudul':subJudul,
+    }
+    return render(request,"ukm/fosti.html",context)
 
 def himatif(request):
-    return render(request,"ukm/himatif.html")
+    judul = "HIMATIF"
+    subJudul= "Himpunan Mahasiswa Teknik Informatika"
+    context={
+        'judul':judul,
+        'subJudul':subJudul,
+    }
+    return render(request,"ukm/himatif.html",context)
 
 def alumni(request):
     form_alumni = alumni_form(request.POST or None)

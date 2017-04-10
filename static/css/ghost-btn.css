@@ -1,0 +1,43 @@
+.btn.btn-lg {padding: 10px 40px;}
+.btn.btn-ghost-black,
+.btn.btn-ghost-black:hover,
+.btn.btn-ghost-black:focus {
+    color :#205081;
+    background-color: transparent;
+    border-color: white;
+    outline:none;
+    margin: 40px auto;
+    border-radius: 0px;
+    font-size: 1em;
+    font-weight: bolder;
+    letter-spacing: 3px;
+    padding: 18px 30px;
+    border: 2px #205081 solid;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 0px !important;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    /*font-size: 0.7em;*/
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    cursor: pointer;
+    zoom: 1;
+    -webkit-backface-visibility: hidden;
+}
+
+.btn.btn-ghost-black:hover {
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: 0.5s ease;
+    background-color: #205081;
+    color: #f5f5f5;
+}
+.btn.btn-ghost-black:focus {
+    outline: none;
+}

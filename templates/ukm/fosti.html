@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles   %}
+
+{% block css %}
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom-pages.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/ghost-btn.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+{% endblock css %}
+
+
+{% block content %}
+<div class="container-fluid animated fadeIn" id="page-container">
+<br />
+  <div class="col-md-10 col-md-offset-1">
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Beranda</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home:profil' %}">UKM</a></li>
+   <li class="breadcrumb-item active">Fosti</li>
+  </ol>
+
+    <div class="page-header animated fadeIn"><h1 id="page-header">{{judul}} <small>{{subJudul}}</small></h1> </div>
+  </div>
+  <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-10">
+      <img src="{% static 'img/ukm/fosti.jpg' %}" alt="..." class="img-responsive">
+      <br />
+      <h4>Forum Open Source Informatika</h4>
+      <p id="text-justify" id="review-konten">
+          Program Studi Informatika UMS berdiri pada Kampus 2 Universitas Muhammadiyah Surakarta. Dengan gedung kokoh yang berlokasi tidak jauh dari Gedung Olah Raga dan Masjid, menjadikan Program Studi Informatika sebagai tempat yang nyaman untuk belajar dan beraktifitas. Lokasi yang tidak jauh dari danau dan taman juga menambah kehijauan lingkungan sekitar gedung program studi ini.
+      </p>
+      <br>
+      <a href="{% url 'home:staff' %}" >
+        <button class="btn btn-ghost-black btn-lg" role="button">WEBSITE FOSTI</button>
+      </a>
+    </div>
+
+  </div>
+
+</div> <!-- container-fluid -->
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}
