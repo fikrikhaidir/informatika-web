@@ -11,52 +11,10 @@
 
 
 {% block content %}
-<<<<<<< HEAD
-<div class="container-fluid animated fadeIn" id="page-container"><br/>
-<div class="col-md-10 col-md-offset-1">
-	<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Beranda</a></li>
-    <li class="breadcrumb-item active">Alumni</li>
-  </ol>
-
-  <div class="page-header animated fadeIn"><h1 id="page-header">{{title}} <small>Formulir alumni</small></h1> 
-  </div>
-</div>
-<div class="col-md-10 col-md-offset-1">
-  <br /><br />
-  <div class="row">
-  <div class="col-md-12">
-  	{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-<form class="form-group" method="POST" action="" enctype="multipart/form-data">
-
-{% csrf_token %}
-{{ form_alumni | crispy }}
-<input type="submit" class="btn btn-primary" value="Simpan">
-                          
-
-</form>
-  </div>
-  </div>
-  
-  
-
- 
-<br />
-</div>
 
 
 
-     
-    
 
-
-=======
 <div class="container-fluid animated fadeIn" id="page-container">
 <br />
   <div class="col-md-10 col-md-offset-1">
@@ -69,7 +27,21 @@
 <div class="page-header animated fadeIn"><h1 id="page-header">{{judul}} <small>{{subJudul}}</small></h1> </div>
   </div>
   <div class="col-md-10 col-md-offset-1">
->>>>>>> remotes/fikrikhaidir/informatika-web/master
+{% if messages %}
+<div class="alert alert-success">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</div>
+{% endif %}
+<form class="form-group" method="POST" action="" enctype="multipart/form-data">
+
+{% csrf_token %}
+{{ form_alumni | crispy }}
+<input type="submit" class="btn btn-primary" value="Simpan">
+                          
+
+</form>
 
 </div>
 </div>

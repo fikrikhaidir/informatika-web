@@ -79,15 +79,17 @@ def himatif(request):
     return render(request,"ukm/himatif.html")
 
 def alumni(request):
-<<<<<<< HEAD
     form_alumni = alumni_form(request.POST or None)
     if form_alumni.is_valid():
         isi = form_alumni.save(commit=False)
         isi.save()
         messages.success(request,'Terima Kasih anda telah mengisi data alumni. Data anda sudah tersimpan.')
+    judul = "MANAJEMEN ALUMNI"
+    subJudul= "Alumni ? Daftar Disini"
     context = {
     'form_alumni':form_alumni,
-    'title':'Form Alumni',
+    'judul':judul,
+    'subJudul':subJudul,
     }
     return render(request,'alumni/alumni.html',context)
 
@@ -128,16 +130,8 @@ def dashboard(request):
 #     return render(request,"dashboard/dashboard_berita_member.html",context)
 
 
-=======
-    judul = "MANAJEMEN ALUMNI"
-    subJudul= "Alumni ? Daftar Disini"
-    context={
-        'judul':judul,
-        'subJudul':subJudul,
-    }
-    return render(request,"alumni/alumni.html",context)
 
-def dashboard(request):
+    
 
-    return render(request,"admin/index.html")
->>>>>>> remotes/fikrikhaidir/informatika-web/master
+
+
