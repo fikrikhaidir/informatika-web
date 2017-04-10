@@ -72,6 +72,7 @@ class staff_model(models.Model):
 	bidang_keahlian1 = models.CharField(default='',null=False,max_length=50,verbose_name='Bidang Keahlian S1')
 	bidang_keahlian2 = models.CharField(default='',blank=True,max_length=50,verbose_name='Bidang Keahlian S2')
 	bidang_keahlian3 = models.CharField(default='',blank=True,max_length=50,verbose_name='Bidang Keahlian S3')
+	penelitian = models.CharField(default='',blank=True,max_length=100,verbose_name='Penelitian Google Scholar')
 	biografi = models.TextField(default='',blank=True,verbose_name='Biografi')
 	foto = StdImageField(upload_to='upload/dosen',validators=[MaxSizeValidator(1028, 768)],blank=True)
 

@@ -71,6 +71,7 @@ class staff_form(forms.ModelForm):
             'bidang_keahlian1': forms.TextInput(attrs={'placeholder': 'Masukkan lulusan almamater dan bidang keahlian anda S1'}),
             'bidang_keahlian2': forms.TextInput(attrs={'placeholder': 'Masukkan lulusan almamater dan bidang keahlian anda S2(Boleh kosong)'}),
             'bidang_keahlian3': forms.TextInput(attrs={'placeholder': 'Masukkan lulusan almamater dan bidang keahlian anda S3(Boleh kosong)'}),
+            'penelitian': forms.TextInput(attrs={'placeholder': 'Masukkan link penelitian google scholar dosen'}),
             'biografi': forms.TextInput(attrs={'placeholder': 'Masukkan biografi singkat(Boleh Kosong)'}),
         }
 
