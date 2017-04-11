@@ -9,7 +9,8 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from dashboard.models import *
 
 
-
+def login_admin(request):
+    return render(request,"login.html")
 
 def home(request):
 
