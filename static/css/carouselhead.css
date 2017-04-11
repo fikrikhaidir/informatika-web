@@ -8,7 +8,7 @@
 .fade-carousel .carousel-indicators > li {
     margin: 0 2px;
     background-color: gray;
-    border-color: ;
+    border-color: #205081 ;
     opacity: .7;
 }
 .fade-carousel .carousel-indicators > li.active {
@@ -35,6 +35,7 @@
           -ms-transform: translate3d(-50%,-50%,0);
            -o-transform: translate3d(-50%,-50%,0);
               transform: translate3d(-50%,-50%,0);
+
 }
 .hero h1 {
     font-size: 6em;
@@ -42,8 +43,14 @@
     margin: 0;
     padding: 0;
     letter-spacing: 2px;
+    padding-left: 43px;
+
 }
 
+.hero h3{
+  padding-left: 44px;
+
+}
 .fade-carousel .carousel-inner .item .hero {
     opacity: 0;
     -webkit-transition: 2s all ease-in-out .1s;
@@ -105,6 +112,7 @@
     cursor: pointer;
     zoom: 1;
     -webkit-backface-visibility: hidden;
+    margin-left: 43px;
 }
 
 .btn.btn-hero{

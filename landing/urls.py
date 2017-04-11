@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^berita/berita/$', views.berita, name='berita'),
     url(r'^berita/pengumuman/$', views.pengumuman, name='pengumuman'),
     url(r'^berita/galeri/$', views.galeri, name='galeri'),
-    url(r'^profil/informatika/$', views.profil, name='profil'),
+    url(r'^profil/informatika/$', views.identitas, name='profil'),
     url(r'^profil/identitas/$', views.identitas, name='identitas'),
     url(r'^profil/staff/$', views.staff, name='staff'),
     url(r'^profil/visi/$', views.visi, name='visi'),
@@ -21,13 +21,13 @@ urlpatterns = [
     url(r'^alumni/$', views.alumni, name='alumni'),
 
 
-    
+
 
     # url(r'^berita/$', views.listBerita, name='berita'),
     # url(r'^adm/detail_berita/(?P<id>\d+)/$', views.detail_berita, name='detail_berita'),
     # url(r'^timeline/$', views.view_timeline, name='timeline'),
 
-   
+
 
 
 ]
