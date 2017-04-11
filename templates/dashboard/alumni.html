@@ -9,9 +9,6 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Data Alumni <small>Semua Data Alumni</small>
-                        </h1>
                         <ol class="breadcrumb">
                         <li>
                                 <i class="fa fa-dashboard"></i> Dashboard
@@ -23,9 +20,12 @@
                                 <i class=""></i> Alumni
                             </li>
                         </ol>
+                        <h1 class="page-header">
+                            Data Alumni <small>Semua Data Alumni</small>
+                        </h1>
                     </div>
                     <div class="col-lg-12">
-               
+
             <a href="{% url 'dashboard:cetak_alumni' %}" class="btn btn-primary"><i class="fa fa-print"></i>Print Rekapan</a><br/><br/>
                 <div class="table-responsive">
                     <table class="table">
@@ -36,9 +36,13 @@
                             <td><strong>Konsentrasi</strong></td>
                             <td><strong>Nama Perusahaan</strong></td>
                             <td><strong>Jabatan</strong></td>
+<<<<<<< HEAD
                             <td><strong>Tahun Masuk</strong></td>
                             <td><strong>Tahun Keluar</strong></td>
                             
+=======
+
+>>>>>>> 5eeb3f2e7e2cfe6750ab27b9cfa0ad1de17e350e
                         </tr>
                         {% for dt in data_alumni  %}
                         <tr class="default">
@@ -52,14 +56,14 @@
                             <td>{{dt.tahun_keluar}}</td>
                         </tr>
                          {% endfor %}
-                         
+
                     </table>
                     </div>
 
 
-                   
+
                 </div>
-               
+
 
             </div>
             <!-- /.container-fluid -->
@@ -71,4 +75,3 @@
 
     <!-- /#wrapper -->
 {% endblock content %}
-

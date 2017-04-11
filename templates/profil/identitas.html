@@ -3,6 +3,7 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/custom-pages.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/ghost-btn.css' %}" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
 {% endblock css %}
@@ -52,17 +53,87 @@
     </ol>
     <br />
 
-      <div class="col-md-4">
+    <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/morqjXvEnU8"></iframe>
+    </div>
+    <hr />
+    <p class='text-justify lead' id="para-konten">Dalam tata kelola universitas, Program Studi Informatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalah:</p>
+    <ol class="list-unstyled" id="para-konten">
+      <li><b>&nbsp;1.&nbsp; Laboratorium Komputer Fakultas </b>(digunakan bersama-sama dengan program studi Ilmu Komunikasi)</li>
+      <li><b>&nbsp;2.&nbsp; Laboratorium Sistem Informasi</b></li>
+      <li><b>&nbsp;3.&nbsp; Laboratorium Komputer Jaringan</b></li>
+      <li><b>&nbsp;4.&nbsp; Laboratorium Perangkat Lunak</b></li>
+    </ol>
 
-      </div>
-      <div class="col-md-4">
+    <br />
+    <br />
+    <ul class="thumbnails list-unstyled">
+            <div class="row">
+            <li class="col-md-6">
+              <div class="thumbnail" style="padding: 0">
+                <div style="padding:4px">
+                  <img alt="300x200" style="width: 100%" src="{% static 'img/lab/IMG_3146.jpg' %}">
+                </div>
+                <div class="caption">
+                  <h2>Laboratorium Komputer Fakultas</h2>
+                  <p>(Digunakan bersama dengan prodi komunikasi)</p>
+                  <p><i class="fa fa-map-pin"></i> Ruang 1, Lantai 3</p>
+                </div>
+              </div>
+            </li>
 
-      </div>
-      <div class="col-md-4">
+            <li class="col-md-6">
+              <div class="thumbnail" style="padding: 0">
+                <div style="padding:4px">
+                  <img alt="300x200" style="width: 100%" src="{% static 'img/lab/IMG_3143.jpg' %}">
+                </div>
+                <div class="caption">
+                  <h2>Laboratorium Sistem Informasi</h2>
+                  <p>My project description</p>
+                  <p><i class="fa fa-map-pin"></i> Ruang 1, Lantai 3</p>
+                </div>
+              </div>
+            </li>
+  <!-- row -->
+            </div> <!-- row -->
+            <div class="row">
+
+            <li class="col-md-6">
+              <div class="thumbnail" style="padding: 0">
+                <div style="padding:4px">
+                  <img alt="300x200" style="width: 100%" src="{% static 'img/lab/IMG_3112.jpg' %}">
+                </div>
+                <div class="caption">
+                  <h2>Laboratorium Komputer Jaringan</h2>
+                  <p>My project description</p>
+                  <p><i class="fa fa-map-pin"></i> Ruang 1, Lantai 3</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="col-md-6">
+              <div class="thumbnail" style="padding: 0">
+                <div style="padding:4px">
+                  <img alt="300x200" style="width: 100%" src="{% static 'img/lab/IMG_3146.jpg' %}">
+                </div>
+                <div class="caption">
+                  <h2>Laboratorium Perangkat Lunak</h2>
+                  <p>My project description</p>
+                  <p><i class="fa fa-map-pin"></i> Ruang 1, Lantai 3</p>
+                </div>
+              </div>
+            </li>
+          </div><!-- row -->
+      </ul>
 
 
-      </div>
+    <br />
+    <p class="text-justify" id="para-konten">Fasilitas laboratorium tersebut diatas digunakan untuk kegiatan praktikum dan penelitian baik oleh dosen maupun oleh mahasiswa (tugas akhir/skripsi). Untuk memenuhi kebutuhan pustaka, kegiatan belajar mengajar didukung penuh oleh perpustakaan pusat UMS yang menyediakan buku-buku yang lengkap. Disamping itu, program studi menyediakan koleksi buku-buku, jurnal, majalah, prosiding dan lain-lain yang belum ada di perpustakaan yang dapat dipinjam baik oleh dosen maupun mahasiswa.</p>
+    <p class="text-justify" id="para-konten">Jumlah mahasiswa per angkatan rata-rata adalah 160-200 mahasiswa. Total mahasiswa aktif pada semester genap tahun ajaran 2014/2015 adalah 651 mahasiswa.</p>
+    <p class="text-justify" id="para-konten">Staff pengajar Program Studi Informatika mempunyai basis pengetahuan yang menunjang arah pengembangan keilmuan dalam bidang Informatika dengan berbagai strata lulusan, terdiri dari 1 orang Profesor (Guru Besar), 7 orang Doktor (S3), 13 orang Master (S2), dan beberapa tenaga pengajar yang masih Sarjana (S1).</p>
 
+
+    <br />
+    <a href="{% url 'home:staff' %}"><button class="btn btn-ghost-black btn-lg" role="button" id="btnTestimoni">LIHAT STAFF PENGAJAR</button></a>
 </div>
 
 </div> <!-- container-fluid -->

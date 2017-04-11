@@ -9,9 +9,6 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Data Alumni <small>Semua Data Alumni</small>
-                        </h1>
                         <ol class="breadcrumb">
                         <li>
                                 <i class="fa fa-dashboard"></i> Dashboard
@@ -23,9 +20,12 @@
                                 <i class=""></i> Alumni
                             </li>
                         </ol>
+                        <h1 class="page-header">
+                            Data Alumni <small>Semua Data Alumni</small>
+                        </h1>
                     </div>
                     <div class="col-lg-12">
-               
+
             <a href="{% url 'dashboard:cetak_alumni' %}" class="btn btn-primary"><i class="fa fa-print"></i>Print Rekapan</a><br/><br/>
                 <div class="table-responsive">
                     <table class="table">
@@ -36,7 +36,7 @@
                             <td><strong>Konsentrasi</strong></td>
                             <td><strong>Pekerjaan</strong></td>
                             <td><strong>Jabatan</strong></td>
-                            
+
                         </tr>
                         {% for dt in data_alumni  %}
                         <tr class="default">
@@ -48,14 +48,14 @@
                             <td>{{dt.jabatan}}</td>
                         </tr>
                          {% endfor %}
-                         
+
                     </table>
                     </div>
 
 
-                   
+
                 </div>
-               
+
 
             </div>
             <!-- /.container-fluid -->
@@ -67,4 +67,3 @@
 
     <!-- /#wrapper -->
 {% endblock content %}
-

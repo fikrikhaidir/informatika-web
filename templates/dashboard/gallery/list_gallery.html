@@ -9,9 +9,6 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Gallery <small>Semua Dokumentasi Prodi Informatika</small>
-                        </h1>
                         <ol class="breadcrumb">
                         <li>
                                 <i class="fa fa-dashboard"></i> Dashboard
@@ -19,14 +16,17 @@
                             <li >
                                 <i class="active"></i> Gallery
                             </li>
-                            
+
                         </ol>
+                        <h1 class="page-header">
+                            Gallery <small>Semua Dokumentasi Prodi Informatika</small>
+                        </h1>
                     </div>
 
 
                     <div class="col-lg-12">
                      <a href="{% url 'dashboard:tambah_gallery' %}" class="btn btn-primary"><i class="fa fa-plus"></i>Tambah Gallery</a><br/><br/>
-               
+
                 <div class="table-responsive">
                     <table class="table">
                         <tr class="info">
@@ -35,8 +35,8 @@
                             <td><strong>Foto</strong></td>
                             <td><strong>Caption</strong></td>
                             <td><strong>Option</strong></td>
-                            
-                            
+
+
                         </tr>
                         {% for dt in gallery  %}
                         <tr class="default">
@@ -49,14 +49,14 @@
 
                         </tr>
                          {% endfor %}
-                         
+
                     </table>
                     </div>
 
 
-                   
+
                 </div>
-               
+
 
             </div>
             <!-- /.container-fluid -->

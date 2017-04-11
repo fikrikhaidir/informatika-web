@@ -39,10 +39,17 @@ def cetak_rekapan_alumni(request):
     # mengambil daftar kehadiran dan mengubahnya menjadi data ntuk tabel
     data = alumni_model.objects.all()
     table_data = []
+<<<<<<< HEAD
     table_data.append([ "NO","Nama","NIM","Konsentrasi","Perusahaan","Posisi","Thn Masuk/Lulus" ])
     i = 1
     for x in data:
         table_data.append([ i,x.nama, x.nim, x.konsentrasi, x.tempat_kerja,x.jabatan,str(x.tahun_masuk)+"/"+str(x.tahun_keluar) ])
+=======
+    table_data.append([ "NO","Nama","NIM","Konsentrasi","Tempat Kerja","Posisi/Jabatan","Tahun Masuk","Tahun Keluar" ])
+    i = 1
+    for x in data:
+        table_data.append([ i,x.nama, x.nim, x.konsentrasi, x.tempat_kerja,x.jabatan,x.tahun_masuk,x.tahun_keluar ])
+>>>>>>> 5eeb3f2e7e2cfe6750ab27b9cfa0ad1de17e350e
         i+=1
 
 
@@ -142,7 +149,7 @@ def gallery_detail(request,id=None):
     'judul':'Gallery Detail'
     }
     return render(request,'dashboard/gallery/detail_gallery.html',context)
-    
+
 def gallery_tambah(request):
     form_gallery = gallery_form(request.POST or None, request.FILES or None)
     if form_gallery.is_valid():
@@ -272,8 +279,3 @@ def kurikulum_hapus(request,id=None):
     data_kurikulum.delete()
     # messages.success(request,'Berita berhasil dihapus')
     return redirect('dashboard:kurikulum')
-
-
-
-
-
