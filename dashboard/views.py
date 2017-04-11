@@ -39,10 +39,10 @@ def cetak_rekapan_alumni(request):
     # mengambil daftar kehadiran dan mengubahnya menjadi data ntuk tabel
     data = alumni_model.objects.all()
     table_data = []
-    table_data.append([ "NO","Nama","NIM","Konsentrasi","Pekerjaan","Posisi/Jabatan" ])
+    table_data.append([ "NO","Nama","NIM","Konsentrasi","Perusahaan","Posisi","Thn Masuk/Lulus" ])
     i = 1
     for x in data:
-        table_data.append([ i,x.nama, x.nim, x.konsentrasi, x.pekerjaan,x.jabatan ])
+        table_data.append([ i,x.nama, x.nim, x.konsentrasi, x.tempat_kerja,x.jabatan,str(x.tahun_masuk)+"/"+str(x.tahun_keluar) ])
         i+=1
 
 
