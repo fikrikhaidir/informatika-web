@@ -4,6 +4,7 @@
 {% block css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/carouselhead.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/carousel.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ghost-btn.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <style>
     .fade-carousel .slides .slide-3 {
@@ -79,7 +80,7 @@
     </div>
   </div>
 </div>
-<!-- </div> -->
+</div>
 <div class="container-fluid" id="review-grid">
 
 <div class="row">
@@ -103,26 +104,23 @@
     <br />
     <h4>LINGKUNGAN KAMPUS NYAMAN</h4>
     <p id="text-justify" id="review-konten">
-        Program Studi Informatika UMS berdiri pada Kampus 2 Universitas Muhammadiyah Surakarta. Dengan gedung kokoh yang berlokasi tidak jauh dari Gedung Olah Raga dan Masjid, menjadikan Program Studi Informatika sebagai tempat yang nyaman untuk belajar dan beraktifitas. Lokasi yang tidak jauh dari danau dan taman juga menambah kehijauan lingkungan sekitar gedung program studi ini.
+        Program Studi Informatika UMS berdiri pada Kampus 2 Universitas Muhammadiyah Surakarta. Dengan gedung kokoh yang berlokasi tidak jauh dari Gedung Olah Raga dan Masjid, menjadikan Prodi Informatika tempat yang nyaman untuk belajar dan beraktifitas.
     </p>
-    <br>
   </div>
   <div class="col-md-4">
     <img src="{% static 'img/g1.JPG' %}" alt="..." class="img-responsive">
     <br />
     <h4>FASILITAS YANG LENGKAP</h4>
     <p id="text-justify" id="review-konten">
-        Program Studi Informatika UMS berdiri pada Kampus 2 Universitas Muhammadiyah Surakarta. Dengan gedung kokoh yang berlokasi tidak jauh dari Gedung Olah Raga dan Masjid, menjadikan Program Studi Informatika sebagai tempat yang nyaman untuk belajar dan beraktifitas. Lokasi yang tidak jauh dari danau dan taman juga menambah kehijauan lingkungan sekitar gedung program studi ini.
+        Program Studi Informatika UMS berdiri pada Kampus 2 Universitas Muhammadiyah Surakarta. Dengan gedung kokoh yang berlokasi tidak jauh dari Gedung Olah Raga dan Masjid, menjadikan Prodi Informatika tempat yang nyaman untuk belajar dan beraktifitas.
     </p>
-    <br>
   </div><div class="col-md-4">
     <img src="{% static 'img/g3.JPG' %}" alt="..." class="img-responsive">
     <br />
     <h4>KEGIATAN MAHASISWA YANG AKTIF</h4>
     <p id="text-justify" id="review-konten">
-        Program Studi Informatika UMS berdiri pada Kampus 2 Universitas Muhammadiyah Surakarta. Dengan gedung kokoh yang berlokasi tidak jauh dari Gedung Olah Raga dan Masjid, menjadikan Program Studi Informatika sebagai tempat yang nyaman untuk belajar dan beraktifitas. Lokasi yang tidak jauh dari danau dan taman juga menambah kehijauan lingkungan sekitar gedung program studi ini.
+        Program Studi Informatika UMS berdiri pada Kampus 2 Universitas Muhammadiyah Surakarta. Dengan gedung kokoh yang berlokasi tidak jauh dari Gedung Olah Raga dan Masjid, menjadikan Prodi Informatika tempat yang nyaman untuk belajar dan beraktifitas.
     </p>
-    <br>
   </div>
 </div>
 </div>
@@ -133,59 +131,69 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="quote"><i class="fa fa-quote-left fa-4x"></i><h3>Kata Mereka Tentang Informatika</h3><i class="fa fa-quote-right fa-4x"></i></div>
-                <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+                <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3700">
                     <!-- Carousel indicators -->
                     <ol class="carousel-indicators">
                         <li data-target="#fade-quote-carousel" data-slide-to="0"></li>
                         <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
                         <li data-target="#fade-quote-carousel" data-slide-to="2" class="active"></li>
                         <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
-                        <li data-target="#fade-quote-carousel" data-slide-to="4"></li>
-                        <li data-target="#fade-quote-carousel" data-slide-to="5"></li>
                     </ol>
                     <!-- Carousel items -->
                     <div class="carousel-inner">
                         <div class="item">
-                            <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"></div>
+                            <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"><img class="img-circle img-responsive" src="{% static 'img/testimoni/septiawan1.png' %}" /></div>
                             <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                <p><b>Septiawan Bagus P, Alumni.</b><br /> Apa yang saya dapatkan di perkuliahan sangat menunjang untuk pekerjaan saya saat ini.</p>
                             </blockquote>
+                            <center>
+                              <a href="https://www.youtube.com/watch?v=re0KneGGk5M">              <button class="btn btn-ghost-black btn-lg" role="button" id="btnTestimoni">LIHAT VIDEO</button></a>
+                            </center>
+
                         </div>
                         <div class="item">
-                            <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
+                            <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"><img class="img-circle img-responsive" src="{% static 'img/testimoni/jayus.png' %}" /></div>
                             <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                <p><b>Jayus Purnomo Jati, Alumni.</b><br /> Banyak sekali manfaat yang saya dapatkan pada saat saya berkuliah di Informatika UMS.</p>
                             </blockquote>
+                            <center>
+                              <a href="https://www.youtube.com/watch?v=jpTC8pGvbsQ">              <button class="btn btn-ghost-black btn-lg" role="button" id="btnTestimoni">LIHAT VIDEO</button></a>
+                            </center>
+                        </div>
+                        <div class="item">
+                            <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"><img class="img-circle img-responsive" src="{% static 'img/testimoni/anwar.png' %}" /></div>
+                            <blockquote>
+                                <p><b>Anwar Dwi Harnanto, Alumni.</b><br /> Disini saya banyak menerapkan materi-materi yang didapat dari perkuliahan sehingga dapat menunjang pekerjaan saya disini.</p>
+                            </blockquote>
+                            <center>
+                              <a href="https://www.youtube.com/watch?v=nTC3WG0SRZs">              <button class="btn btn-ghost-black btn-lg" role="button" id="btnTestimoni">LIHAT VIDEO</button></a>
+                            </center>
                         </div>
                         <div class="active item">
-                            <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"></div>
+                            <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"><img class="img-circle img-responsive" src="{% static 'img/testimoni/chintya.png' %}" /></div>
                             <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                <p><b>Chintya Purnama Sari, Mahasiswi Berprestasi.</b><br /> Banyak sekali hal yang saya dapatkan dari fakultas ini. Tidak hanya pengetahuan, Tetapi saya juga mendapatkan banyak sekali pengalaman.</p>
                             </blockquote>
+                            <center>
+                              <a href="https://www.youtube.com/watch?v=npJHJ3_ZzYs">     <button class="btn btn-ghost-black btn-lg" role="button" id="btnTestimoni">LIHAT VIDEO</button></a>
+                            </center>
                         </div>
-                        <div class="item">
-                            <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
-                            </blockquote>
-                        </div>
-                        <div class="item">
-                            <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
-                            </blockquote>
-                        </div>
-                        <div class="item">
-                            <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
-                            </blockquote>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<div class="row map-container" id="embedMap">
+      <div class="col-md-12">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.167394801676!2d110.76882531397239!3d-7.556719576712899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a145b690b9273%3A0x7b6de030da758cb2!2sFakultas+Komunikasi+%26+Informatika!5e0!3m2!1sen!2sid!4v1491863332013" width="100%" height="650" frameborder="0" scrolling="no" style="border:0"></iframe>
+      </div>
+
+</div>
 
 {% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'js/maps.js' %}"></script>
+{% endblock scripts %}

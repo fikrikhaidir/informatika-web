@@ -166,3 +166,21 @@ body{
 #review-grid>h1,h2,h3,h4,h5{
   font-weight: bold;
 }
+
+.map-container {
+	/*width: 100%;*/
+	/*margin: auto auto 3000px;*/
+}
+.map-container iframe{
+	width: 100%;
+	display: block;
+	pointer-events: none;
+	position: relative; /* IE needs a position other than static */
+}
+.map-container iframe.clicked{
+	pointer-events: auto;
+}
+
+#embedMap{
+  margin-bottom: -45px !important;
+}

@@ -1,4 +1,4 @@
-.btn.btn-lg {padding: 10px 40px;}
+/*.btn.btn-lg {padding: 10px 40px;}*/
 .btn.btn-ghost-black,
 .btn.btn-ghost-black:hover,
 .btn.btn-ghost-black:focus {
@@ -17,7 +17,6 @@
     -moz-border-radius: 0px !important;
     -moz-background-clip: padding;
     background-clip: padding-box;
-    /*font-size: 0.7em;*/
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease-out;
     -o-transition: all 0.5s ease-out;
@@ -40,4 +39,8 @@
 }
 .btn.btn-ghost-black:focus {
     outline: none;
+}
+
+#btnTestimoni{
+  margin-top: 8px !important;
 }
