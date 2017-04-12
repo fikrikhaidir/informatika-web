@@ -23,8 +23,10 @@
 <div class="page-header animated fadeIn"><h1 id="page-header">{{judul}} <small>{{subJudul}}</small></h1> </div>
   </div>
   <div class="col-md-10 col-md-offset-1">
-    <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 1" href="#aboutModal" data-toggle="modal" data-target="#myModal"><img class="thumbnail img-responsive" src="{% static 'img/g2.JPG' %}"></a></div>
-      <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 2" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/2255EE"></a></div>
+  {% for dt in galeri %}
+    <div class="col-lg-3 col-sm-4 col-xs-6"><a title="{{dt.judul}}" href="#aboutModal" data-toggle="modal" data-target="#myModal{{forloop.counter}}"><img class="thumbnail img-responsive" src="{{ dt.image.url }}"></a></div>
+  {% endfor %}
+      <!-- <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 2" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/2255EE"></a></div>
       <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 3" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/449955/FFF"></a></div>
       <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 4" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/992233"></a></div>
       <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 5" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/2255EE"></a></div>
@@ -35,18 +37,21 @@
       <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 11" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/449955/FFF"></a></div>
       <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 12" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/DDD"></a></div>
       <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 13" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/992233"></a></div>
+  -->
   </div>
+  
 
 </div> <!-- container-fluid -->
-<div tabindex="-1" class="modal fade" id="myModal" role="dialog">
+{% for modal in galeri %}
+<div tabindex="-1" class="modal fade" id="myModal{{forloop.counter}}" role="dialog">
   <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
 		<button class="close" type="button" data-dismiss="modal">×</button>
-		<h3 class="modal-title">Foto</h3>
+		<h3 class="modal-title">Foto {{modal.judul}}</h3>
 	</div>
 	<div class="modal-body">
-    <img src="{% static 'img/g2.JPG' %}" alt="..." class="img-responsive">
+    <img src="{{modal.image.url}}" alt="..." class="img-responsive">
 
 	</div>
 	<div class="modal-footer">
@@ -55,6 +60,7 @@
    </div>
   </div>
 </div>
+{% endfor %}
 {% endblock content %}
 
 

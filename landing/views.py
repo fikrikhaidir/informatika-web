@@ -9,12 +9,13 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from dashboard.models import *
 
 
-def login_admin(request):
-    return render(request,"login.html")
-
 def home(request):
-
-    return render(request,"home.html")
+    beranda = beranda_model.objects.all()
+    context={
+    'beranda':beranda,
+    'judul':'Beranda',
+    }
+    return render(request,"home.html",context)
 
 def galeri(request):
     judul="GALERI INFORMATIKA"
@@ -24,7 +25,7 @@ def galeri(request):
 
         'judul':judul,
         'subJudul':subJudul,
-        'gallery':data_gallery,
+        'galeri':data_gallery,
     }
     return render(request,"berita/galeri.html",context)
 
@@ -47,13 +48,15 @@ def pengumuman(request):
     return render(request,"berita/pengumuman.html",context)
 
 def kurikulum(request):
-    data_kurikulum = kurikulum_model.objects.all()
+    data_kurikulum_wajib = kurikulum_model.objects.all().filter(wajib=True).order_by('-semester')
+    data_kurikulum_pilihan = kurikulum_model.objects.all().filter(wajib=False).order_by('-semester')
     judul="KURIKULUM INFORMATIKA"
     subJudul= "Kurikulum Program Studi Informatika"
     context={
         'judul':judul,
         'subJudul':subJudul,
-        'kurikulum':data_kurikulum,
+        'kurikulum_wajib':data_kurikulum_wajib,
+        'kurikulum_pilihan':data_kurikulum_pilihan,
     }
     return render(request,"kurikulum/kurikulum.html",context)
 
@@ -134,7 +137,7 @@ def alumni(request):
 
 
 
-
+@login_required()
 def dashboard(request):
     return render(request,"dashboard/index.html")
 

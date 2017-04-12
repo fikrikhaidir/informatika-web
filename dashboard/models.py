@@ -109,7 +109,29 @@ class kurikulum_model(models.Model):
 	makul = models.CharField(default='',null=False,max_length=40,verbose_name='Nama Mata Kuliah')
 	kode = models.CharField(default='',null=False,max_length=5,verbose_name='Kode MK')
 	sks = models.PositiveIntegerField(default='',null=False,validators=[MaxValueValidator(9)],verbose_name='SKS')
+	wajib = models.BooleanField(default='False',verbose_name='Mata Kuliah Wajib/Pilihan (*Jika Wajib Dicentang)')
 
 	def __unicode__(self):
 		return '%s' % self.makul
 
+class beranda_model(models.Model):
+	judul_besar = models.CharField(default='',max_length=100,null=False,verbose_name='Judul Tagline')
+	keterangan_singkat = models.CharField(default='',max_length=200,null=False,verbose_name='Keterangan Singkat')
+	nama_button = models.CharField(default='',max_length=50,null=False,verbose_name='Nama Button')
+	link_button = models.CharField(default='',max_length=400,null=False,verbose_name='Link Button')
+	foto = StdImageField(upload_to='upload/beranda',validators=[MaxSizeValidator(4300, 2850)],verbose_name='Foto(Maks : 4300px X 2850px)',blank=True)
+	tampil = models.BooleanField(default=False,verbose_name='Ditampilkan')
+
+	def save(self,*args,**kwargs):
+		judul = self.judul_besar.upper()
+		keterangan = self.keterangan_singkat.upper()
+		button = self.nama_button.upper()
+		if self.judul_besar :
+			self.judul_besar = judul
+			self.keterangan_singkat = keterangan
+			self.nama_button = button
+		super(beranda_model,self).save(*args,**kwargs)
+
+
+	def __unicode__(self):
+		return '%s' % self.judul_besar

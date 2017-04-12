@@ -20,9 +20,6 @@ urlpatterns = [
     url(r'^ukm/himatif/$', views.himatif, name='himatif'),
     url(r'^alumni/$', views.alumni, name='alumni'),
 
-    url(r'^login/$', views.login_admin, name='login'),
-
-
 
 
     # url(r'^berita/$', views.listBerita, name='berita'),

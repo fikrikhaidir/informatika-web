@@ -4,9 +4,6 @@ from captcha.fields import CaptchaField
 from django.core.validators import MaxValueValidator
 
 
-
-
-
 class alumni_form(forms.ModelForm):
     captcha = CaptchaField()
     class Meta:

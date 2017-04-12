@@ -15,17 +15,14 @@
                                 <i class="fa fa-dashboard"></i> Dashboard
                             </li>
                             <li >
-                                <i class=""></i> Berita
-                            </li>
-                            <li class="">
-                                <i class=""></i> Berita/Pengumuman
+                                <i class=""></i> Halaman
                             </li>
                             <li class="active">
-                                <i class=""></i> Buat Info
+                                <i class=""></i> Beranda
                             </li>
                         </ol>
                         <h1 class="page-header">
-                            Manajemen Info <small>Semua Info Prodi Informatika</small>
+                            Manajemen Beranda <small>Semua Manajemen Tampilan Beranda</small>
                         </h1>
                     </div>
                     <div class="col-lg-12">
@@ -33,7 +30,7 @@
                         <form method="POST" action="" enctype="multipart/form-data">
 
                             {% csrf_token %}
-                            {{ form_berita | crispy }}
+                            {{ form_beranda | crispy }}
                             <input type="submit" class="btn btn-primary" value="Simpan">
                             <!--<script>alert("Terima Kasih sudah mendaftar beasiswa, {{ user }}")</script>-->
 

@@ -51,7 +51,7 @@
                             <td>{{dt.pendidikan1}}<br/>{{dt.pendidikan2}}<br/>{{dt.pendidikan3}}</td>
                             <td>{{dt.bidang_keahlian1}}<br/>{{dt.bidang_keahlian2}}<br/>{{dt.bidang_keahlian3}}</td>
                             <td><a href="{{dt.penelitian}}">Link Google Scholar</td>
-                            <td><a href="{% url 'dashboard:detail_staff' dt.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a><a href="{% url 'dashboard:edit_staff' dt.id %}" class="btn btn-primary"><i class="fa fa-eye"></i></a> <a href="{% url 'dashboard:hapus_staff' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <td><a href="{% url 'dashboard:detail_staff' dt.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a> <a href="{% url 'dashboard:edit_staff' dt.id %}" class="btn btn-primary"><i class="fa fa-eye"></i></a> <a href="{% url 'dashboard:hapus_staff' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
 
                         </tr>
