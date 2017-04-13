@@ -1,4 +1,4 @@
-{% extends 'dashboard/index.html' %}
+{% extends 'dashboard/base.html' %}
 {% load staticfiles %}
 
 
@@ -57,7 +57,7 @@
                             <td>{{dt.judul_besar}}</td>
                             <td>{{dt.keterangan_singkat}}</td>
                             <td>{{dt.nama_button}}</td>
-                            <td> <a href="{% url 'dashboard:detail_beranda' dt.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a> <a href="{% url 'dashboard:edit_beranda' dt.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a> <a href="{% url 'dashboard:hapus_beranda' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <td> <a href="" class="btn btn-primary" data-target="#beranda{{forloop.counter}}" data-toggle="modal"><i class="fa fa-eye"></i></a> <a href="{% url 'dashboard:hapus_beranda' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
 
                         </tr>
@@ -73,7 +73,32 @@
 
             </div>
             <!-- /.container-fluid -->
+{% for modal in beranda %}
+<div tabindex="-1" class="modal fade" id="beranda{{forloop.counter}}" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">×</button>
+        <h3 class="modal-title">Foto {{modal.judul_besar}}</h3>
+    </div>
+    <div class="modal-body">
+  {% if modal.foto %}
+    <img src="{{modal.foto.url}}" alt="..." class="img-responsive">
+{% endif %}
+  <center>
+  <h5><strong>{{modal.keterangan_singkat}}</strong></h5>
+  <h7><strong>Nama Button :</strong> {{modal.nama_button}}</h7> <br/>
+  <h7><strong>Link Button :</strong> {{modal.link_button}}</h7>
+  </center>
 
+    </div>
+    <div class="modal-footer">
+        <a href="{% url 'dashboard:edit_beranda' modal.id %}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+    </div>
+   </div>
+  </div>
+</div>
+{% endfor %}
         </div>
         <!-- /#page-wrapper -->
 

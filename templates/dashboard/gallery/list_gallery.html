@@ -1,4 +1,4 @@
-{% extends 'dashboard/index.html' %}
+{% extends 'dashboard/base.html' %}
 {% load staticfiles %}
 
 
@@ -25,7 +25,7 @@
 
 
                     <div class="col-lg-12">
-                     <a href="{% url 'dashboard:tambah_gallery' %}" class="btn btn-primary"><i class="fa fa-plus"></i>Tambah Gallery</a><br/><br/>
+                     <a href="{% url 'dashboard:tambah_gallery' %}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Gallery</a><br/><br/>
 
                 <div class="table-responsive">
                     <table class="table">
@@ -42,7 +42,7 @@
                             <td>{{forloop.counter}}</td>
                             <td>{{dt.judul}}</td>
                             <td>{{dt.caption}}</td>
-                            <td><a href="{% url 'dashboard:detail_gallery' dt.id %}" class="btn btn-primary"><i class="fa fa-eye"></i></a> <a href="{% url 'dashboard:edit_gallery' dt.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a> <a href="{% url 'dashboard:hapus_gallery' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <td><a href="" data-target="#foto{{forloop.counter}}" data-toggle="modal" class="btn btn-primary"> <i class="fa fa-eye"></i></a>  <a href="{% url 'dashboard:hapus_gallery' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
 
                         </tr>
@@ -58,7 +58,50 @@
 
             </div>
             <!-- /.container-fluid -->
+{% for modal in gallery %}
+<div tabindex="-1" class="modal fade" id="foto{{forloop.counter}}" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title">Foto {{modal.judul}}</h3>
+    </div>
+    <div class="modal-body">
+    {% if modal.image %}
+    <img src="{{modal.image.url}}" alt="..." class="img-responsive">
+    {% endif %}
+    <h5><strong>Caption :</strong> {{modal.caption}}</h5>
+    </div>
+    <div class="modal-footer">
+      <a href="{% url 'dashboard:edit_gallery' modal.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a> <!-- <a href="" data-target="#hapus" data-toggle="modal" class="btn btn-danger"> --><!-- <i class="fa fa-trash"></i></a> -->
 
+    </div>
+   </div>
+  </div>
+</div>
+{% endfor %}
+   
+
+   <!-- Modal untuk Hapus -->
+ <!--    <div tabindex="1" class="modal fade" id="hapus" role="dialog">
+        <div class="modal-dialog modal-sm modal-primary">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Authentikasi Aplikasi</h4>
+            </div>
+            <div class="modal-body">
+              <p>Apakah anda yakin untuk menghapus?</p>
+            </div>
+            <div class="modal-footer">
+            <a href="" class="btn btn-primary" >Iya</a>
+              <a href="" class="btn btn-danger" data-dismiss="modal">Batal</a>
+            </div>
+          </div>
+        </div>
+    </div> -->
+    <!-- Tutup Modal untuk Hapus -->
+ 
         </div>
         <!-- /#page-wrapper -->
 

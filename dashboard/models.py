@@ -64,28 +64,23 @@ class staff_model(models.Model):
 	nidn = models.CharField(default='',null=False,max_length=10,verbose_name='NIDN')
 	jabatan = models.CharField(default='',null=False,max_length=30,verbose_name='Jabatan Akademik')
 	gelar1 = models.CharField(default='',null=False,max_length=30,verbose_name='Gelar Pendidikan S1')
-	gelar2 = models.CharField(default='',null=False,max_length=30,verbose_name='Gelar Pendidikan S2')  
-	gelar3 = models.CharField(default='',null=False,max_length=30,verbose_name='Gelar Pendidikan S3') 
-	pendidikan1 = models.CharField(default='',null=False,max_length=30,verbose_name='Universitas Jenjang SI')
-	pendidikan2 = models.CharField(default='',blank=True,max_length=30,verbose_name='Universitas Jenjang S2')
-	pendidikan3 = models.CharField(default='',blank=True,max_length=30,verbose_name='Universitas Jenjang S3')
-	bidang_keahlian1 = models.CharField(default='',null=False,max_length=50,verbose_name='Bidang Keahlian S1')
-	bidang_keahlian2 = models.CharField(default='',blank=True,max_length=50,verbose_name='Bidang Keahlian S2')
-	bidang_keahlian3 = models.CharField(default='',blank=True,max_length=50,verbose_name='Bidang Keahlian S3')
-	penelitian = models.CharField(default='',blank=True,max_length=100,verbose_name='Penelitian Google Scholar')
+	gelar2 = models.CharField(default='',blank=True,max_length=30,verbose_name='Gelar Pendidikan S2')  
+	gelar3 = models.CharField(default='',blank=True,max_length=30,verbose_name='Gelar Pendidikan S3') 
+	pendidikan1 = models.CharField(default='',null=False,max_length=100,verbose_name='Universitas Jenjang SI')
+	pendidikan2 = models.CharField(default='',blank=True,max_length=100,verbose_name='Universitas Jenjang S2')
+	pendidikan3 = models.CharField(default='',blank=True,max_length=100,verbose_name='Universitas Jenjang S3')
+	bidang_keahlian1 = models.CharField(default='',null=False,max_length=80,verbose_name='Bidang Keahlian S1')
+	bidang_keahlian2 = models.CharField(default='',blank=True,max_length=80,verbose_name='Bidang Keahlian S2')
+	bidang_keahlian3 = models.CharField(default='',blank=True,max_length=80,verbose_name='Bidang Keahlian S3')
+	penelitian = models.CharField(default='',blank=True,max_length=200,verbose_name='Penelitian Google Scholar')
 	biografi = models.TextField(default='',blank=True,verbose_name='Biografi')
 	foto = StdImageField(upload_to='upload/dosen',validators=[MaxSizeValidator(1028, 768)],blank=True)
 
-
-	# def save(self,*args,**kwargs):
-	# 	if self.foto:
-	# 		image = img.open(io.StringIO(self.foto.read()))
-	# 		image.thumbnail((100,80),img.ANTIALIAS)
-	# 		output = io.StringIO()
-	# 		image.save(output,format='JPEG',quality=75)
-	# 		output.seek(0)
-	# 		self.foto=InMemoryUploadedFile(output,'ImageField',"%s.jpg" %self.foto.nama,  'image/jpeg', output.len, None)
-	# 	super(staff_model,self).save(*args,**kwargs)
+	def save(self,*args,**kwargs):
+		nama = self.nama_display.upper()
+		if self.nama_display:
+			self.nama_display = nama
+		super(staff_model,self).save(*args,**kwargs)
 
 	def __unicode__(self):
 		return '%s' % self.nama
@@ -135,3 +130,6 @@ class beranda_model(models.Model):
 
 	def __unicode__(self):
 		return '%s' % self.judul_besar
+
+# class downpload_model(models.Models):
+# 	file = models.Fil

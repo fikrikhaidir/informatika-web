@@ -141,17 +141,6 @@ def staff(request):
     return render(request,'dashboard/staff/list_staff.html',context)
 
 @login_required()
-def staff_detail(request,id=None):
-    if not request.user.is_active and not request.user.is_authenticated:
-        raise Http404
-    detail = get_object_or_404(staff_model,id=id)
-    context={
-    'obj':detail,
-    'judul':'Staff Detail',
-    }
-    return render(request,'dashboard/staff/detail_staff.html',context)
-
-@login_required()
 def staff_tambah(request):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
@@ -190,7 +179,7 @@ def staff_hapus(request,id=None):
         raise Http404
     data_staff = get_object_or_404(staff_model,id=id)
     data_staff.delete()
-    messages.success(request,'Data staff berhasil dihapus.')
+    # messages.success(request,'Data staff berhasil dihapus.')
     return redirect('dashboard:staff')
     # return redirect()
 
@@ -204,17 +193,6 @@ def gallery(request):
     'judul':'Gallery'
     }
     return render(request,'dashboard/gallery/list_gallery.html',context)
-
-@login_required()
-def gallery_detail(request,id=None):
-    if not request.user.is_active and not request.user.is_authenticated:
-        raise Http404
-    data = get_object_or_404(gallery_model,id=id)
-    context = {
-    'obj':data,
-    'judul':'Gallery Detail'
-    }
-    return render(request,'dashboard/gallery/detail_gallery.html',context)
 
 @login_required()
 def gallery_tambah(request):
@@ -267,7 +245,7 @@ def berita_tambah(request):
         data_berita=form_berita.save(commit=False)
         data_berita.tag='Berita'
         data_berita.save()
-        messages.success(request,'Berita berhasil tersimpan..')
+        # messages.success(request,'Berita berhasil tersimpan..')
         return HttpResponseRedirect('../')
     context={
     'form_berita':form_berita,
@@ -298,7 +276,7 @@ def berita_hapus(request,slug=None):
         raise Http404
     data_berita = get_object_or_404(berita_model,slug=slug)
     data_berita.delete()
-    messages.success(request,'Berita berhasil dihapus')
+    # messages.success(request,'Berita berhasil dihapus')
     return redirect('dashboard:berita')
 
 @login_required()
@@ -343,7 +321,7 @@ def pengumuman_tambah(request):
         data_berita=form_berita.save(commit=False)
         data_berita.tag = 'Pengumuman'
         data_berita.save()
-        messages.success(request,'Pengumuman berhasil tersimpan..')
+        # messages.success(request,'Pengumuman berhasil tersimpan..')
         return HttpResponseRedirect('../')
     context={
     'form_berita':form_berita,
@@ -360,7 +338,7 @@ def pengumuman_edit(request,slug=None):
     if form_berita.is_valid():
         isi_berita = form_berita.save(commit=False)
         isi_berita.save()
-        messages.success(request,'Pengumuman berhasil diedit')
+        # messages.success(request,'Pengumuman berhasil diedit')
         return HttpResponseRedirect('../')
     context={
     'form_berita':form_berita,

@@ -79,105 +79,36 @@
 		            </tr>
 		        </thead>
 		        <tbody>
-		        	{% for dt in kurikulum_wajib %}
+		        	{% for dt in kurikulum %}
+		        	{% if dt.wajib %}
 		            <tr class="success">
 		                <td>{{forloop.counter}}</td>
 		                <td>{{dt.semester}}</td>
 		                <td>{{dt.makul}}</td>
+		                
 		                <td class="status">{{dt.kode}}</td>
+		               
 		                <td>{{dt.sks}}</td>
+		               
 		            </tr>
-		            {% endfor %}
-		         
-		           <!-- <tr class="warning">
+		            {% else %}
+		            
+		            <tr class="warning">
 		                <td>{{forloop.counter}}</td>
 		                <td>{{dt.semester}}</td>
 		                <td>{{dt.makul}}</td>
 		                <td class="status">{{dt.kode}}</td>
 		                <td>{{dt.sks}}</td>
-		            </tr> -->
+		            </tr>
+		            {% endif %}
+		            {% endfor %}
+		            
 		         
-		            <!-- <tr class="success">
-		                <td>2</td>
-		                <td>1</td>
-		                <td>Aljabar Linier</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
-		            </tr>
-		            <tr class="warning">
-		                <td>3</td>
-		                <td>1</td>
-		                <td>Kalkulus</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
-		            </tr>
-		            <tr class="warning">
-		                <td>4</td>
-		                <td>1</td>
-		                <td>Pengantar Sistem Informasi</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
-		            </tr>
-		            <tr class="warning">
-		                <td>5</td>
-		                <td>1</td>
-		                <td>Algoritma</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
-		            </tr> -->
+		           
 		        </tbody>
 		    </table>
 		    
-		    <!-- {% for dt in kurikulum_pilihan %}
-		    <table id="pilihan" class="table table-striped table-hover">
-		        <thead>
-		            <tr>
-		                <th>No.</th>
-		                <th>Semester</th>
-		                <th>Nama Mata Kuliah</th>
-		                <th>Kode MK. 2015</th>
-		                <th>SKS/Credit 2015</th>
-		            </tr>
-		        </thead>
-		        <tbody>
-		            <tr class="success">
-		                <td>{{forloop.counter}}</td>
-		                <td>{{dt.semester}}</td>
-		                <td>{{dt.makul}}</td>
-		                <td class="status">{{dt.kode}}</td>
-		                <td>{{dt.sks}}</td>
-		            </tr>
-		            <tr class="success">
-		                <td>2</td>
-		                <td>1</td>
-		                <td>Aljabar Linier</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
-		            </tr>
-		            <tr class="warning">
-		                <td>3</td>
-		                <td>1</td>
-		                <td>Kalkulus</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
-		            </tr>
-		            <tr class="warning">
-		                <td>4</td>
-		                <td>1</td>
-		                <td>Pengantar Sistem Informasi</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
-		            </tr>
-		            <tr class="warning">
-		                <td>5</td>
-		                <td>1</td>
-		                <td>Algoritma</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
-		            </tr>
-		        </tbody>
-		    </table>
-		    {% endfor %} -->
+		    
 </div>
 </div>
 </div>

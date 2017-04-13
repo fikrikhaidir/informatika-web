@@ -48,15 +48,14 @@ def pengumuman(request):
     return render(request,"berita/pengumuman.html",context)
 
 def kurikulum(request):
-    data_kurikulum_wajib = kurikulum_model.objects.all().filter(wajib=True).order_by('-semester')
-    data_kurikulum_pilihan = kurikulum_model.objects.all().filter(wajib=False).order_by('-semester')
+    data_kurikulum = kurikulum_model.objects.all().order_by('-semester')
     judul="KURIKULUM INFORMATIKA"
     subJudul= "Kurikulum Program Studi Informatika"
     context={
         'judul':judul,
         'subJudul':subJudul,
-        'kurikulum_wajib':data_kurikulum_wajib,
-        'kurikulum_pilihan':data_kurikulum_pilihan,
+        'kurikulum':data_kurikulum,
+  
     }
     return render(request,"kurikulum/kurikulum.html",context)
 

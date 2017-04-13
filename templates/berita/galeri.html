@@ -24,7 +24,7 @@
   </div>
   <div class="col-md-10 col-md-offset-1">
   {% for dt in galeri %}
-    <div class="col-lg-3 col-sm-4 col-xs-6"><a title="{{dt.judul}}" href="#aboutModal" data-toggle="modal" data-target="#myModal{{forloop.counter}}"><img class="thumbnail img-responsive" src="{{ dt.image.url }}"></a></div>
+    <div class="col-lg-3 col-sm-4 col-xs-6"> <a title="{{dt.judul}}" href="#aboutModal" data-toggle="modal" data-target="#myModal{{forloop.counter}}">{% if dt.image %}<img class="thumbnail img-responsive" src="{{ dt.image.url }}"></a>{% endif %}</div>
   {% endfor %}
       <!-- <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 2" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/2255EE"></a></div>
       <div class="col-lg-3 col-sm-4 col-xs-6"><a title="Image 3" href="#"><img class="thumbnail img-responsive" src="//placehold.it/600x350/449955/FFF"></a></div>
@@ -51,7 +51,13 @@
 		<h3 class="modal-title">Foto {{modal.judul}}</h3>
 	</div>
 	<div class="modal-body">
+  {% if modal.image %}
     <img src="{{modal.image.url}}" alt="..." class="img-responsive">
+{% endif %}
+  <center>
+  <h5>{{modal.caption}}</h5>
+  <h7>Diposting pada tanggal : {{modal.timestamp|date:"d M Y"}}</h7>
+  </center>
 
 	</div>
 	<div class="modal-footer">
