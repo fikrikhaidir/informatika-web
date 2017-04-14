@@ -272,3 +272,6 @@ def kurikulum_hapus(request,id=None):
     data_kurikulum.delete()
     # messages.success(request,'Berita berhasil dihapus')
     return redirect('dashboard:kurikulum')
+
+def umum(request):
+    return render(request,'dashboard/umum/umum.html')

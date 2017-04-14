@@ -24,4 +24,6 @@ url(r'^dashboard/kurikulum/$',views.kurikulum, name='kurikulum'),
 url(r'^dashboard/tambah_kurikulum/$',views.kurikulum_tambah, name='tambah_kurikulum'),
 url(r'^dashboard/edit_kurikulum/(?P<id>\d+)/$',views.kurikulum_edit, name='edit_kurikulum'),
 url(r'^dashboard/hapus_kurikulum/(?P<id>\d+)/$',views.kurikulum_hapus, name='hapus_kurikulum'),
-] 
+
+url(r'^dashboard/umum/$',views.umum, name='umum'),
+]
