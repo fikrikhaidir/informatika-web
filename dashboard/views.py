@@ -398,6 +398,7 @@ def kurikulum_hapus(request,id=None):
     # messages.success(request,'Berita berhasil dihapus')
     return redirect('dashboard:kurikulum')
 
+<<<<<<< HEAD
 @login_required()
 def beranda(request):
     if not request.user.is_active and not request.user.is_authenticated:
@@ -458,3 +459,7 @@ def beranda_hapus(request,id=None):
     data = get_object_or_404(beranda_model,id=id)
     data.delete()
     return redirect('dashboard:beranda')
+=======
+def umum(request):
+    return render(request,'dashboard/umum/umum.html')
+>>>>>>> remotes/fikrikhaidir/informatika-web/master

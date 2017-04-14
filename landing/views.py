@@ -38,6 +38,10 @@ def berita(request):
     }
     return render(request,"berita/berita.html",context)
 
+def detail_berita(request):
+
+    return render(request,"berita/berita-detail.html")
+
 def pengumuman(request):
     judul="Pengumuman"
     subJudul= "Kabar Keadaan Terbaru Prodi Informatika"

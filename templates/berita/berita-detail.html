@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles   %}
+
+{% block css %}
+<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom-pages.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+{% endblock css %}
+
+
+{% block content %}
+
+<!-- Tempat untuk konten profil -->
+
+<div class="container-fluid animated fadeIn" id="page-container">
+<br />
+  <div class="col-md-10 col-md-offset-1">
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Beranda</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home:berita' %}">Berita</a></li>
+   <li class="breadcrumb-item active">Detail Berita</li>
+  </ol>
+
+<div class="page-header animated fadeIn"><h1 id="page-header"> <i class="fa fa-newspaper-o" aria-hidden="true"></i> Judul Berita Hari Ini <small ><i class="fa fa-clock-o" aria-hidden="true"></i> 27 Maret 2017</small></h1> </div>
+  </div>
+  <div class="col-md-10 col-md-offset-1">
+
+  <br /><br  />
+  <div class="row">
+  <div class="col-md-12">
+    <div class="col-md-5">
+    <img class="img-responsive" src="{% static 'img/a1.JPG' %}" />
+    </div>
+    <p class='text-justify lead' id="para-konten">Dalam tata kelola universitas, Program Studi Informatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalah:Informatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalahInformatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalahInformatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalahInformatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalah</p>
+
+    </div>
+    </div>
+
+
+</div>
+
+</div> <!-- container-fluid -->
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}
