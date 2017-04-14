@@ -131,5 +131,11 @@ class beranda_model(models.Model):
 	def __unicode__(self):
 		return '%s' % self.judul_besar
 
-# class downpload_model(models.Models):
-# 	file = models.Fil
+class document_model(models.Model):
+	deskripsi = models.CharField(default='',max_length=100)
+	file = models.FileField(upload_to="upload/document")
+	keterangan = models.CharField(default='',max_length=50)
+	tanggal = models.DateTimeField(auto_now_add=True)
+
+	def __unicode__(self):
+		return '%s' % self.keterangan
