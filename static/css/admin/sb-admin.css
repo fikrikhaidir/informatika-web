@@ -40,11 +40,13 @@ body {
     #page-wrapper {
         padding: 10px;
     }
+
+
 }
 
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-  border-color: #205081;
-  background-color: #205081;
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form,.navbar-inverse .navbar-fixed-top {
+  border-color: #205081 !important;
+  background-color: #205081 !important;
 }
 .navbar-inverse .navbar-brand {
   color:white;
@@ -151,6 +153,8 @@ ul.alert-dropdown {
         outline: none;
         background-color: #42A5F5 !important;
     }
+
+}
 }
 
 .side-nav>li>ul {
@@ -238,4 +242,9 @@ ul.alert-dropdown {
 
 .panel-yellow > a:hover {
     color: #df8a13;
+}
+
+.navbar-inverse{
+  border-color: #205081 !important;
+  background-color: #205081 !important;
 }
