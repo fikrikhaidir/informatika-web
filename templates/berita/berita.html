@@ -1,37 +1,88 @@
-{% extends 'base.html' %}
-{% load staticfiles   %}
-
-{% block css %}
+{% extends 'base.html' %} {% load staticfiles %} {% block css %}
 <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static 'css/custom-pages.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/ghost-btn.css' %}" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-
-{% endblock css %}
-
-
-{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> {% endblock css %} {% block content %}
 <div class="container-fluid animated fadeIn" id="page-container">
-<br />
-  <div class="col-md-10 col-md-offset-1">
-
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Beranda</a></li>
-    <li class="breadcrumb-item"><a href="{% url 'home:profil' %}">UKM</a></li>
-   <li class="breadcrumb-item active">Fosti</li>
-  </ol>
-
-    <div class="page-header animated fadeIn"><h1 id="page-header">{{judul}} <small>{{subJudul}}</small></h1> </div>
-  </div>
-
+    <br />
     <div class="col-md-10 col-md-offset-1">
 
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'home:profil' %}">UKM</a></li>
+            <li class="breadcrumb-item active">Fosti</li>
+        </ol>
 
+        <div class="page-header animated fadeIn">
+            <h1 id="page-header">{{judul}} <small>{{subJudul}}</small></h1> </div>
     </div>
 
-</div> <!-- container-fluid -->
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-12">
+
+            <section id="pinBoot">
+
+                <article class="white-panel"><img src="{% static 'img/a1.JPG' %}" alt="">
+                    <h4><a href="#">Konferensi Berjalan Pecah Pecah</a>
+                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">BERITA</span></h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </article>
+
+                <article class="white-panel"> <img src="{% static 'img/a3.JPG' %}" alt="">
+                    <h4><a href="#">Seorang Mahasiswa Bunuh Diri Setelah Pendadaran</a></h4>
+                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">BERITA</span></h5>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </article>
+
+                <article class="white-panel"> <img src="{% static 'img/a2.jpg' %}" alt="">
+                    <h4><a href="#">Kucing Membunuh Anjing, Noscope MLG</a></h4>
+                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">BERITA</span></h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </article>
+                <article class="white-panel"><img src="{% static 'img/testimoni/septiawan1.png' %}" alt="">
+                    <h4><a href="#">Pengumuman Pendaftaran Taekwondo Khusus Mahasiswa Cacat</a>
+                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">PENGUMUMAN</span></h5>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </article>
+                <article class="white-panel"> <img src="{% static 'img/a2.jpg' %}" alt="">
+                    <h4><a href="#">Kucing Membunuh Anjing, Noscope MLG</a></h4>
+                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">BERITA</span></h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </article>
+                <article class="white-panel"> <img src="{% static 'img/a2.jpg' %}" alt="">
+                    <h4><a href="#">Kucing Membunuh Anjing, Noscope MLG</a></h4>
+                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">BERITA</span></h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </article>
+            </section>
+
+            <hr />
+            <center>
+            <ul class="pagination">
+              <li><a href="#">«</a></li>
+              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">»</a></li>
+            </ul>
+            </center>
+
+          </div>
+
+        </div>
+    </div>
+
+</div>
+<!-- container-fluid -->
 {% endblock content %}
-
-
 {% block scripts %}
+<script src="{% static 'js/news.js' %}"></script>
 {% endblock scripts %}
