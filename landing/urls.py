@@ -9,7 +9,8 @@ urlpatterns = [
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
     url(r'^berita/berita/$', views.berita, name='berita'),
     url(r'^berita/pengumuman/$', views.pengumuman, name='pengumuman'),
-    url(r'^berita/detail/$', views.detail_berita, name='detail_berita'),
+    url(r'^berita/pengumuman/(?P<slug>[\w-]+)/$', views.detail_pengumuman, name='detail_pengumuman'),
+    url(r'^berita/detail/(?P<slug>[\w-]+)/$', views.detail_berita, name='detail_berita'),
     url(r'^berita/galeri/$', views.galeri, name='galeri'),
     url(r'^profil/informatika/$', views.identitas, name='profil'),
     url(r'^profil/identitas/$', views.identitas, name='identitas'),
@@ -20,6 +21,7 @@ urlpatterns = [
     url(r'^ukm/fosti/$', views.fosti, name='fosti'),
     url(r'^ukm/himatif/$', views.himatif, name='himatif'),
     url(r'^alumni/$', views.alumni, name='alumni'),
+    url(r'^akademik/dokumen/$', views.dokumen, name='dokumen'),
 
 
 

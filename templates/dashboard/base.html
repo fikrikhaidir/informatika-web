@@ -18,7 +18,8 @@
     <script src="https://use.fontawesome.com/03ed5c9479.js"></script>
 
     <!-- Custom CSS -->
-    <link href="{% static 'css/admin/sb-admin.css' %}" rel="stylesheet"> {% block css %} {% endblock css %}
+    <link href="{% static 'css/admin/sb-admin.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"> {% block css %} {% endblock css %}
 </head>
 
 <body>
@@ -38,107 +39,9 @@
                 <a class="navbar-brand" href="{% url 'home:dashboard' %}">Dashboard</a>
             </div>
             <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <!-- <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li> -->
-                <!-- <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li> -->
-                <!-- <li><h5>Welcome, {{request.user.username}}</h5></li> -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <!-- <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li> -->
-                        <li>
-                            <a href="{% url 'dashboard:password' %}"><i class="fa fa-fw fa-gear"></i> Password</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="{% url 'dashboard:logout' %}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+           <!--  <ul class="nav navbar-right top-nav">
+                <h5 style="color: white">Welcome, {{request.user.username}}</h5>
+            </ul> -->
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
@@ -160,26 +63,20 @@
                             <li>
                                 <a href="{% url 'dashboard:staff'%}">Staff Informatika</a>
                             </li>
-                            <li>
+                           <!--  <li>
                                 <a href="#">Dosen Tetap</a>
                             </li>
                             <li>
                                 <a href="#">Dosen Profesi</a>
                             </li>
-
+ -->
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#home"><i class="fa fa-fw fa-clone"></i> Halaman <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="home" class="collapse">
                             <li>
-                                <a href="{% url 'dashboard:beranda' %}">Beranda</a>
-                            </li>
-                            <li>
                                 <a href="{% url 'dashboard:kurikulum' %}">Kurikulum</a>
-                            </li>
-                            <li>
-                                <a href="#">UKM</a>
                             </li>
                             <li>
                                 <a href="{% url 'dashboard:alumni_dashboard' %}">Alumni</a>
@@ -191,7 +88,21 @@
                         <a href="{% url 'dashboard:gallery' %}"><i class="fa fa-fw fa-file-image-o"></i> Galeri</a>
                     </li>
                     <li>
-                        <a href="{% url 'dashboard:gallery' %}"><i class="fa fa-fw fa-cog"></i> Umum</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#umum"><i class="fa fa-fw fa-cog"></i> Umum <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="umum" class="collapse">
+                            <li>
+                                <a href="{% url 'dashboard:dokumen' %}">Dokumen</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'dashboard:password' %}">Setting Password</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{% url 'home:home' %}"><i class="fa fa-arrow-circle-o-right"></i> Kembali ke Beranda</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'dashboard:logout' %}"><i class="fa fa-sign-out"></i> Keluar</a>
                     </li>
                 </ul>
             </div>
@@ -215,6 +126,13 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{% static 'js/dropdown.js' %}"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script>
+    $(document).ready(function() {
+    $('.datepicker').datepicker();
+});
+</script>
     {% block scripts %} {% endblock scripts %}
 
 </body>

@@ -24,18 +24,13 @@ url(r'^dashboard/kurikulum/$',views.kurikulum, name='kurikulum'),
 url(r'^dashboard/tambah_kurikulum/$',views.kurikulum_tambah, name='tambah_kurikulum'),
 url(r'^dashboard/edit_kurikulum/(?P<id>\d+)/$',views.kurikulum_edit, name='edit_kurikulum'),
 url(r'^dashboard/hapus_kurikulum/(?P<id>\d+)/$',views.kurikulum_hapus, name='hapus_kurikulum'),
-<<<<<<< HEAD
 url(r'^login/$', views.login_view, name='login'),
 url(r'^logout/$', views.logout_view, name='logout'),
 url(r'^dashboard/passwords/$', views.password_ubah, name='password'),
-url(r'^dashboard/beranda/$', views.beranda, name='beranda'),
-url(r'^dashboard/detail_beranda/(?P<id>\d+)/$', views.beranda_detail, name='detail_beranda'),
-url(r'^dashboard/buat_beranda/$', views.beranda_buat, name='buat_beranda'),
-url(r'^dashboard/edit_beranda/(?P<id>\d+)/$', views.beranda_edit, name='edit_beranda'),
-url(r'^dashboard/hapus_beranda/(?P<id>\d+)/$', views.beranda_hapus, name='hapus_beranda'),
-] 
-=======
+url(r'^dashboard/dokumen/$',views.dokumen, name='dokumen'),
+url(r'^dashboard/dokumen/buat_dokumen/$',views.dokumen_tambah, name='tambah_dokumen'),
+url(r'^dashboard/dokumen/hapus/(?P<id>\d+)/$',views.dokumen_hapus, name='hapus_dokumen'),
+url(r'^dashboard/dokumen/edit/(?P<id>\d+)/$',views.dokumen_edit, name='edit_dokumen'),
 
-url(r'^dashboard/umum/$',views.umum, name='umum'),
 ]
->>>>>>> remotes/fikrikhaidir/informatika-web/master
+

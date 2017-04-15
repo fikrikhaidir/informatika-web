@@ -70,7 +70,7 @@
                                         <li class="dropdown-header">Informasi</li>
                                         <li class="divider"></li>
                                         <li><a href="{% url 'home:berita' %}">Berita</a></li>
-                                        <li><a href="">Pengumuman</a></li>
+                                        <li><a href="{% url 'home:pengumuman' %}">Pengumuman</a></li>
                                       </ul>
                                     </li>
                                     <li class="col-sm-6">
@@ -96,8 +96,8 @@
                     						<ul>
                     							<li class="dropdown-header">Downloadable</li>
                                   <li class="divider"></li>
-                    							<li><a href="#">Kalender Akademik &nbsp;<span class="label label-warning"> Coming Soon </span></a> </li>
-                    							<li><a href="#">Daftar Mata Kuliah &nbsp;<span class="label label-warning"> Coming Soon </span></a></li>
+                    							<li><a href="{% url 'home:dokumen' %}">Dokumen &nbsp;<!-- <span class="label label-warning"> Coming Soon --> </span></a> </li>
+                    							<!-- <li><a href="#">Daftar Mata Kuliah &nbsp;<span class="label label-warning"> Coming Soon </span></a></li> -->
                     						</ul>
                     					</li>
                     				</ul>

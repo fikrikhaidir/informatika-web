@@ -52,11 +52,11 @@ def create_slug(instance, new_slug=None):
     return slug
 
 
-def pre_save_berita_receiver(sender,instance,*args,**kwargs):
+def pre_save_berita_model_receiver(sender,instance,*args,**kwargs):
     if not instance.slug:
         instance.slug = create_slug(instance)
 
-pre_save.connect(pre_save_berita_receiver,sender=berita_model)
+pre_save.connect(pre_save_berita_model_receiver,sender=berita_model)
 
 class staff_model(models.Model):
 	nama = models.CharField(default='',null=False,max_length=20,verbose_name='Nama Lengkap')
@@ -109,32 +109,10 @@ class kurikulum_model(models.Model):
 	def __unicode__(self):
 		return '%s' % self.makul
 
-class beranda_model(models.Model):
-	judul_besar = models.CharField(default='',max_length=100,null=False,verbose_name='Judul Tagline')
-	keterangan_singkat = models.CharField(default='',max_length=200,null=False,verbose_name='Keterangan Singkat')
-	nama_button = models.CharField(default='',max_length=50,null=False,verbose_name='Nama Button')
-	link_button = models.CharField(default='',max_length=400,null=False,verbose_name='Link Button')
-	foto = StdImageField(upload_to='upload/beranda',validators=[MaxSizeValidator(4300, 2850)],verbose_name='Foto(Maks : 4300px X 2850px)',blank=True)
-	tampil = models.BooleanField(default=False,verbose_name='Ditampilkan')
-
-	def save(self,*args,**kwargs):
-		judul = self.judul_besar.upper()
-		keterangan = self.keterangan_singkat.upper()
-		button = self.nama_button.upper()
-		if self.judul_besar :
-			self.judul_besar = judul
-			self.keterangan_singkat = keterangan
-			self.nama_button = button
-		super(beranda_model,self).save(*args,**kwargs)
-
-
-	def __unicode__(self):
-		return '%s' % self.judul_besar
-
-class document_model(models.Model):
-	deskripsi = models.CharField(default='',max_length=100)
-	file = models.FileField(upload_to="upload/document")
-	keterangan = models.CharField(default='',max_length=50)
+class dokumen_model(models.Model):
+	deskripsi = models.CharField(default='',max_length=30,verbose_name='Nama Dokumen')
+	file = models.FileField(upload_to="upload/document",blank=True,verbose_name='File')
+	keterangan = models.TextField(verbose_name='Deskripsi')
 	tanggal = models.DateTimeField(auto_now_add=True)
 
 	def __unicode__(self):

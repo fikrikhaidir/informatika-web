@@ -1,8 +1,7 @@
-from django.shortcuts import render
-from .models import berita_model,gallery_model,staff_model,kurikulum_model,beranda_model
+from django.shortcuts import render,get_object_or_404,redirect
+from .models import berita_model,gallery_model,staff_model,kurikulum_model,dokumen_model
 from landing.models import alumni_model
-from .forms import staff_form,berita_form,gallery_form,kurikulum_form,user_login_form,ubah_password,beranda_form
-from django.shortcuts import get_object_or_404,redirect
+from .forms import staff_form,berita_form,gallery_form,kurikulum_form,user_login_form,ubah_password,dokumen_form
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
@@ -57,7 +56,7 @@ def password_ubah(request):
         form_password = ubah_password(request.user, data=request.POST)
         if form_password.is_valid():
             form_password.save()
-            update_session_auth_hash(request, form_password.user) #harus login terlebih dahulu
+            update_session_auth_hash(request, form_password.user) 
             messages.success(request, "Password sudah terganti.")
             # return redirect("/")
     else:
@@ -262,8 +261,8 @@ def berita_edit(request,slug=None):
     if form_berita.is_valid():
         isi_berita = form_berita.save(commit=False)
         isi_berita.save()
-        messages.success(request,'Berita berhasil diedit')
-        return HttpResponseRedirect('../')
+        # messages.success(request,'Berita berhasil diedit')
+        return HttpResponseRedirect('../..')
     context={
     'form_berita':form_berita,
     'judul':'Edit Berita',
@@ -294,22 +293,55 @@ def berita_detail(request,slug=None):
 def list_berita(request):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
-    berita = berita_model.objects.filter(tag='Berita')
-    context={
-    'berita':berita,
-    'judul':'list berita'
+    list_berita_list = berita_model.objects.filter(tag='Berita')
+    page = request.GET.get('page',1)
+    paginator = Paginator(list_berita_list, 10)
+
+    try:
+        beritas = paginator.page(page)
+    except PageNotAnInteger:
+        beritas = paginator.page(1)
+    except EmptyPage:
+        beritas = paginator.page(paginator.num_pages)
+    context ={
+        'beritas' : beritas,
     }
+    query = request.GET.get("q")
+    if query:
+        list_berita_list = list_berita_list.filter(
+            Q(judul__icontains=query)|
+            Q(content__icontains=query)
+        ).distinct()
+        context['beritas'] = list_berita_list
+    context['judul'] = 'Berita'
+
     return render(request,'dashboard/berita/berita.html',context)
 
 @login_required()
 def list_pengumuman(request):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
-    pengumuman = berita_model.objects.filter(tag='Pengumuman')
-    context={
-    'pengumuman':pengumuman,
-    'judul':'list pengumuman',
+    list_pengumuman_list = berita_model.objects.filter(tag='Pengumuman')
+    page = request.GET.get('page',1)
+    paginator = Paginator(list_pengumuman_list, 10)
+
+    try:
+        pengumuman = paginator.page(page)
+    except PageNotAnInteger:
+        pengumuman = paginator.page(1)
+    except EmptyPage:
+        pengumuman = paginator.page(paginator.num_pages)
+    context ={
+        'pengumuman' : pengumuman,
     }
+    query = request.GET.get("q")
+    if query:
+        list_pengumuman_list = list_pengumuman_list.filter(
+            Q(judul__icontains=query)|
+            Q(content__icontains=query)
+        ).distinct()
+        context['pengumuman'] = list_pengumuman_list
+    context['judul'] = 'Pengumuman'
     return render(request,'dashboard/berita/pengumuman.html',context)
 
 @login_required()
@@ -339,7 +371,7 @@ def pengumuman_edit(request,slug=None):
         isi_berita = form_berita.save(commit=False)
         isi_berita.save()
         # messages.success(request,'Pengumuman berhasil diedit')
-        return HttpResponseRedirect('../')
+        return HttpResponseRedirect('../..')
     context={
     'form_berita':form_berita,
     'judul':'Edit Berita',
@@ -398,68 +430,65 @@ def kurikulum_hapus(request,id=None):
     # messages.success(request,'Berita berhasil dihapus')
     return redirect('dashboard:kurikulum')
 
-<<<<<<< HEAD
 @login_required()
-def beranda(request):
+def dokumen(request):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
-    data_beranda = beranda_model.objects.all()
+    dokumen = dokumen_model.objects.all()
     context={
-    'beranda':data_beranda,
-    'judul':'Beranda',
+    'dokumen':dokumen,
+    'judul':'Dokumen',
     }
-    return render(request,'dashboard/halaman/beranda/list_beranda.html',context)
+    return render(request,'dashboard/umum/umum.html',context)
 
 @login_required()
-def beranda_detail(request,id=None):
+def dokumen_tambah(request):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
-    isi_detail = get_object_or_404(beranda_model,id=id)
+    form_dokumen = dokumen_form(request.POST or None, request.FILES or None)
+    if form_dokumen.is_valid():
+        data = form_dokumen.save(commit=False)
+        data.save()
+        return HttpResponseRedirect("../")
     context={
-    'obj':isi_detail,
-    'judul':'Detail Beranda',
+    'form_dokumen':form_dokumen,
+    'judul':'Form Dokumen',
     }
-    return render(request,'dashboard/halaman/beranda/detail_beranda.html',context)
-    
-@login_required()
-def beranda_buat(request):
-    if not request.user.is_active and not request.user.is_authenticated:
-        raise Http404
-    form_beranda = beranda_form(request.POST or None, request.FILES or None)
-    if form_beranda.is_valid():
-        data_beranda = form_beranda.save(commit=False)
-        data_beranda.save()
-        return redirect('dashboard:beranda')
-    context={
-    'form_beranda':form_beranda,
-    'judul':'Form Beranda',
-    }
-    return render(request,'dashboard/halaman/beranda/buat_beranda.html',context)
+    return render(request,'dashboard/umum/buat_dokumen.html',context)
 
 @login_required()
-def beranda_edit(request,id=None):
+def dokumen_edit(request,id=None):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
-    data = get_object_or_404(beranda_model,id=id)
-    form_beranda = beranda_form(request.POST or None,request.FILES or None,instance=data)
-    if form_beranda.is_valid():
-        data_beranda = form_beranda.save(commit=False)
-        data_beranda.save()
-        return redirect('dashboard:beranda')
+    data = get_object_or_404(dokumen_model,id=id)
+    form_dokumen = dokumen_form(request.POST or None, request.FILES or None,instance=data)
+    if form_dokumen.is_valid():
+        dok = form_dokumen.save(commit=False)
+        dok.save()
+        return HttpResponseRedirect('../..')
     context={
-    'form_beranda':form_beranda,
-    'judul':'Form Beranda',
+    'form_dokumen' : form_dokumen,
+    'judul':'Form Dokumen',
     }
-    return render(request,'dashboard/halaman/beranda/buat_beranda.html',context)
+    return render(request,'dashboard/umum/buat_dokumen.html',context)
 
 @login_required()
-def beranda_hapus(request,id=None):
+def dokumen_detail(request,id=None):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
-    data = get_object_or_404(beranda_model,id=id)
+    data = get_object_or_404(dokumen_model,id=id)
+    context={
+    'obj':data,
+    'judul':'Dokumen',
+    }
+    return render(request,'dashboard/umum/umum.html',context)
+
+@login_required()
+def dokumen_hapus(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data = get_object_or_404(dokumen_model,id=id)
     data.delete()
-    return redirect('dashboard:beranda')
-=======
-def umum(request):
-    return render(request,'dashboard/umum/umum.html')
->>>>>>> remotes/fikrikhaidir/informatika-web/master
+    return redirect('dashboard:dokumen')
+
+

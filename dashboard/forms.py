@@ -1,5 +1,5 @@
 from django import forms
-from .models import berita_model,staff_model,gallery_model,kurikulum_model,beranda_model
+from .models import berita_model,staff_model,gallery_model,kurikulum_model,dokumen_model
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.forms import PasswordChangeForm
@@ -36,6 +36,10 @@ class ubah_password(PasswordChangeForm):
 
 
 class berita_form(forms.ModelForm):
+    publish = forms.DateField(widget=forms.TextInput(attrs=
+        {
+            'class': 'datepicker'
+        }))
     class Meta:
         model = berita_model
         fields = [
@@ -133,12 +137,13 @@ class kurikulum_form(forms.ModelForm):
 		'sks': forms.TextInput(attrs={'placeholder': 'Masukkan sks mata kuliah (ex:3)'}),
 		}
 
-class beranda_form(forms.ModelForm):
-    judul_besar = forms.CharField(error_messages={'required':'Mohon untuk mengisi judul tagline'}, widget=forms.TextInput(attrs={'placeholder':'Masukkan judul tagline (ex: Sesuaikan dirimu dengan zaman).'}))
-    keterangan_singkat = forms.CharField(error_messages={'required':'Mohon untuk mengisi keterangan singkat'},widget=forms.TextInput(attrs={'placeholder':'Masukkan keterangan singkat (ex: Dengan kurikulum yang selalu diperbarui ).'}))
-    nama_button = forms.CharField(error_messages={'required':'Mohon untuk mengisi nama button yang akan ditampilkan'},widget=forms.TextInput(attrs={'placeholder':'Masukkan nama button yang akan ditampilkan (ex: Lihat Kurikulum ).'}))
-    link_button = forms.CharField(error_messages={'required':'Mohon untuk mengisi link untuk button'},widget=forms.TextInput(attrs={'placeholder':'Masukkan alamat url untuk button (ex: http://informatika.ums.ac.id/kurikulum ).'}))
-  
+class dokumen_form(forms.ModelForm):
     class Meta:
-        model = beranda_model
+        model = dokumen_model
         fields = "__all__"
+        widgets={
+        'deskripsi': forms.TextInput(attrs={'placeholder': 'Masukkan nama dokumen maksimal 20 karakter'}),
+        }
+
+
+

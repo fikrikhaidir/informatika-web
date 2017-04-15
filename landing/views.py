@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import alumni_model
 from .forms import alumni_form
@@ -7,49 +7,112 @@ from django.http import HttpResponse
 from django.db.models import Q
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from dashboard.models import *
+from django.utils import timezone
 
 
 def home(request):
-    beranda = beranda_model.objects.all()
-    context={
-    'beranda':beranda,
-    'judul':'Beranda',
-    }
-    return render(request,"home.html",context)
+    return render(request,"home.html")
 
 def galeri(request):
     judul="GALERI INFORMATIKA"
     subJudul= "Galeri Kegiatan Informatika UMS"
     data_gallery = gallery_model.objects.all().order_by('-timestamp')
-    context={
+    page = request.GET.get('page',1)
+    paginator = Paginator(data_gallery, 10)
 
+
+    try:
+        galeri = paginator.page(page)
+    except PageNotAnInteger:
+        galeri = paginator.page(1)
+    except EmptyPage:
+        galeri = paginator.page(paginator.num_pages)
+    context={
+    
         'judul':judul,
         'subJudul':subJudul,
-        'galeri':data_gallery,
+        'galeri':galeri,
     }
     return render(request,"berita/galeri.html",context)
 
 def berita(request):
+    list_berita_list = berita_model.objects.filter(tag='Berita').filter(draft=False).filter(publish__lte=timezone.now())
+
     judul="Berita"
     subJudul= "Kabar Keadaan Terbaru Prodi Informatika"
-    context={
-        'judul':judul,
+    #pagination
+    page = request.GET.get('page',1)
+    paginator = Paginator(list_berita_list, 8)
+
+
+    try:
+        beritas = paginator.page(page)
+    except PageNotAnInteger:
+        beritas = paginator.page(1)
+    except EmptyPage:
+        beritas = paginator.page(paginator.num_pages)
+    context ={
+        'beritas' : beritas,
         'subJudul':subJudul,
     }
+    query = request.GET.get("q")
+    if query:
+        list_berita_list = list_berita_list.filter(
+            Q(judul__icontains=query)|
+            Q(content__icontains=query)
+        ).distinct()
+        context['beritas'] = list_berita_list
+    context['judul'] = judul
     return render(request,"berita/berita.html",context)
 
-def detail_berita(request):
+def detail_berita(request,slug=None):
+    data = get_object_or_404(berita_model,slug=slug)
+    context={
+    'obj':data,
+    'judul':'Detail Berita',
+    }
 
-    return render(request,"berita/berita-detail.html")
+    return render(request,"berita/berita-detail.html",context)
 
 def pengumuman(request):
+    list_pengumuman_list = berita_model.objects.filter(draft=False).filter(tag='Pengumuman').filter(publish__lte=timezone.now())
     judul="Pengumuman"
     subJudul= "Kabar Keadaan Terbaru Prodi Informatika"
-    context={
+    #pagination
+    page = request.GET.get('page',1)
+    paginator = Paginator(list_pengumuman_list, 8)
+
+
+    try:
+        beritas = paginator.page(page)
+    except PageNotAnInteger:
+        beritas = paginator.page(1)
+    except EmptyPage:
+        beritas = paginator.page(paginator.num_pages)
+    context ={
+        'beritas' : beritas,
         'judul':judul,
         'subJudul':subJudul,
     }
+    query = request.GET.get("q")
+    if query:
+        list_pengumuman_list = list_pengumuman_list.filter(
+            Q(judul__icontains=query)|
+            Q(content__icontains=query)
+        ).distinct()
+        context['beritas'] = list_pengumuman_list
+    context['title'] = 'Pengumuman'
+
     return render(request,"berita/pengumuman.html",context)
+
+def detail_pengumuman(request,slug=None):
+    data_pengumuman = get_object_or_404(berita_model,slug=slug)
+    context={
+    'obj':data_pengumuman,
+    'judul':'Detail Pengumuman',
+    }
+
+    return render(request,"berita/pengumuman-detail.html",context)
 
 def kurikulum(request):
     data_kurikulum = kurikulum_model.objects.all().order_by('-semester')
@@ -138,67 +201,25 @@ def alumni(request):
     }
     return render(request,'alumni/alumni.html',context)
 
-
-
 @login_required()
 def dashboard(request):
     return render(request,"dashboard/index.html")
 
-'''Berita view'''
-def berita_list(request):
-    list_berita_list = berita_model.objects.filter(draft=False).filter(tag='Berita').filter(publish__lte=Now())
-
-    #pagination
-    page = request.GET.get('page',1)
-    paginator = Paginator(list_berita_list, 5)
-
-
-    try:
-        beritas = paginator.page(page)
-    except PageNotAnInteger:
-        beritas = paginator.page(1)
-    except EmptyPage:
-        beritas = paginator.page(paginator.num_pages)
-    context ={
-        'beritas' : beritas,
+def dokumen(request):
+    data_dokumen = dokumen_model.objects.all()
+    context = {
+    'dokumen':data_dokumen,
+    'judul':'Data Dokumen',
     }
-    query = request.GET.get("q")
-    if query:
-        list_berita_list = list_berita_list.filter(
-            Q(judul__icontains=query)|
-            Q(content__icontains=query)
-        ).distinct()
-        context['beritas'] = list_berita_list
-    context['title'] = 'Berita'
+    return render(request,'dokumen/dokumen.html',context)
 
-
-    return render(request,"berita/list_berita.html",context)
-
-def pengumuman_list(request):
-    list_berita_list = berita_model.objects.filter(draft=False).filter(tag='Pengumuman').filter(publish__lte=Now())
-
-    #pagination
-    page = request.GET.get('page',1)
-    paginator = Paginator(list_berita_list, 5)
-
-
-    try:
-        beritas = paginator.page(page)
-    except PageNotAnInteger:
-        beritas = paginator.page(1)
-    except EmptyPage:
-        beritas = paginator.page(paginator.num_pages)
-    context ={
-        'beritas' : beritas,
+def dokumen_detail(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data = get_object_or_404(dokumen_model,id=id)
+    context={
+    'obj':data,
+    'judul':'Dokumen',
     }
-    query = request.GET.get("q")
-    if query:
-        list_berita_list = list_berita_list.filter(
-            Q(judul__icontains=query)|
-            Q(content__icontains=query)
-        ).distinct()
-        context['beritas'] = list_berita_list
-    context['title'] = 'Pengumuman'
+    return render(request,'dokumen/dokumen.html',context)
 
-
-    return render(request,"berita/list_pengumuman.html",context)

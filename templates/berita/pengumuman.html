@@ -10,7 +10,7 @@
 
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Beranda</a></li>
-            <li class="breadcrumb-item active">Berita</li>
+            <li class="breadcrumb-item active">Pengumuman</li>
         </ol>
 
         <div class="page-header animated fadeIn">
@@ -22,7 +22,7 @@
             <div class="col-md-12">
             {% if beritas %}
             <form class="form-group" method='GET' action=''>
-                    <input type='text' name='q' placeholder='Cari Berita' value='{{ request.GET.q }}'/>
+                    <input type='text' name='q' placeholder='Cari Pengumuman' value='{{ request.GET.q }}'/>
                     <input type='submit' class="btn btn-primary" value='Cari' />
 
                 </form>
@@ -31,10 +31,10 @@
             <section id="pinBoot">
                 {% for berita in beritas %}
                 <article class="white-panel">{% if berita.image %}<img src="{{berita.image.url}}" alt=""> {% endif %}
-                    <h4><a href="{% url 'home:detail_berita' berita.slug %}">{{berita.judul}}</a>
-                    <h5>Dipublish {{berita.publish|date:"d M Y"}}&nbsp; <span class="label label-info">BERITA</span></h5>
+                    <h4><a href="{% url 'home:detail_pengumuman' berita.slug %}">{{berita.judul}}</a>
+                    <h5>Dipublih {{berita.publish|date:"d M Y"}} &nbsp; <span class="label label-warning">Pengumuman</span></h5>
                     <p>{{berita.content|truncatechars:200}}</p>
-                    <h5>Diupdate {{berita.updated|date:"d M Y"}}</h5>
+                    <h5>Diupate {{berita.updated|date:"d M Y"}}</h5>
                 </article>
 
                {% endfor %}
