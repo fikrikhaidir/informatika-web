@@ -10,8 +10,7 @@
 
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Beranda</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'home:profil' %}">UKM</a></li>
-            <li class="breadcrumb-item active">Fosti</li>
+            <li class="breadcrumb-item active">Berita</li>
         </ol>
 
         <div class="page-header animated fadeIn">
@@ -21,58 +20,50 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="row">
             <div class="col-md-12">
+            {% if beritas %}
+            <form class="form-group" method='GET' action=''>
+                    <input type='text' name='q' placeholder='Cari Berita' value='{{ request.GET.q }}'/>
+                    <input type='submit' class="btn btn-primary" value='Cari' />
+
+                </form>
+                
 
             <section id="pinBoot">
-
-                <article class="white-panel"><img src="{% static 'img/a1.JPG' %}" alt="">
-                    <h4><a href="#">Konferensi Berjalan Pecah Pecah</a>
-                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">BERITA</span></h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                {% for berita in beritas %}
+                <article class="white-panel">{% if berita.image %}<img src="{{berita.image.url}}" alt=""> {% endif %}
+                    <h4><a href="{% url 'home:detail_berita' berita.slug %}">{{berita.judul}}</a>
+                    <h5>Dipublish {{berita.publish|date:"d M Y"}}&nbsp; <span class="label label-info">BERITA</span></h5>
+                    <p>{{berita.content|truncatechars:200}}</p>
+                    <h5>Diupdate {{berita.updated|date:"d M Y"}}</h5>
                 </article>
 
-                <article class="white-panel"> <img src="{% static 'img/a3.JPG' %}" alt="">
-                    <h4><a href="#">Seorang Mahasiswa Bunuh Diri Setelah Pendadaran</a></h4>
-                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">BERITA</span></h5>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </article>
-
-                <article class="white-panel"> <img src="{% static 'img/a2.jpg' %}" alt="">
-                    <h4><a href="#">Kucing Membunuh Anjing, Noscope MLG</a></h4>
-                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">BERITA</span></h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                </article>
-                <article class="white-panel"><img src="{% static 'img/testimoni/septiawan1.png' %}" alt="">
-                    <h4><a href="#">Pengumuman Pendaftaran Taekwondo Khusus Mahasiswa Cacat</a>
-                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">PENGUMUMAN</span></h5>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </article>
-                <article class="white-panel"> <img src="{% static 'img/a2.jpg' %}" alt="">
-                    <h4><a href="#">Kucing Membunuh Anjing, Noscope MLG</a></h4>
-                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">BERITA</span></h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                </article>
-                <article class="white-panel"> <img src="{% static 'img/a2.jpg' %}" alt="">
-                    <h4><a href="#">Kucing Membunuh Anjing, Noscope MLG</a></h4>
-                    <h5>27 Maret, 2015 &nbsp; <span class="label label-info">BERITA</span></h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                </article>
+               {% endfor %}
             </section>
+            {% endif %}
 
             <hr />
             <center>
+            {% if beritas.has_other_pages %}
             <ul class="pagination">
-              <li><a href="#">«</a></li>
-              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">»</a></li>
+            {% if beritas.has_previous %}
+              <li><a href="?page={{ beritas.previous_page_number }}">&laquo;</a></li>
+              {% else %}
+                  <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in beritas.paginator.page_range %}
+                {% if beritas.number == i %}
+              <li class="active"><span>{{ i }}<span class="sr-only">(current)</span></span></a></li>
+              {% else %}
+              <li><a href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+              {% endfor %}
+                {% if beritas.has_next %}
+              <li><a href="?page={{ beritas.next_page_number }}">&raquo;</a></li>
+              {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
             </ul>
+            {% endif %}
             </center>
 
           </div>

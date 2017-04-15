@@ -1,8 +1,7 @@
-from django.shortcuts import render
-from .models import berita_model,gallery_model,staff_model,kurikulum_model
+from django.shortcuts import render,get_object_or_404,redirect
+from .models import berita_model,gallery_model,staff_model,kurikulum_model,dokumen_model
 from landing.models import alumni_model
-from .forms import staff_form,berita_form,gallery_form,kurikulum_form
-from django.shortcuts import get_object_or_404,redirect
+from .forms import staff_form,berita_form,gallery_form,kurikulum_form,user_login_form,ubah_password,dokumen_form
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
@@ -10,6 +9,11 @@ from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.db.models import Q
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash,authenticate,login,logout, get_user_model
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.conf import settings
+
 
 
 '''Keperluan Cetak'''
@@ -21,17 +25,63 @@ from reportlab.lib import colors
 
 # Create your views here.
 
+def login_view(request):
+    title="Login"
+    user = request.user
+    if user.is_authenticated():
+        return redirect('home:dashboard')
+    else:
+        form_login = user_login_form(request.POST or  None)
+        if form_login.is_valid():
+            username = form_login.cleaned_data.get("username")
+            password = form_login.cleaned_data.get("password")
+            user = authenticate(username=username,password=password)
+            login(request,user)
+            return  HttpResponseRedirect (settings.LOGIN_REDIRECT_URL)
+        context = {
+            "form_login" : form_login,
+            "title" : title,
+
+        }
+        return render(request,"login.html",context)
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+@login_required()
+def password_ubah(request):
+    title = 'Password'
+    if request.method == 'POST':
+        form_password = ubah_password(request.user, data=request.POST)
+        if form_password.is_valid():
+            form_password.save()
+            update_session_auth_hash(request, form_password.user) 
+            messages.success(request, "Password sudah terganti.")
+            # return redirect("/")
+    else:
+        form_password =ubah_password(request.user)
+    data = {
+        'form_password': form_password,
+        'title' : title,
+    }
+    return render(request, "dashboard/akun/ubah_password.html", data)
+
+@login_required()
 def alumni_dashboard(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_alumni = alumni_model.objects.all()
     context = {
     'data_alumni':data_alumni,
     'title':'Data Alumni',
     }
-    return render(request,"dashboard/alumni.html",context)
+    return render(request,"dashboard/halaman/alumni.html",context)
 
+@login_required()
 def cetak_rekapan_alumni(request):
-    # if not request.user.is_staff and not request.user.is_superuser:
-    #     raise Http404
+    if not request.user.is_staff and not request.user.is_superuser:
+        raise Http404
     # pengaturan respon berformat pdf
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="rekapan_alumni.pdf"'
@@ -39,12 +89,13 @@ def cetak_rekapan_alumni(request):
     # mengambil daftar kehadiran dan mengubahnya menjadi data ntuk tabel
     data = alumni_model.objects.all()
     table_data = []
-    table_data.append([ "NO","Nama","NIM","Konsentrasi","Tempat Kerja","Posisi/Jabatan","Tahun Masuk","Tahun Keluar" ])
+
+    table_data.append([ "NO","Nama","NIM","Konsentrasi","Perusahaan","Posisi","Thn Masuk, Lulus" ])
     i = 1
     for x in data:
-        table_data.append([ i,x.nama, x.nim, x.konsentrasi, x.tempat_kerja,x.jabatan,x.tahun_masuk,x.tahun_keluar ])
+        table_data.append([ i,x.nama, x.nim, x.konsentrasi, x.tempat_kerja,x.jabatan,str(x.tahun_masuk)+", "+str(x.tahun_keluar) ])
         i+=1
-
+  
 
     # membuat dokumen baru
     doc = SimpleDocTemplate(response, pagesize=A4, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
@@ -77,7 +128,10 @@ def cetak_rekapan_alumni(request):
     doc.build(content)
     return response
 
+@login_required()
 def staff(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_staff = staff_model.objects.all()
     context={
     'staff':data_staff,
@@ -85,15 +139,10 @@ def staff(request):
     }
     return render(request,'dashboard/staff/list_staff.html',context)
 
-def staff_detail(request,id=None):
-    detail = get_object_or_404(staff_model,id=id)
-    context={
-    'obj':detail,
-    'judul':'Staff Detail',
-    }
-    return render(request,'dashboard/staff/detail_staff.html',context)
-
+@login_required()
 def staff_tambah(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     form_staff = staff_form(request.POST or None, request.FILES or None)
     if form_staff.is_valid():
         data_staff = form_staff.save(commit=False)
@@ -106,7 +155,10 @@ def staff_tambah(request):
     }
     return render(request,'dashboard/staff/tambah_staff.html',context)
 
+@login_required()
 def staff_edit(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_staff = get_object_or_404(staff_model,id=id)
     form_staff = staff_form(request.POST or None, request.FILES or None,instance=data_staff)
     if form_staff.is_valid():
@@ -120,14 +172,20 @@ def staff_edit(request,id=None):
     }
     return render(request,'dashboard/staff/tambah_staff.html',context)
 
+@login_required()
 def staff_hapus(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_staff = get_object_or_404(staff_model,id=id)
     data_staff.delete()
-    messages.success(request,'Data staff berhasil dihapus.')
+    # messages.success(request,'Data staff berhasil dihapus.')
     return redirect('dashboard:staff')
     # return redirect()
 
+@login_required()
 def gallery(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_gallery = gallery_model.objects.all()
     context={
     'gallery':data_gallery,
@@ -135,15 +193,10 @@ def gallery(request):
     }
     return render(request,'dashboard/gallery/list_gallery.html',context)
 
-def gallery_detail(request,id=None):
-    data = get_object_or_404(gallery_model,id=id)
-    context = {
-    'obj':data,
-    'judul':'Gallery Detail'
-    }
-    return render(request,'dashboard/gallery/detail_gallery.html',context)
-
+@login_required()
 def gallery_tambah(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     form_gallery = gallery_form(request.POST or None, request.FILES or None)
     if form_gallery.is_valid():
         data_gallery = form_gallery.save(commit=False)
@@ -156,7 +209,10 @@ def gallery_tambah(request):
     }
     return render(request,'dashboard/gallery/tambah_gallery.html',context)
 
+@login_required()
 def gallery_edit(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_gallery = get_object_or_404(gallery_model,id=id)
     form_gallery = gallery_form(request.POST or None, request.FILES or None,instance=data_gallery)
     if form_gallery.is_valid():
@@ -170,46 +226,62 @@ def gallery_edit(request,id=None):
     }
     return render(request,'dashboard/gallery/tambah_gallery.html',context)
 
+@login_required()
 def gallery_hapus(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_gallery = get_object_or_404(gallery_model,id=id)
     data_gallery.delete()
     # messages.success('Gallery berhasil dihapus')
     return redirect('dashboard:gallery')
 
+@login_required()
 def berita_tambah(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     form_berita=berita_form(request.POST or None, request.FILES or None)
     if form_berita.is_valid():
         data_berita=form_berita.save(commit=False)
+        data_berita.tag='Berita'
         data_berita.save()
-        messages.success(request,'Berita berhasil tersimpan..')
-        return redirect('dashboard:berita')
+        # messages.success(request,'Berita berhasil tersimpan..')
+        return HttpResponseRedirect('../')
     context={
     'form_berita':form_berita,
     'judul':'Buat Berita',
     }
     return render(request,'dashboard/berita/buat_berita.html',context)
 
+@login_required()
 def berita_edit(request,slug=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_berita = get_object_or_404(berita_model,slug=slug)
     form_berita=berita_form(request.POST or None,request.FILES or None,instance=data_berita)
     if form_berita.is_valid():
         isi_berita = form_berita.save(commit=False)
         isi_berita.save()
-        messages.success(request,'Berita berhasil diedit')
-        return redirect('dashboard:berita')
+        # messages.success(request,'Berita berhasil diedit')
+        return HttpResponseRedirect('../..')
     context={
     'form_berita':form_berita,
     'judul':'Edit Berita',
     }
     return render(request,'dashboard/berita/buat_berita.html',context)
 
+@login_required()
 def berita_hapus(request,slug=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_berita = get_object_or_404(berita_model,slug=slug)
     data_berita.delete()
-    messages.success(request,'Berita berhasil dihapus')
+    # messages.success(request,'Berita berhasil dihapus')
     return redirect('dashboard:berita')
 
+@login_required()
 def berita_detail(request,slug=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_berita=get_object_or_404(berita_model,slug=slug)
     isi={
     'obj':data_berita,
@@ -217,31 +289,110 @@ def berita_detail(request,slug=None):
     }
     return render(request,'dashboard/berita/detail_berita.html',isi)
 
+@login_required()
 def list_berita(request):
-    berita = berita_model.objects.filter(tag='Berita')
-    context={
-    'berita':berita,
-    'judul':'list berita'
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    list_berita_list = berita_model.objects.filter(tag='Berita')
+    page = request.GET.get('page',1)
+    paginator = Paginator(list_berita_list, 10)
+
+    try:
+        beritas = paginator.page(page)
+    except PageNotAnInteger:
+        beritas = paginator.page(1)
+    except EmptyPage:
+        beritas = paginator.page(paginator.num_pages)
+    context ={
+        'beritas' : beritas,
     }
+    query = request.GET.get("q")
+    if query:
+        list_berita_list = list_berita_list.filter(
+            Q(judul__icontains=query)|
+            Q(content__icontains=query)
+        ).distinct()
+        context['beritas'] = list_berita_list
+    context['judul'] = 'Berita'
+
     return render(request,'dashboard/berita/berita.html',context)
 
+@login_required()
 def list_pengumuman(request):
-    pengumuman = berita_model.objects.filter(tag='Pengumuman')
-    context={
-    'pengumuman':pengumuman,
-    'judul':'list pengumuman',
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    list_pengumuman_list = berita_model.objects.filter(tag='Pengumuman')
+    page = request.GET.get('page',1)
+    paginator = Paginator(list_pengumuman_list, 10)
+
+    try:
+        pengumuman = paginator.page(page)
+    except PageNotAnInteger:
+        pengumuman = paginator.page(1)
+    except EmptyPage:
+        pengumuman = paginator.page(paginator.num_pages)
+    context ={
+        'pengumuman' : pengumuman,
     }
+    query = request.GET.get("q")
+    if query:
+        list_pengumuman_list = list_pengumuman_list.filter(
+            Q(judul__icontains=query)|
+            Q(content__icontains=query)
+        ).distinct()
+        context['pengumuman'] = list_pengumuman_list
+    context['judul'] = 'Pengumuman'
     return render(request,'dashboard/berita/pengumuman.html',context)
 
+@login_required()
+def pengumuman_tambah(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    form_berita=berita_form(request.POST or None, request.FILES or None)
+    if form_berita.is_valid():
+        data_berita=form_berita.save(commit=False)
+        data_berita.tag = 'Pengumuman'
+        data_berita.save()
+        # messages.success(request,'Pengumuman berhasil tersimpan..')
+        return HttpResponseRedirect('../')
+    context={
+    'form_berita':form_berita,
+    'judul':'Buat Berita',
+    }
+    return render(request,'dashboard/berita/buat_berita.html',context)
+
+@login_required()
+def pengumuman_edit(request,slug=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data_berita = get_object_or_404(berita_model,slug=slug)
+    form_berita=berita_form(request.POST or None,request.FILES or None,instance=data_berita)
+    if form_berita.is_valid():
+        isi_berita = form_berita.save(commit=False)
+        isi_berita.save()
+        # messages.success(request,'Pengumuman berhasil diedit')
+        return HttpResponseRedirect('../..')
+    context={
+    'form_berita':form_berita,
+    'judul':'Edit Berita',
+    }
+    return render(request,'dashboard/berita/buat_berita.html',context)
+
+@login_required()
 def kurikulum(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     kurikulum = kurikulum_model.objects.all()
     context={
     'kurikulum':kurikulum,
     'judul':'Kurikulum',
     }
-    return render(request,'dashboard/kurikulum/list_kurikulum.html',context)
+    return render(request,'dashboard/halaman/kurikulum/list_kurikulum.html',context)
 
+@login_required()
 def kurikulum_tambah(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     form_kurikulum = kurikulum_form(request.POST or None)
     if form_kurikulum.is_valid():
         data_kurikulum = form_kurikulum.save(commit=False)
@@ -251,9 +402,12 @@ def kurikulum_tambah(request):
     'form_kurikulum':form_kurikulum,
     'judul':'Form Kurikulum',
     }
-    return render(request,'dashboard/kurikulum/buat_kurikulum.html',context)
+    return render(request,'dashboard/halaman/kurikulum/buat_kurikulum.html',context)
 
+@login_required()
 def kurikulum_edit(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_edit = get_object_or_404(kurikulum_model,id=id)
     form_kurikulum = kurikulum_form(request.POST or None, request.FILES or None,instance=data_edit)
     if form_kurikulum.is_valid():
@@ -265,13 +419,76 @@ def kurikulum_edit(request,id=None):
     'form_kurikulum':form_kurikulum,
     'judul':'Edit Kurikulum',
     }
-    return render(request,'dashboard/kurikulum/buat_kurikulum.html',context)
+    return render(request,'dashboard/halaman/kurikulum/buat_kurikulum.html',context)
 
+@login_required()
 def kurikulum_hapus(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
     data_kurikulum = get_object_or_404(kurikulum_model,id=id)
     data_kurikulum.delete()
     # messages.success(request,'Berita berhasil dihapus')
     return redirect('dashboard:kurikulum')
 
-def umum(request):
-    return render(request,'dashboard/umum/umum.html')
+@login_required()
+def dokumen(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    dokumen = dokumen_model.objects.all()
+    context={
+    'dokumen':dokumen,
+    'judul':'Dokumen',
+    }
+    return render(request,'dashboard/umum/umum.html',context)
+
+@login_required()
+def dokumen_tambah(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    form_dokumen = dokumen_form(request.POST or None, request.FILES or None)
+    if form_dokumen.is_valid():
+        data = form_dokumen.save(commit=False)
+        data.save()
+        return HttpResponseRedirect("../")
+    context={
+    'form_dokumen':form_dokumen,
+    'judul':'Form Dokumen',
+    }
+    return render(request,'dashboard/umum/buat_dokumen.html',context)
+
+@login_required()
+def dokumen_edit(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data = get_object_or_404(dokumen_model,id=id)
+    form_dokumen = dokumen_form(request.POST or None, request.FILES or None,instance=data)
+    if form_dokumen.is_valid():
+        dok = form_dokumen.save(commit=False)
+        dok.save()
+        return HttpResponseRedirect('../..')
+    context={
+    'form_dokumen' : form_dokumen,
+    'judul':'Form Dokumen',
+    }
+    return render(request,'dashboard/umum/buat_dokumen.html',context)
+
+@login_required()
+def dokumen_detail(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data = get_object_or_404(dokumen_model,id=id)
+    context={
+    'obj':data,
+    'judul':'Dokumen',
+    }
+    return render(request,'dashboard/umum/umum.html',context)
+
+@login_required()
+def dokumen_hapus(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data = get_object_or_404(dokumen_model,id=id)
+    data.delete()
+    return redirect('dashboard:dokumen')
+
+

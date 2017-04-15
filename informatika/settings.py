@@ -69,8 +69,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':'informatika',
-        'USER':'fikri',
-        'PASSWORD':'fikritampan',
+        'USER':'achmad',
+        'PASSWORD':'achmad123',
         'HOST':'localhost',
         'PORT':'',
     }
@@ -123,3 +123,6 @@ STATIC_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT),'static_cdn')
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT,'media_cdn')
+
+LOGIN_REDIRECT_URL = '/dashboard'
+LOGIN_URL ='/login/'

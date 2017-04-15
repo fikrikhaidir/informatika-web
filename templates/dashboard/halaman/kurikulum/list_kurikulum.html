@@ -1,4 +1,4 @@
-{% extends 'dashboard/index.html' %}
+{% extends 'dashboard/base.html' %}
 {% load staticfiles %}
 
 
@@ -14,12 +14,15 @@
                                 <i class="fa fa-dashboard"></i> Dashboard
                             </li>
                             <li >
-                                <i class="active"></i> Gallery
+                                <i class=""></i> Halaman
+                            </li>
+                            <li >
+                                <i class="active"></i> Kurikulum
                             </li>
 
                         </ol>
                         <h1 class="page-header">
-                            Gallery <small>Semua Dokumentasi Prodi Informatika</small>
+                            Kurikulum <small>Kurikulum Prodi Informatika</small>
                         </h1>
                     </div>
 
@@ -35,6 +38,7 @@
                             <td><strong>Nama Mata Kuliah</strong></td>
                             <td><strong>Kode MK</strong></td>
                             <td><strong>SKS</strong></td>
+                            <td><strong>Status MK</strong></td>
                             <td><strong>Option</strong></td>
 
 
@@ -46,7 +50,12 @@
                             <td>{{dt.makul}}</td>
                             <td>{{dt.kode}}</td>
                             <td>{{dt.sks}}</td>
-                            <td> <a href="{% url 'dashboard:edit_kurikulum' dt.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a><a href="{% url 'dashboard:hapus_kurikulum' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            {% if dt.wajib %}
+                            <td><button class="btn-xs btn-success">MK. Wajib</button></td>
+                            {% else %}
+                            <td><button class="btn-xs btn-warning">MK. Pilihan</button></td>
+                            {% endif %}
+                            <td> <a href="{% url 'dashboard:edit_kurikulum' dt.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a> <a href="{% url 'dashboard:hapus_kurikulum' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
 
                         </tr>

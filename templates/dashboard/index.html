@@ -1,131 +1,33 @@
+{% extends 'dashboard/base.html'%}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Dashboard</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <script src="https://use.fontawesome.com/03ed5c9479.js"></script>
-
-    <!-- Custom CSS -->
-    <link href="{% static 'css/admin/sb-admin.css' %}" rel="stylesheet"> {% block css %} {% endblock css %}
-</head>
-
-<body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{% url 'home:dashboard' %}"><i class="fa fa-tachometer" aria-hidden="true"></i>
-  Dashboard</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-
-            </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#berita"><i class="fa fa-file-text-o"></i> Berita <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="berita" class="collapse">
-                            <li>
-                                <a href="{% url 'dashboard:berita'%}">Berita</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'dashboard:pengumuman'%}">Pengumuman</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#staff"><i class="fa fa-user"></i> Staff <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="staff" class="collapse">
-                            <li>
-                                <a href="{% url 'dashboard:staff'%}">Staff Informatika</a>
-                            </li>
-                            <li>
-                                <a href="#">Dosen Tetap</a>
-                            </li>
-                            <li>
-                                <a href="#">Dosen Profesi</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#home"><i class="fa fa-fw fa-clone"></i> Halaman <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="home" class="collapse">
-                            <li>
-                                <a href="#">Profil</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'dashboard:kurikulum' %}">Kurikulum</a>
-                            </li>
-                            <li>
-                                <a href="#">UKM</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'dashboard:alumni_dashboard' %}">Alumni</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="{% url 'dashboard:gallery' %}"><i class="fa fa-fw fa-file-image-o"></i> Galeri</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'dashboard:umum' %}"><i class="fa fa-fw fa-cog"></i> Umum</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'home:home' %}"><i class="fa fa-arrow-circle-o-right"></i> Kembali ke Beranda</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'home:home' %}"><i class="fa fa-sign-out"></i> Keluar</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
         {% block content %}
 
         <div id="page-wrapper">
-
+        <div class="col-lg-8">
+        <div class="panel panel-primary">
+        <div class="panel-header">
+        
+        </div>
+        <div class="panel-body">
+        <h4>Selamat, datang di dashboard Admin </h4>
+        <ul>
+        	<li>Semua pengaturan website informatika, ada di dashboard ini</li>
+        </ul>
+        </div>
+        </div>
+        </div>
 
             <!-- /.container-fluid -->
 
         </div>
         <!-- /#page-wrapper -->
         {% endblock content %}
-    </div>
+    
     <!-- /#wrapper -->
 
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="{% static 'js/dropdown.js' %}"></script>
-    {% block scripts %} {% endblock scripts %}
+    
 
-</body>
-
-</html>

@@ -60,12 +60,15 @@
 		    <div id="toolbar-admin" class="panel-body">
 		        <div class="btn-toolbar" role="toolbar" aria-label="admin">
                     <div class="btn-group pull-right" role="group">
-                        <button id="btn-online" class="btn btn-success">Wajib</button>
-                        <button id="btn-offline" class="btn btn-warning">Pilihan</button>
+                        <button id="btn-online" class="btn btn-success" data-target="#wajib" data-toggle="table">Wajib</button>
+                        <button id="btn-offline" class="btn btn-warning" data-target="#pilihan" data-toggle="table">Pilihan</button>
                     </div>
                 </div>
 		    </div>
-		    <table class="table table-striped table-hover">
+		   
+		    
+		    <table id="wajib" class="table table-striped table-hover">
+
 		        <thead>
 		            <tr>
 		                <th>No.</th>
@@ -76,43 +79,36 @@
 		            </tr>
 		        </thead>
 		        <tbody>
+		        	{% for dt in kurikulum %}
+		        	{% if dt.wajib %}
 		            <tr class="success">
-		                <td>1</td>
-		                <td>1</td>
-		                <td>Pemrograman Web</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
+		                <td>{{forloop.counter}}</td>
+		                <td>{{dt.semester}}</td>
+		                <td>{{dt.makul}}</td>
+		                
+		                <td class="status">{{dt.kode}}</td>
+		               
+		                <td>{{dt.sks}}</td>
+		               
 		            </tr>
-		            <tr class="success">
-		                <td>2</td>
-		                <td>1</td>
-		                <td>Aljabar Linier</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
-		            </tr>
+		            {% else %}
+		            
 		            <tr class="warning">
-		                <td>3</td>
-		                <td>1</td>
-		                <td>Kalkulus</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
+		                <td>{{forloop.counter}}</td>
+		                <td>{{dt.semester}}</td>
+		                <td>{{dt.makul}}</td>
+		                <td class="status">{{dt.kode}}</td>
+		                <td>{{dt.sks}}</td>
 		            </tr>
-		            <tr class="warning">
-		                <td>4</td>
-		                <td>1</td>
-		                <td>Pengantar Sistem Informasi</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
-		            </tr>
-		            <tr class="warning">
-		                <td>5</td>
-		                <td>1</td>
-		                <td>Algoritma</td>
-		                <td class="status">MK123</td>
-		                <td>test</td>
-		            </tr>
+		            {% endif %}
+		            {% endfor %}
+		            
+		         
+		           
 		        </tbody>
 		    </table>
+		    
+		    
 </div>
 </div>
 </div>

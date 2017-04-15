@@ -17,56 +17,36 @@
             <h1 id="page-header"><i class="fa fa-user-o" aria-hidden="true"></i> {{judul}} <small>Profil Tenaga Pengajar Informatika UMS</small></h1> </div>
     </div>
     <div class="col-md-10 col-md-offset-1">
-        <h2><i class="fa fa-user" aria-hidden="true"></i> DOSEN TETAP </h2>
+        <h2><i class="fa fa-user" aria-hidden="true"></i> DOSEN PENGAJAR </h2>
         <hr />
         <div class="grid">
             <div class="row">
 
 
 
-            {% for i in "xxx" %}
+            {% for staff in staff %}
             <div class="col-md-4">
-             <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
+             <a href="" data-toggle="modal" data-target="#dosen{{forloop.counter}}">
             <figure class="effect-zoe img-responsive">
-                <img src="{% static 'img/dosen/IMG_1873.jpg' %}" alt="img25"/>
+            {% if staff.foto %}
+                <img src="{{staff.foto.url}}" alt="staff"/>
+                {% endif %}
                 <figcaption>
-                  <center><h2>Husni <span>Thamrin</span></h2></center>
+                  <center><h2>{{staff.nama_display}}</h2></center>
                 </figcaption>
             </figure></a>
             </div>
             {% endfor %}
 
-            {% for i in "xxx" %}
-           <div class="col-md-4">
-            <figure class="effect-zoe">
-                <img src="{% static 'img/dosen/IMG_3003.jpg' %}" alt="img26" />
-                <figcaption>
-                    <h2>Heru <span>Supriyono</span></h2>
-                </figcaption>
-            </figure>
-          </div>
-          {% endfor %}
-
-
-
-            <!-- <div class="col-md-4">
-            <figure class="effect-zoe">
-                <img src="{% static 'img/dosen/IMG_2995.jpg' %}" alt="img26" />
-                <figcaption>
-                    <h2>Aris <span>Rakhmadi</span></h2>
-                </figcaption>
-            </figure>
-          </div> -->
-
           </div> <!-- row inside grid -->
         </div>  <!-- grid -->
     <br />
-    <br />
-    <br />
-    <h2 class="text-right"><i class="fa fa-user" aria-hidden="true"></i> DOSEN PROFESI </h2>
-    <hr />
+   <!--  <br />
+    <br /> -->
+    <!-- <h2 class="text-right"><i class="fa fa-user" aria-hidden="true"></i> DOSEN PROFESI </h2>
+    <hr /> -->
 
-    <div class="grid">
+    <!-- <div class="grid">
         <div class="row">
 
           {% for i in "xxx" %}
@@ -80,8 +60,8 @@
           </figure></a>
           </div>
           {% endfor %}
-
-          {% for i in "xxx" %}
+ -->
+        <!--   {% for i in "xxx" %}
          <div class="col-md-4">
           <figure class="effect-zoe">
               <img src="{% static 'img/dosen/IMG_3003.jpg' %}" alt="img26" />
@@ -90,59 +70,81 @@
               </figcaption>
           </figure>
         </div>
-        {% endfor %}
+        {% endfor %} -->
 
-        </div> <!-- row inside grid -->
-      </div>  <!-- grid -->
+    <!--     </div> row inside grid -->
+    <!--   </div>  grid -->
 
-    </div> <!-- column -->
+    </div> <!--column-->
 
 
 </div><!-- container-fluid -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+{% for modal in staff %}
+<div class="modal fade" id="dosen{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
        <div class="modal-dialog">
            <div class="modal-content">
                <div class="modal-header">
                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                   <h4 class="modal-title" id="myModalLabel">Detil Profil Pengajar</h4>
+                   <h4 class="modal-title">Detail Profil Pengajar</h4>
                    </div>
                <div class="modal-body">
                    <center>
-                   <img src="{% static 'img/dosen/IMG_3003.jpg' %}" name="aboutme" width="140" height="140" border="0" class="img-rounded img-responsive"></a>
+                   {% if modal.foto %}
+                   <img src="{{modal.foto.url}}" name="aboutme" width="140" height="140" border="0" class="img-rounded img-responsive"></a>
+                   {% endif %}
                   <br />
-                   <h3 class="media-heading">Heru Supriyono <small>S.T.,M.Sc.,Ph.D.</small></h3>
-                    <h4>Lektor</h4>
+                   <h3 class="media-heading">{{modal.nama}} <small>
+                   {% if modal.gelar1%}{{modal.gelar1}}{% endif %}, {% if modal.gelar2%} {{modal.gelar2}}{% endif %}, {% if modal.gelar3%} {{modal.gelar3}}{% endif %}</small></h3>
+                    <h4>{{modal.jabatan}}</h4>
                     <span><strong>Skills: </strong></span>
-                    <span class="label label-success"> S1 : Teknik Elektro</span>
-                    <span class="label label-success"> S2 : Control System</span>
-                    <span class="label label-success"> S3 : Control System</span>
+                    {% if modal.bidang_keahlian1 %}
+                    <span class="label label-success"> S1 : {{modal.bidang_keahlian1}}</span>
+                    {% endif %}
+                    {% if modal.bidang_keahlian2 %}
+                     <span class="label label-success"> S2 : {{modal.bidang_keahlian2}}</span>
+                    {% endif %}
+                    {% if modal.bidang_keahlian3 %}
+                    <span class="label label-success"> S3 : {{modal.bidang_keahlian3}}</span>
+                    {% endif %}
                    </center>
                    <hr>
-                   <p class="text-left"><strong><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pendidikan : </strong>
+                   <p class="text-left"><strong><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pendidikan :</strong>
                   <br>
                   <ol class="list-unstyled">
-                    <li><b>&nbsp;S-1&nbsp; Universitas Gadjah Mada</b></li>
-                    <li><b>&nbsp;S-2&nbsp; University of Sheffield</b></li>
-                    <li><b>&nbsp;S-3&nbsp; University of Sheffield</b></li>
+                  {% if modal.pendidikan1 %}
+                    <li><b>&nbsp;S-1&nbsp;{{modal.pendidikan1}} </b></li>
+                    {% endif %}
+                    {% if modal.pendidikan2 %}
+                    <li><b>&nbsp;S-2&nbsp; {{modal.pendidikan2}}</b></li>
+                    {% endif %}
+                    {% if modal.pendidikan3 %}
+                    <li><b>&nbsp;S-3&nbsp; {{modal.pendidikan3}}</b></li>
+                    {% endif %}
                   </ol>
                   </p>
-                  <
+                 
 
                    <br>
+                   {% if modal.biografi %}
                    <p class="text-left"><strong>Bio: </strong><br>
-                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
+                       {{modal.biografi}}</p>
+                    {% endif %}
                    <br>
                </div>
                <div class="modal-footer">
                    <center>
-                    <a type="button" class="btn btn-info" href="https://scholar.google.co.id/citations?user=MCZ0eicAAAAJ&hl=en&oi=ao">Cari Penelitian</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    {% if modal.penelitian %}
+                    <a type="button" class="btn btn-info" href="{{modal.penelitian}}">Cari Penelitian</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                {% endif %}
+                    
                    <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
                     </center>
                </div>
            </div>
        </div>
    </div>
+   {% endfor %}
 
    <br />
    <br />

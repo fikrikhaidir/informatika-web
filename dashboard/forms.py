@@ -1,13 +1,45 @@
 from django import forms
-from .models import berita_model,staff_model,gallery_model,kurikulum_model
+from .models import berita_model,staff_model,gallery_model,kurikulum_model,dokumen_model
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, get_user_model
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 
 
+
+User = get_user_model()
+class user_login_form(forms.Form):
+    username = forms.CharField(error_messages={'required':'Mohon untuk mengisi username'}, widget=forms.TextInput(attrs={'placeholder':'Masukkan username anda.'}))
+    password = forms.CharField(error_messages={'required':'Mohon untuk mengisi password'},widget=forms.PasswordInput(attrs={'placeholder':'Masukkan password anda.'}))
+
+    def clean(self, *args, **kwargs):
+        username = self.cleaned_data.get("username")
+        password = self.cleaned_data.get("password")
+        if username and password :
+            user = authenticate(username=username,password=password)
+            if not user :
+                raise forms.ValidationError("Username dan password yang anda masukkan salah.")
+            elif not user.check_password(password):
+                raise forms.ValidationError("Username dan password yang anda masukkan salah.")
+            elif not user.is_active:
+                raise forms.ValidationError("Username dan password yang anda masukkan salah.")
+        return super(user_login_form, self).clean(*args,**kwargs)
+
+class ubah_password(PasswordChangeForm):
+    class Meta :
+        model = User
+        fields = [
+            'old_password',
+            'new_password',
+            'new_confirmation_password',
+        ]
+
+
 class berita_form(forms.ModelForm):
-    pilihan = (
-        ('Berita','Berita'),
-        ('Pengumuman','Pengumuman'),)
-    tag = forms.ChoiceField(choices=pilihan)
+    publish = forms.DateField(widget=forms.TextInput(attrs=
+        {
+            'class': 'datepicker'
+        }))
     class Meta:
         model = berita_model
         fields = [
@@ -16,7 +48,6 @@ class berita_form(forms.ModelForm):
             'content',
             'draft',
             'publish',
-            'tag',
             
         ]
         error_messages = {
@@ -71,6 +102,7 @@ class staff_form(forms.ModelForm):
             'bidang_keahlian1': forms.TextInput(attrs={'placeholder': 'Masukkan lulusan almamater dan bidang keahlian anda S1'}),
             'bidang_keahlian2': forms.TextInput(attrs={'placeholder': 'Masukkan lulusan almamater dan bidang keahlian anda S2(Boleh kosong)'}),
             'bidang_keahlian3': forms.TextInput(attrs={'placeholder': 'Masukkan lulusan almamater dan bidang keahlian anda S3(Boleh kosong)'}),
+            'penelitian': forms.TextInput(attrs={'placeholder': 'Masukkan link penelitian google scholar dosen'}),
             'biografi': forms.TextInput(attrs={'placeholder': 'Masukkan biografi singkat(Boleh Kosong)'}),
         }
 
@@ -104,3 +136,14 @@ class kurikulum_form(forms.ModelForm):
 		'kode': forms.TextInput(attrs={'placeholder': 'Masukkan kode mata kuliah'}),
 		'sks': forms.TextInput(attrs={'placeholder': 'Masukkan sks mata kuliah (ex:3)'}),
 		}
+
+class dokumen_form(forms.ModelForm):
+    class Meta:
+        model = dokumen_model
+        fields = "__all__"
+        widgets={
+        'deskripsi': forms.TextInput(attrs={'placeholder': 'Masukkan nama dokumen maksimal 20 karakter'}),
+        }
+
+
+

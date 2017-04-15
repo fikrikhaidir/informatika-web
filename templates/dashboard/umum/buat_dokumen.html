@@ -1,5 +1,6 @@
-{% extends 'dashboard/index.html' %}
+{% extends 'dashboard/base.html' %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
 
 
 {% block content %}
@@ -14,35 +15,33 @@
                                 <i class="fa fa-dashboard"></i> Dashboard
                             </li>
                             <li >
-                                <i class=""></i> Gallery
+                                <i class=""></i> Umum
+                            </li>
+                            <li class="">
+                                <i class=""></i> Dokumen
                             </li>
                             <li class="active">
-                                <i class=""></i> Detail Gallery
+                                <i class=""></i> Buat Dokumen
                             </li>
-
                         </ol>
                         <h1 class="page-header">
-                            Gallery <small>Semua Dokumentasi Gallery</small>
+                            Manajemen Dokumen <small>Semua Dokumen Prodi Informatika</small>
                         </h1>
                     </div>
                     <div class="col-lg-12">
-                    <div class="panel panel-body">
-                    <div class="col-lg-6">
-                    <img src="{{obj.image.url}}" height="300" width="300">
+                    <div class="panel-body">
+                        <form method="POST" action="" enctype="multipart/form-data">
 
-                    </div>
-                    <div class="col-lg-6">
-                        <h5>Judul : {{obj.judul}}</h5>
-                        <h5>Caption : {{obj.caption}}</h5>
-                    </div>
+                            {% csrf_token %}
+                            {{ form_dokumen | crispy }}
+                            <input type="submit" class="btn btn-primary" value="Simpan">
+                            <!--<script>alert("Terima Kasih sudah mendaftar beasiswa, {{ user }}")</script>-->
 
-
+                        </form>
                     </div>
 
 
                     </div>
-
-
 
 
 

@@ -52,11 +52,11 @@ def create_slug(instance, new_slug=None):
     return slug
 
 
-def pre_save_berita_receiver(sender,instance,*args,**kwargs):
+def pre_save_berita_model_receiver(sender,instance,*args,**kwargs):
     if not instance.slug:
         instance.slug = create_slug(instance)
 
-pre_save.connect(pre_save_berita_receiver,sender=berita_model)
+pre_save.connect(pre_save_berita_model_receiver,sender=berita_model)
 
 class staff_model(models.Model):
 	nama = models.CharField(default='',null=False,max_length=20,verbose_name='Nama Lengkap')
@@ -64,27 +64,23 @@ class staff_model(models.Model):
 	nidn = models.CharField(default='',null=False,max_length=10,verbose_name='NIDN')
 	jabatan = models.CharField(default='',null=False,max_length=30,verbose_name='Jabatan Akademik')
 	gelar1 = models.CharField(default='',null=False,max_length=30,verbose_name='Gelar Pendidikan S1')
-	gelar2 = models.CharField(default='',null=False,max_length=30,verbose_name='Gelar Pendidikan S2')  
-	gelar3 = models.CharField(default='',null=False,max_length=30,verbose_name='Gelar Pendidikan S3') 
-	pendidikan1 = models.CharField(default='',null=False,max_length=30,verbose_name='Universitas Jenjang SI')
-	pendidikan2 = models.CharField(default='',blank=True,max_length=30,verbose_name='Universitas Jenjang S2')
-	pendidikan3 = models.CharField(default='',blank=True,max_length=30,verbose_name='Universitas Jenjang S3')
-	bidang_keahlian1 = models.CharField(default='',null=False,max_length=50,verbose_name='Bidang Keahlian S1')
-	bidang_keahlian2 = models.CharField(default='',blank=True,max_length=50,verbose_name='Bidang Keahlian S2')
-	bidang_keahlian3 = models.CharField(default='',blank=True,max_length=50,verbose_name='Bidang Keahlian S3')
+	gelar2 = models.CharField(default='',blank=True,max_length=30,verbose_name='Gelar Pendidikan S2')  
+	gelar3 = models.CharField(default='',blank=True,max_length=30,verbose_name='Gelar Pendidikan S3') 
+	pendidikan1 = models.CharField(default='',null=False,max_length=100,verbose_name='Universitas Jenjang SI')
+	pendidikan2 = models.CharField(default='',blank=True,max_length=100,verbose_name='Universitas Jenjang S2')
+	pendidikan3 = models.CharField(default='',blank=True,max_length=100,verbose_name='Universitas Jenjang S3')
+	bidang_keahlian1 = models.CharField(default='',null=False,max_length=80,verbose_name='Bidang Keahlian S1')
+	bidang_keahlian2 = models.CharField(default='',blank=True,max_length=80,verbose_name='Bidang Keahlian S2')
+	bidang_keahlian3 = models.CharField(default='',blank=True,max_length=80,verbose_name='Bidang Keahlian S3')
+	penelitian = models.CharField(default='',blank=True,max_length=200,verbose_name='Penelitian Google Scholar')
 	biografi = models.TextField(default='',blank=True,verbose_name='Biografi')
 	foto = StdImageField(upload_to='upload/dosen',validators=[MaxSizeValidator(1028, 768)],blank=True)
 
-
-	# def save(self,*args,**kwargs):
-	# 	if self.foto:
-	# 		image = img.open(io.StringIO(self.foto.read()))
-	# 		image.thumbnail((100,80),img.ANTIALIAS)
-	# 		output = io.StringIO()
-	# 		image.save(output,format='JPEG',quality=75)
-	# 		output.seek(0)
-	# 		self.foto=InMemoryUploadedFile(output,'ImageField',"%s.jpg" %self.foto.nama,  'image/jpeg', output.len, None)
-	# 	super(staff_model,self).save(*args,**kwargs)
+	def save(self,*args,**kwargs):
+		nama = self.nama_display.upper()
+		if self.nama_display:
+			self.nama_display = nama
+		super(staff_model,self).save(*args,**kwargs)
 
 	def __unicode__(self):
 		return '%s' % self.nama
@@ -108,7 +104,16 @@ class kurikulum_model(models.Model):
 	makul = models.CharField(default='',null=False,max_length=40,verbose_name='Nama Mata Kuliah')
 	kode = models.CharField(default='',null=False,max_length=5,verbose_name='Kode MK')
 	sks = models.PositiveIntegerField(default='',null=False,validators=[MaxValueValidator(9)],verbose_name='SKS')
+	wajib = models.BooleanField(default='False',verbose_name='Mata Kuliah Wajib/Pilihan (*Jika Wajib Dicentang)')
 
 	def __unicode__(self):
 		return '%s' % self.makul
 
+class dokumen_model(models.Model):
+	deskripsi = models.CharField(default='',max_length=30,verbose_name='Nama Dokumen')
+	file = models.FileField(upload_to="upload/document",blank=True,verbose_name='File')
+	keterangan = models.TextField(verbose_name='Deskripsi')
+	tanggal = models.DateTimeField(auto_now_add=True)
+
+	def __unicode__(self):
+		return '%s' % self.keterangan

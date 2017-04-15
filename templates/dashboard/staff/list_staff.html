@@ -1,4 +1,4 @@
-{% extends 'dashboard/index.html' %}
+{% extends 'dashboard/base.html' %}
 {% load staticfiles %}
 
 
@@ -27,29 +27,33 @@
 
 
                     <div class="col-lg-12">
-                     <a href="{% url 'dashboard:tambah_staff' %}" class="btn btn-primary"><i class="fa fa-plus"></i>Tambah Staff</a><br/><br/>
+                     <a href="{% url 'dashboard:tambah_staff' %}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Staff</a><br/><br/>
 
                 <div class="table-responsive">
                     <table class="table">
                         <tr class="info">
                             <td><strong>No</strong></td>
                             <td><strong>Nama</strong></td>
+                            <td><strong>Nama Display</strong></td>
                             <td><strong>NIDN</strong></td>
                             <td><strong>Gelar Pendidikan</strong></td>
                             <td><strong>Universitas Asal</strong></td>
                             <td><strong>Bidang Keahlian</strong></td>
+                            <td><strong>Penelitian</strong></td>
                             <td><strong>Option</strong></td>
 
                         </tr>
                         {% for dt in staff  %}
                         <tr class="default">
                             <td>{{forloop.counter}}</td>
-                            <td>{{dt.nama}}</td>
+                            <td>{{dt.nama|capfirst}}</td>
+                            <td>{{dt.nama_display}}</td>
                             <td>{{dt.nidn}}</td>
                             <td>{{dt.gelar1}}<br/>{{dt.gelar2}}<br/>{{dt.gelar3}}</td>
-                            <td>{{dt.pendidikan1}}<br/>{{dt.pendidikan2}}<br/>{{dt.pendidikan3}}</td>
-                            <td>{{dt.bidang_keahlian1}}<br/>{{dt.bidang_keahlian2}}<br/>{{dt.bidang_keahlian3}}</td>
-                            <td><a href="{% url 'dashboard:detail_staff' dt.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a><a href="{% url 'dashboard:edit_staff' dt.id %}" class="btn btn-primary"><i class="fa fa-eye"></i></a> <a href="{% url 'dashboard:hapus_staff' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <td>{{dt.pendidikan1|capfirst}}<br/>{{dt.pendidikan2|capfirst}}<br/>{{dt.pendidikan3|capfirst}}</td>
+                            <td>{{dt.bidang_keahlian1|capfirst}}<br/>{{dt.bidang_keahlian2|capfirst}}<br/>{{dt.bidang_keahlian3|capfirst}}</td>
+                            <td><a href="{{dt.penelitian}}">Link Google Scholar</td>
+                            <td> <a href="" data-target="#modal_staff{{forloop.counter}}" data-toggle="modal" class="btn btn-primary"><i class="fa fa-eye"></i></a> <a href="{% url 'dashboard:hapus_staff' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
 
                         </tr>
@@ -65,7 +69,94 @@
 
             </div>
             <!-- /.container-fluid -->
+            {% for modal in staff %}
+            <div class="modal fade" id="modal_staff{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal">&times;</button>
+                   <h4 class="modal-title" id="myModalLabel">Detail Profil Pengajar</h4>
+                   </div>
+               <div class="modal-body">
+                   <center>
+                   {% if modal.foto %}
+                   <img src="{{modal.foto.url}}" name="aboutme" width="140" height="140" border="0" class="img-rounded img-responsive"></a>
+                   {% endif %}
+                  <br />
+                   <h3 class="media-heading">{{modal.nama}} <small>
+                   {% if modal.gelar1%}{{modal.gelar1}}{% endif %}, {% if modal.gelar2%} {{modal.gelar2}}{% endif %}, {% if modal.gelar3%} {{modal.gelar3}}{% endif %}</small></h3>
+                    <h4>{{modal.jabatan}}</h4>
+                    <span><strong>Skills: </strong></span>
+                    {% if modal.bidang_keahlian1 %}
+                    <span class="label label-success"> S1 : {{modal.bidang_keahlian1}}</span>
+                    {% endif %}
+                    {% if modal.bidang_keahlian2 %}
+                     <span class="label label-success"> S2 : {{modal.bidang_keahlian2}}</span>
+                    {% endif %}
+                    {% if modal.bidang_keahlian3 %}
+                    <span class="label label-success"> S3 : {{modal.bidang_keahlian3}}</span>
+                    {% endif %}
+                   </center>
+                   <hr>
+                   <p class="text-left"><strong><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pendidikan :</strong>
+                  <br>
+                  <ol class="list-unstyled">
+                  {% if modal.pendidikan1 %}
+                    <li><b>&nbsp;S-1&nbsp;{{modal.pendidikan1}} </b></li>
+                    {% endif %}
+                    {% if modal.pendidikan2 %}
+                    <li><b>&nbsp;S-2&nbsp; {{modal.pendidikan2}}</b></li>
+                    {% endif %}
+                    {% if modal.pendidikan3 %}
+                    <li><b>&nbsp;S-3&nbsp; {{modal.pendidikan3}}</b></li>
+                    {% endif %}
+                  </ol>
+                  </p>
+                 
 
+                   <br>
+                   {% if modal.biografi %}
+                   <p class="text-left"><strong>Bio: </strong><br>
+                       {{modal.biografi}}</p>
+                    {% endif %}
+                   <br>
+               </div>
+               <div class="modal-footer">
+                   <center>
+                   <a href="{% url 'dashboard:edit_staff' modal.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                   {% if modal.penelitian %}
+                    <a type="button" class="btn btn-info" href="{{modal.penelitian}}">Cari Penelitian</a>
+                    
+                {% endif %}
+                    <a href="{% url 'dashboard:hapus_staff' modal.id %}"  class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                    </center>
+               </div>
+           </div>
+       </div>
+   </div>
+   {% endfor %}
+   
+   {% for i in staff %}
+   <!-- Modal untuk Hapus -->
+    <div class="modal fade" id="hapus" role="dialog">
+        <div class="modal-dialog modal-sm modal-primary">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Authentikasi Aplikasi</h4>
+            </div>
+            <div class="modal-body">
+              <p>Apakah anda yakin untuk menghapus?</p>
+            </div>
+            <div class="modal-footer">
+            <a href="{% url 'dashboard:hapus_staff' i.id %}" class="btn btn-primary" >Iya</a>
+              <a href="" class="btn btn-danger" data-dismiss="modal">Batal</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Tutup Modal untuk Hapus -->
+    {% endfor %}
         </div>
         <!-- /#page-wrapper -->
 

@@ -23,7 +23,7 @@
    <li class="breadcrumb-item active">Detail Berita</li>
   </ol>
 
-<div class="page-header animated fadeIn"><h1 id="page-header"> <i class="fa fa-newspaper-o" aria-hidden="true"></i> Judul Berita Hari Ini <small ><i class="fa fa-clock-o" aria-hidden="true"></i> 27 Maret 2017</small></h1> </div>
+<div class="page-header animated fadeIn"><h1 id="page-header"> <i class="fa fa-newspaper-o" aria-hidden="true"></i> {{obj.judul}} <small ><i class="fa fa-clock-o" aria-hidden="true"></i> {{obj.updated|date:"d M Y"}}</small></h1> </div>
   </div>
   <div class="col-md-10 col-md-offset-1">
 
@@ -31,9 +31,11 @@
   <div class="row">
   <div class="col-md-12">
     <div class="col-md-5">
-    <img class="img-responsive" src="{% static 'img/a1.JPG' %}" />
+    {% if obj.image %}
+    <img class="img-responsive" src="{{obj.image.url}}" />
+    {% endif %}
     </div>
-    <p class='text-justify lead' id="para-konten">Dalam tata kelola universitas, Program Studi Informatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalah:Informatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalahInformatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalahInformatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalahInformatika Universitas Muhammadiyah Surakarta (UMS) termasuk kedalam Fakultas Komunikasi dan Informatika (FKI). Semua pelayanan administrasi dan kegiatan belajar mengajar (semua kegiatan perkuliahan dan praktikum) dilaksanakan di Gedung J kompleks kampus II UMS yang terletak di Jl. A. Yani, Pabelan, Kartasura Sukoharjo. Informatika UMS berusaha selalu menjaga dan meningkatkan fasilitas pembelajaran baik ruang kuliah maupun laboratorium agar selalu sesuai dengan perkembangan zaman. Laboratorium yang saat ini ada di Program Studi Informatika UMS adalah</p>
+    <p class='text-justify lead' id="para-konten">{{obj.content}}</p>
 
     </div>
     </div>
