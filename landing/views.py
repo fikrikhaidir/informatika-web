@@ -28,7 +28,7 @@ def galeri(request):
     except EmptyPage:
         galeri = paginator.page(paginator.num_pages)
     context={
-    
+
         'judul':judul,
         'subJudul':subJudul,
         'galeri':galeri,
@@ -36,9 +36,9 @@ def galeri(request):
     return render(request,"berita/galeri.html",context)
 
 def berita(request):
-    list_berita_list = berita_model.objects.filter(tag='Berita').filter(draft=False).filter(publish__lte=timezone.now())
-
-    judul="Berita"
+    # list_berita_list = berita_model.objects.filter(tag='Berita').filter(draft=False).filter(publish__lte=timezone.now())
+    list_berita_list = berita_model.objects.filter(draft=False)
+    judul="Berita & Pengumuman"
     subJudul= "Kabar Keadaan Terbaru Prodi Informatika"
     #pagination
     page = request.GET.get('page',1)
@@ -75,7 +75,7 @@ def detail_berita(request,slug=None):
     return render(request,"berita/berita-detail.html",context)
 
 def pengumuman(request):
-    list_pengumuman_list = berita_model.objects.filter(draft=False).filter(tag='Pengumuman').filter(publish__lte=timezone.now())
+    list_pengumuman_list = berita_model.objects.filter(draft=False).filter(tag='Pengumuman')
     judul="Pengumuman"
     subJudul= "Kabar Keadaan Terbaru Prodi Informatika"
     #pagination
@@ -122,7 +122,7 @@ def kurikulum(request):
         'judul':judul,
         'subJudul':subJudul,
         'kurikulum':data_kurikulum,
-  
+
     }
     return render(request,"kurikulum/kurikulum.html",context)
 
@@ -230,4 +230,3 @@ def dokumen_detail(request,id=None):
     'judul':'Dokumen',
     }
     return render(request,'dokumen/dokumen.html',context)
-
