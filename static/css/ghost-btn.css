@@ -44,3 +44,9 @@
 #btnTestimoni{
   margin-top: 8px !important;
 }
+
+#btnDokumen{
+  padding: 14px 27px;
+  font-size: 0.7em;
+  margin-bottom: 8px !important;
+}
