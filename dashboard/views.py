@@ -56,7 +56,7 @@ def password_ubah(request):
         form_password = ubah_password(request.user, data=request.POST)
         if form_password.is_valid():
             form_password.save()
-            update_session_auth_hash(request, form_password.user) 
+            update_session_auth_hash(request, form_password.user)
             messages.success(request, "Password sudah terganti.")
             # return redirect("/")
     else:
@@ -95,7 +95,7 @@ def cetak_rekapan_alumni(request):
     for x in data:
         table_data.append([ i,x.nama, x.nim, x.konsentrasi, x.tempat_kerja,x.jabatan,str(x.tahun_masuk)+", "+str(x.tahun_keluar) ])
         i+=1
-  
+
 
     # membuat dokumen baru
     doc = SimpleDocTemplate(response, pagesize=A4, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
@@ -390,6 +390,16 @@ def kurikulum(request):
     return render(request,'dashboard/halaman/kurikulum/list_kurikulum.html',context)
 
 @login_required()
+def ukm(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    context={
+
+    }
+    return render(request,'dashboard/halaman/ukm.html',context)
+
+
+@login_required()
 def kurikulum_tambah(request):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
@@ -490,5 +500,3 @@ def dokumen_hapus(request,id=None):
     data = get_object_or_404(dokumen_model,id=id)
     data.delete()
     return redirect('dashboard:dokumen')
-
-

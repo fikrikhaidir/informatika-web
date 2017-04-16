@@ -23,3 +23,23 @@
   letter-spacing: 1.4px;
   font-weight:bold !important;
 }
+
+#wrap-content{
+  word-wrap: break-word;
+}
+
+/*modal halaman dokumen*/
+.modal .modal-header .btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: transparent;
+}
+
+#containerDokumen{
+  border: 2px #205081 solid;
+  /*border: 2px #0D47A1 solid;*/
+}

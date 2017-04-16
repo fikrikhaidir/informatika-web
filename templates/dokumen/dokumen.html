@@ -2,10 +2,9 @@
 {% load staticfiles   %}
 
 {% block css %}
-<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static 'css/custom-pages.css' %}" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/ghost-btn.css' %}" />
 {% endblock css %}
 
 
@@ -23,30 +22,32 @@
    <li class="breadcrumb-item active">Dokumen</li>
   </ol>
 
-<div class="page-header animated fadeIn"><h1 id="page-header"> <i class="fa fa-cloud-download" aria-hidden="true"></i> Dokumen </h1> </div>
+<div class="page-header animated fadeIn"><h1 id="page-header"> <i class="fa fa-cloud-download" aria-hidden="true"></i> Download Dokumen </h1> </div>
   </div>
   <div class="col-md-10 col-md-offset-1">
 
-  <div class="row">
+  <!-- <div class="row"> -->
   {% for dt in dokumen %}
-  <div class="col-md-12">
-    <h5><strong>{{dt.deskripsi}}</strong></h5>
-    <p class='text-justify' >{{dt.keterangan|truncatechars:50}}</p>
-    <p><strong><i class="fa fa-clock-o"></i> {{dt.tanggal|date:"d M Y"}}</strong></p>
-    <a href="" data-target="#modal{{forloop.counter}}" data-toggle="modal" class="btn btn-primary"><i class="fa fa-eye"> Detail</i></a>
+  <div class="col-md-12" id="containerDokumen">
+    <h3><strong>{{dt.deskripsi}}</strong></h3>
+    <p class='text-justify' >{{dt.keterangan|truncatechars:40}}</p>
     <hr />
+    <p><strong><i class="fa fa-clock-o"></i> Diunggah : {{dt.tanggal|date:"d M Y"}}</strong></p>
+    <a href=""  data-toggle="modal" data-target="#modal{{forloop.counter}}" >
+      <button class="btn btn-ghost-black btn-lg" id="btnDokumen" role="button" style="margin-top:8px;margin-bottom:5px;">DETAIL</button>
+    </a>
     </div>
 
     {% endfor %}
-    </div>
-  
+    <!-- </div> -->
+
 
 
 </div>
 
 </div> <!-- container-fluid -->
 {% for modal in dokumen %}
-<div tabindex="-1" class="modal fade" id="modal{{forloop.counter}}" role="dialog">
+<!-- <div tabindex="-1" class="modal fade" id="modal{{forloop.counter}}" role="dialog">
   <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
@@ -54,14 +55,39 @@
         <h3 class="modal-title">File {{modal.deskripsi}}</h3>
     </div>
     <div class="modal-body">
-    <p class='text-justify' >{{modal.keterangan}}</p>
+    <p class='text-justify'>{{modal.keterangan}}</p>
     {% if modal.file %}
     <a href="{{modal.file.url}}" class="btn-xs btn-info"><i class="fa fa-cloud-download"></i> Download File </a>
-    {% endif %} 
+    {% endif %}
     </div>
    </div>
   </div>
-</div>
+</div> -->
+
+<div id="modal{{forloop.counter}}" class="modal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <a class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+                    <h4 class="modal-title">Download Dokumen</h4>
+                </div>
+                <div class="modal-body">
+                    <h3><strong>Nama Dokumen : </strong>{{modal.deskripsi}}</h3><br />
+                    <p id="wrap-content">{{modal.keterangan}}</p>
+                    <h5> <strong>Ukuran Dokumen : </strong>{{modal.file.size|filesizeformat}}</h5>
+                        <center>
+                          <a href="{% url 'home:staff' %}" >
+                            <button class="btn btn-ghost-black btn-lg"  id="btnDokumen" role="button" style="margin-top:8px;margin-bottom:5px;">DOWNLOAD</button>
+                          </a>
+                        </center>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+    </div><!-- /.modal -->
+
+
 {% endfor %}
 
 {% endblock content %}

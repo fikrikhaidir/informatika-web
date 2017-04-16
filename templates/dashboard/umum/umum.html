@@ -25,17 +25,18 @@
                     <div class="col-lg-12">
                     <a href="{% url 'dashboard:tambah_dokumen' %}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Dokumen</a>
                      {% for dokumen in dokumen %}
-                     
-                    <div class="panel-body">                         
-                            <h4>Deskripsi : {{dokumen.keterangan}}</h4>
+
+                    <div class="panel-body">
+                            <h4>Keterangan : </h4>
+                            <h4 id="wrap-content">{{dokumen.keterangan}}</h4>
                             <h4>File : <a href="{{dokumen.file.url}}"><i class="fa fa-cloud-download" aria-hidden="true"></i> {{dokumen.deskripsi}}</a></h4>
                             <h4>Posted : {{dokumen.tanggal}}</h4>
-                           
+
                     </div>
                     <div class="page-footer">
-                     <a href="{% url 'dashboard:edit_dokumen' dokumen.id %}" class="btn btn-warning"><i class="fa fa-edit"> Dokumen {{dokumen.deskripsi}}</i></a>  <a href="{% url 'dashboard:hapus_dokumen' dokumen.id %}" class="btn btn-danger"><i class="fa fa-trash"> Dokumen {{dokumen.deskripsi}}</i></a>
+                     <a href="{% url 'dashboard:edit_dokumen' dokumen.id %}" class="btn btn-warning"><i class="fa fa-edit"></i> Dokumen {{dokumen.deskripsi}}</a>  <a href="{% url 'dashboard:hapus_dokumen' dokumen.id %}" class="btn btn-danger"><i class="fa fa-trash"></i> Dokumen {{dokumen.deskripsi}}</a>
                      </div>
-                   
+
                     {% endfor %}
 
 

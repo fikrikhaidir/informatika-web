@@ -23,10 +23,10 @@
             {% if beritas %}
             <form class="form-group" method='GET' action=''>
                     <input type='text' name='q' placeholder='Cari Berita' value='{{ request.GET.q }}'/>
-                    <input type='submit' class="btn btn-primary" value='Cari' />
+                    <input type='submit' class="btn btn-sm btn-primary" value='Cari' />
 
                 </form>
-                
+
 
             <section id="pinBoot">
                 {% for berita in beritas %}
@@ -34,7 +34,7 @@
                     <h4><a href="{% url 'home:detail_berita' berita.slug %}">{{berita.judul}}</a>
                     <h5>Dipublish {{berita.publish|date:"d M Y"}}&nbsp; <span class="label label-info">BERITA</span></h5>
                     <p>{{berita.content|truncatechars:200}}</p>
-                    <h5>Diupdate {{berita.updated|date:"d M Y"}}</h5>
+                    <!-- <h5>Diupdate {{berita.updated|date:"d M Y"}}</h5> -->
                 </article>
 
                {% endfor %}
