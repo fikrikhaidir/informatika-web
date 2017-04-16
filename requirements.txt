@@ -1,5 +1,5 @@
 appdirs==1.4.3
-Django==1.10
+Django==1.10.6
 django-crispy-forms==1.6.1
 django-simple-captcha==0.5.5
 django-stdimage==2.4.1

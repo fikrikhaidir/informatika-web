@@ -143,12 +143,16 @@ def identitas(request):
     return render(request,"profil/identitas.html",context)
 
 def staff(request):
-    data_staff = staff_model.objects.all()
+    data_staff = staff_model.objects.filter(posisi='staff')
+    data_dosen_tetap = staff_model.objects.filter(posisi='dosen tetap')
+    data_dosen_profesi = staff_model.objects.filter(posisi='dosen profesi')
     judul = "STAFF PENGAJAR"
     subJudul= ""
     context={
         'judul':judul,
         'staff':data_staff,
+        'dosen_tetap':data_dosen_tetap,
+        'dosen_profesi':data_dosen_profesi,
     }
     return render(request,"profil/staff.html",context)
 
@@ -171,18 +175,22 @@ def prestasi(request):
 def fosti(request):
     judul = "FOSTI"
     subJudul= "Forum Open Source Informatika"
+    data = ukm_model.objects.all()
     context={
         'judul':judul,
         'subJudul':subJudul,
+        'fosti':data,
     }
     return render(request,"ukm/fosti.html",context)
 
 def himatif(request):
     judul = "HIMATIF"
     subJudul= "Himpunan Mahasiswa Teknik Informatika"
+    data = ukm_model.objects.all()
     context={
         'judul':judul,
         'subJudul':subJudul,
+        'himatif':data,
     }
     return render(request,"ukm/himatif.html",context)
 

@@ -77,7 +77,7 @@
                     <p id="wrap-content">{{modal.keterangan}}</p>
                     <h5> <strong>Ukuran Dokumen : </strong>{{modal.file.size|filesizeformat}}</h5>
                         <center>
-                          <a href="{% url 'home:staff' %}" >
+                          <a href="{{modal.file.url}}" >
                             <button class="btn btn-ghost-black btn-lg"  id="btnDokumen" role="button" style="margin-top:8px;margin-bottom:5px;">DOWNLOAD</button>
                           </a>
                         </center>
