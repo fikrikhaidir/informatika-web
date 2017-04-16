@@ -37,12 +37,12 @@ def galeri(request):
 
 def berita(request):
     # list_berita_list = berita_model.objects.filter(tag='Berita').filter(draft=False).filter(publish__lte=timezone.now())
-    list_berita_list = berita_model.objects.filter(draft=False)
+    list_berita_list = berita_model.objects.filter(draft=False).filter(publish__lte=timezone.now())
     judul="Berita & Pengumuman"
     subJudul= "Kabar Keadaan Terbaru Prodi Informatika"
     #pagination
     page = request.GET.get('page',1)
-    paginator = Paginator(list_berita_list, 8)
+    paginator = Paginator(list_berita_list, 12)
 
 
     try:
@@ -75,11 +75,7 @@ def detail_berita(request,slug=None):
     return render(request,"berita/berita-detail.html",context)
 
 def pengumuman(request):
-<<<<<<< HEAD
     list_pengumuman_list = berita_model.objects.filter(tag='Pengumuman').filter(draft=False).filter(publish__lte=timezone.now())
-=======
-    list_pengumuman_list = berita_model.objects.filter(draft=False).filter(tag='Pengumuman')
->>>>>>> remotes/fikrikhaidir/informatika-web/master
     judul="Pengumuman"
     subJudul= "Kabar Keadaan Terbaru Prodi Informatika"
     #pagination

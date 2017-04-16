@@ -25,7 +25,7 @@
             <form role="form" method='GET' action='' id="form-buscar">
             <div class="form-group">
             <div class="input-group">
-            <input id="1" class="form-control" type="text" name="search" placeholder="Cari Berita dan Pengumuman" value='{{ request.GET.q }}'/>
+            <input id="1" class="form-control" type="text" name="q" placeholder="Cari Berita dan Pengumuman" value='{{ request.GET.q }}'/>
             <span class="input-group-btn">
             <button class="btn btn-info" type="submit">
             <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Cari
@@ -33,7 +33,7 @@
             </span>
             </div>
             </div>
-            </form>
+           </form>
 
             <section id="pinBoot">
                 {% for berita in beritas %}
