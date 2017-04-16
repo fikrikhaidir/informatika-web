@@ -17,10 +17,10 @@ from django.conf import settings
 
 
 '''Keperluan Cetak'''
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import A4, landscape
+from reportlab.lib.pagesizes import A4, landscape, letter
 from reportlab.lib import colors
 
 # Create your views here.
@@ -114,6 +114,9 @@ def cetak_rekapan_alumni(request):
 
     # mengisi pdf
     content = []
+    logo = "static/img/logo_ums.jpg"
+    im = Image(logo, 2*inch, 2*inch)
+    content.append(im)
     content.append(Paragraph('Daftar Rekapan Mahasiswa Alumni Informatika', styles['Title']))
     content.append(Spacer(1,12))
     content.append(Paragraph('Berikut ini adalah rekapannya' , styles['Normal']))
