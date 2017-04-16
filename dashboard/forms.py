@@ -1,5 +1,5 @@
 from django import forms
-from .models import berita_model,staff_model,gallery_model,kurikulum_model,dokumen_model
+from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.forms import PasswordChangeForm
@@ -66,7 +66,8 @@ class berita_form(forms.ModelForm):
 class staff_form(forms.ModelForm):
 	class Meta:
 		model = staff_model
-		fields = '__all__'
+		fields = ['nama','nama_display','nidn','jabatan','gelar1','gelar2','gelar3',
+        'pendidikan1','pendidikan2','pendidikan3','bidang_keahlian1','bidang_keahlian2','bidang_keahlian3','penelitian','foto','biografi']
 		error_messages = {
 		'nama':{
 		'required':'Anda harus mengisi nama lengkap anda'
@@ -143,6 +144,15 @@ class dokumen_form(forms.ModelForm):
         fields = "__all__"
         widgets={
         'deskripsi': forms.TextInput(attrs={'placeholder': 'Masukkan nama dokumen maksimal 20 karakter'}),
+        }
+
+class ukm_form(forms.ModelForm):
+    class Meta:
+        model = ukm_model
+        fields = "__all__"
+        widgets={
+        'link_fosti': forms.TextInput(attrs={'placeholder': 'Masukkan link himatif'}),
+        'link_himatif': forms.TextInput(attrs={'placeholder': 'Masukkan link fosti'}),
         }
 
 

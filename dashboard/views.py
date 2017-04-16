@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import berita_model,gallery_model,staff_model,kurikulum_model,dokumen_model
+from .models import *
 from landing.models import alumni_model
-from .forms import staff_form,berita_form,gallery_form,kurikulum_form,user_login_form,ubah_password,dokumen_form
+from .forms import *
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
@@ -17,10 +17,10 @@ from django.conf import settings
 
 
 '''Keperluan Cetak'''
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import A4, landscape
+from reportlab.lib.pagesizes import A4, landscape, letter
 from reportlab.lib import colors
 
 # Create your views here.
@@ -114,9 +114,12 @@ def cetak_rekapan_alumni(request):
 
     # mengisi pdf
     content = []
+    # logo = "static/img/logo_ums.jpg"
+    # im = Image(logo, 2*inch, 2*inch)
+    # content.append(im)
     content.append(Paragraph('Daftar Rekapan Mahasiswa Alumni Informatika', styles['Title']))
     content.append(Spacer(1,12))
-    content.append(Paragraph('Berikut ini adalah rekapannya' , styles['Normal']))
+    # content.append(Paragraph('Berikut ini adalah rekapannya' , styles['Normal']))
     content.append(Spacer(1,12))
     content.append(pendaftar_table)
     content.append(Spacer(1,36))
@@ -132,12 +135,34 @@ def cetak_rekapan_alumni(request):
 def staff(request):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
-    data_staff = staff_model.objects.all()
+    data_staff = staff_model.objects.all().filter(posisi='staff')
     context={
     'staff':data_staff,
     'judul':'Staff',
     }
     return render(request,'dashboard/staff/list_staff.html',context)
+
+@login_required()
+def dosen_tetap(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data_staff = staff_model.objects.all().filter(posisi='dosen tetap')
+    context={
+    'staff':data_staff,
+    'judul':'Staff',
+    }
+    return render(request,'dashboard/staff/list_dosen_tetap.html',context)
+
+@login_required()
+def dosen_profesi(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data_staff = staff_model.objects.all().filter(posisi='dosen profesi')
+    context={
+    'staff':data_staff,
+    'judul':'Staff',
+    }
+    return render(request,'dashboard/staff/list_dosen_profesi.html',context)
 
 @login_required()
 def staff_tambah(request):
@@ -146,6 +171,7 @@ def staff_tambah(request):
     form_staff = staff_form(request.POST or None, request.FILES or None)
     if form_staff.is_valid():
         data_staff = form_staff.save(commit=False)
+        data_staff.posisi = 'staff'
         data_staff.save()
         # messages.success(request,'Data staff sudah tersimpan')
         return redirect('dashboard:staff')
@@ -156,6 +182,40 @@ def staff_tambah(request):
     return render(request,'dashboard/staff/tambah_staff.html',context)
 
 @login_required()
+def dosen_tetap_tambah(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    form_staff = staff_form(request.POST or None, request.FILES or None)
+    if form_staff.is_valid():
+        data_staff = form_staff.save(commit=False)
+        data_staff.posisi = 'dosen tetap'
+        data_staff.save()
+        # messages.success(request,'Data staff sudah tersimpan')
+        return HttpResponseRedirect('../')
+    context={
+    'form_staff':form_staff,
+    'judul':'Tambah Staff'
+    }
+    return render(request,'dashboard/staff/tambah_dosen_tetap.html',context)
+
+@login_required()
+def dosen_profesi_tambah(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    form_staff = staff_form(request.POST or None, request.FILES or None)
+    if form_staff.is_valid():
+        data_staff = form_staff.save(commit=False)
+        data_staff.posisi = 'dosen profesi'
+        data_staff.save()
+        # messages.success(request,'Data staff sudah tersimpan')
+        return HttpResponseRedirect('../')
+    context={
+    'form_staff':form_staff,
+    'judul':'Tambah Staff'
+    }
+    return render(request,'dashboard/staff/tambah_dosen_profesi.html',context)
+
+@login_required()
 def staff_edit(request,id=None):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
@@ -164,13 +224,47 @@ def staff_edit(request,id=None):
     if form_staff.is_valid():
         isi_staff = form_staff.save(commit=False)
         data_staff.save()
-        messages.success(request,'Data staff berhasil diedit..')
+        # messages.success(request,'Data staff berhasil diedit..')
         return redirect('dashboard:staff')
     context={
     'form_staff':form_staff,
     'judul':'Edit Staff',
     }
     return render(request,'dashboard/staff/tambah_staff.html',context)
+
+@login_required()
+def dosen_tetap_edit(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data_staff = get_object_or_404(staff_model,id=id)
+    form_staff = staff_form(request.POST or None, request.FILES or None,instance=data_staff)
+    if form_staff.is_valid():
+        isi_staff = form_staff.save(commit=False)
+        data_staff.save()
+        # messages.success(request,'Data staff berhasil diedit..')
+        return HttpResponseRedirect('../../')
+    context={
+    'form_staff':form_staff,
+    'judul':'Edit Staff',
+    }
+    return render(request,'dashboard/staff/tambah_dosen_tetap.html',context)
+
+@login_required()
+def dosen_profesi_edit(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data_staff = get_object_or_404(staff_model,id=id)
+    form_staff = staff_form(request.POST or None, request.FILES or None,instance=data_staff)
+    if form_staff.is_valid():
+        isi_staff = form_staff.save(commit=False)
+        data_staff.save()
+        # messages.success(request,'Data staff berhasil diedit..')
+        return HttpResponseRedirect('../..')
+    context={
+    'form_staff':form_staff,
+    'judul':'Edit Staff',
+    }
+    return render(request,'dashboard/staff/tambah_dosen_profesi.html',context)
 
 @login_required()
 def staff_hapus(request,id=None):
@@ -180,6 +274,26 @@ def staff_hapus(request,id=None):
     data_staff.delete()
     # messages.success(request,'Data staff berhasil dihapus.')
     return redirect('dashboard:staff')
+    # return redirect()
+
+@login_required()
+def dosen_tetap_hapus(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data_staff = get_object_or_404(staff_model,id=id)
+    data_staff.delete()
+    # messages.success(request,'Data staff berhasil dihapus.')
+    return redirect('dashboard:dosen_tetap')
+    # return redirect()
+
+@login_required()
+def dosen_profesi_hapus(request,id=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data_staff = get_object_or_404(staff_model,id=id)
+    data_staff.delete()
+    # messages.success(request,'Data staff berhasil dihapus.')
+    return redirect('dashboard:dosen_profesi')
     # return redirect()
 
 @login_required()
@@ -379,6 +493,15 @@ def pengumuman_edit(request,slug=None):
     return render(request,'dashboard/berita/buat_berita.html',context)
 
 @login_required()
+def pengumuman_hapus(request,slug=None):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    data_berita = get_object_or_404(berita_model,slug=slug)
+    data_berita.delete()
+    # messages.success(request,'Berita berhasil dihapus')
+    return redirect('dashboard:pengumuman')
+
+@login_required()
 def kurikulum(request):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
@@ -393,7 +516,9 @@ def kurikulum(request):
 def ukm(request):
     if not request.user.is_active and not request.user.is_authenticated:
         raise Http404
+    data = ukm_model.objects.all()
     context={
+    'ukm':data,
 
     }
     return render(request,'dashboard/halaman/ukm.html',context)
@@ -500,3 +625,39 @@ def dokumen_hapus(request,id=None):
     data = get_object_or_404(dokumen_model,id=id)
     data.delete()
     return redirect('dashboard:dokumen')
+
+@login_required()
+def ukm_tambah(request):
+    if not request.user.is_active and not request.user.is_authenticated:
+        raise Http404
+    form_ukm = ukm_form(request.POST or None, request.FILES or None)
+    if form_ukm.is_valid():
+        data_ukm = form_ukm.save(commit=False)
+        data_ukm.save()
+        return redirect('dashboard:ukm')
+    context={
+    'form_ukm':form_ukm,
+    'judul':'Form UKM',
+    }
+    return render(request,'dashboard/halaman/buat_ukm.html',context)
+
+@login_required()
+def ukm_edit(request,id=None):
+    data_isi = get_object_or_404(ukm_model,id=id)
+    form_ukm = ukm_form(request.POST or None, request.FILES or None,instance=data_isi)
+    if form_ukm.is_valid():
+        data = form_ukm.save(commit=False)
+        data.save()
+        return redirect('dashboard:ukm')
+    context={
+    'form_ukm':form_ukm,
+    'judul':'Edit UKM',
+    }
+    return render(request,'dashboard/halaman/buat_ukm.html',context)
+
+@login_required()
+def ukm_hapus(request,id=None):
+    data_ukm = get_object_or_404(ukm_model,id=id)
+    data_ukm.delete()
+    return redirect('dashboard:ukm')
+

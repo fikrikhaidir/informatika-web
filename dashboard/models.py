@@ -75,6 +75,7 @@ class staff_model(models.Model):
 	penelitian = models.CharField(default='',blank=True,max_length=200,verbose_name='Penelitian Google Scholar')
 	biografi = models.TextField(default='',blank=True,verbose_name='Biografi')
 	foto = StdImageField(upload_to='upload/dosen',validators=[MaxSizeValidator(1028, 768)],blank=True)
+	posisi = models.CharField(default='',null=False,max_length=30)
 
 	def save(self,*args,**kwargs):
 		nama = self.nama_display.upper()
@@ -117,3 +118,12 @@ class dokumen_model(models.Model):
 
 	def __unicode__(self):
 		return '%s' % self.keterangan
+
+class ukm_model(models.Model):
+	link_fosti = models.CharField(default='',null=False,verbose_name='Link FOSTI',max_length=300)
+	link_himatif = models.CharField(default='',null=False,verbose_name='Link HIMATIF',max_length=300)
+
+	def __unicode__(self):
+		return '%s' % self.link_fosti 
+
+

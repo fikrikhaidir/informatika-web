@@ -1,5 +1,6 @@
 {% extends 'dashboard/base.html' %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
 
 
 {% block content %}
@@ -25,17 +26,17 @@
                         </h1>
                     </div>
                     <div class="col-lg-12">
-                    <a href="{% url 'dashboard:tambah_link' %}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah LINK </a> <br /><br />
-                    <div class="panel panel-default">
-                    <div class="panel-heading"><h4>Link UKM</h4></div>
-                    <div class="panel-body">
-                    {% for dt in ukm %}
-                        <h5>Link Fosti : {{dt.link_fosti}}</h5>
-                        <h5>Link Fosti : {{dt.link_himatif}}</h5>
-                        <a href="{% url 'dashboard:edit_ukm' dt.id %}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit LINK </a>
-                    {% endfor %}
+                   <div class="panel-body">
+                        <form method="POST" action="" enctype="multipart/form-data">
+
+                            {% csrf_token %}
+                            {{ form_ukm | crispy }}
+                            <input type="submit" class="btn btn-primary" value="Simpan">
+                            <!--<script>alert("Terima Kasih sudah mendaftar beasiswa, {{ user }}")</script>-->
+
+                        </form>
                     </div>
-                    </div>
+                    
 
 
               </div>

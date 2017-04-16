@@ -17,22 +17,22 @@
             <h1 id="page-header"><i class="fa fa-user-o" aria-hidden="true"></i> {{judul}} <small>Profil Tenaga Pengajar Informatika UMS</small></h1> </div>
     </div>
     <div class="col-md-10 col-md-offset-1">
-        <h2><i class="fa fa-user" aria-hidden="true"></i> DOSEN PENGAJAR </h2>
+        <h2><i class="fa fa-user" aria-hidden="true"></i> DOSEN TETAP </h2>
         <hr />
         <div class="grid">
             <div class="row">
 
 
 
-            {% for staff in staff %}
+            {% for dt in dosen_tetap %}
             <div class="col-md-4">
              <a href="" data-toggle="modal" data-target="#dosen{{forloop.counter}}">
             <figure class="effect-zoe img-responsive">
-            {% if staff.foto %}
-                <img src="{{staff.foto.url}}" alt="staff"/>
+            {% if dt.foto %}
+                <img src="{{dt.foto.url}}" alt="staff"/>
                 {% endif %}
                 <figcaption>
-                  <center><h2>{{staff.nama_display}}</h2></center>
+                  <center><h2>{{dt.nama_display}}</h2></center>
                 </figcaption>
             </figure></a>
             </div>
@@ -41,45 +41,58 @@
           </div> <!-- row inside grid -->
         </div>  <!-- grid -->
     <br />
-   <!--  <br />
-    <br /> -->
-    <!-- <h2 class="text-right"><i class="fa fa-user" aria-hidden="true"></i> DOSEN PROFESI </h2>
-    <hr /> -->
+    <br />
+    <br />
+    <h2 class="text-right"><i class="fa fa-user" aria-hidden="true"></i> DOSEN PROFESI </h2>
+    <hr />
 
-    <!-- <div class="grid">
+    <div class="grid">
         <div class="row">
 
-          {% for i in "xxx" %}
+          {% for dp in dosen_profesi %}
           <div class="col-md-4">
-           <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
+           <a href="#aboutModal" data-toggle="modal" data-target="#dp{{forloop.counter}}">
           <figure class="effect-zoe img-responsive">
-              <img src="{% static 'img/dosen/IMG_1873.jpg' %}" alt="img25"/>
+              <img src="{{dp.foto.url}}" alt="dp"/>
               <figcaption>
-                <center><h2>Husni <span>Thamrin</span></h2></center>
+                <center><h2>{{dp.nama_display}}</span></h2></center>
               </figcaption>
           </figure></a>
           </div>
           {% endfor %}
- -->
-        <!--   {% for i in "xxx" %}
+
+          
+
+        </div> <!--row inside grid-->
+      </div>  <!--grid-->
+      <br />
+    <br />
+    <br />
+    <h2 class="text-left"><i class="fa fa-user" aria-hidden="true"></i> STAFF </h2>
+    <hr />
+
+    <div class="grid">
+    <div class="row">
+    {% for staff in staff %}
          <div class="col-md-4">
+          <a href="#aboutModal" data-toggle="modal" data-target="#staff{{forloop.counter}}">
           <figure class="effect-zoe">
-              <img src="{% static 'img/dosen/IMG_3003.jpg' %}" alt="img26" />
+              <img src="{{staff.foto.url}}" alt="img26" />
               <figcaption>
-                  <h2>Heru <span>Supriyono</span></h2>
+                  <h2>{{staff.nama_display}}</span></h2>
               </figcaption>
           </figure>
         </div>
-        {% endfor %} -->
-
-    <!--     </div> row inside grid -->
-    <!--   </div>  grid -->
+        {% endfor %}
+      
+    </div>
+    </div>
 
     </div> <!--column-->
 
 
 </div><!-- container-fluid -->
-{% for modal in staff %}
+{% for modal in dosen_tetap %}
 <div class="modal fade" id="dosen{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
        <div class="modal-dialog">
            <div class="modal-content">
@@ -135,6 +148,140 @@
                    <center>
                     {% if modal.penelitian %}
                     <a type="button" class="btn btn-info" href="{{modal.penelitian}}">Cari Penelitian</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                {% endif %}
+                    
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
+                    </center>
+               </div>
+           </div>
+       </div>
+   </div>
+   {% endfor %}
+
+   {% for modaldp in dosen_profesi %}
+<div class="modal fade" id="dp{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                   <h4 class="modal-title">Detail Profil Pengajar</h4>
+                   </div>
+               <div class="modal-body">
+                   <center>
+                   {% if modaldp.foto %}
+                   <img src="{{modaldp.foto.url}}" name="aboutme" width="140" height="140" border="0" class="img-rounded img-responsive"></a>
+                   {% endif %}
+                  <br />
+                   <h3 class="media-heading">{{modaldp.nama}} <small>
+                   {% if modaldp.gelar1%}{{modaldp.gelar1}}{% endif %}, {% if modaldp.gelar2%} {{modaldp.gelar2}}{% endif %}, {% if modaldp.gelar3%} {{modaldp.gelar3}}{% endif %}</small></h3>
+                    <h4>{{modaldp.jabatan}}</h4>
+                    <span><strong>Skills: </strong></span>
+                    {% if modaldp.bidang_keahlian1 %}
+                    <span class="label label-success"> S1 : {{modaldp.bidang_keahlian1}}</span>
+                    {% endif %}
+                    {% if modaldp.bidang_keahlian2 %}
+                     <span class="label label-success"> S2 : {{modaldp.bidang_keahlian2}}</span>
+                    {% endif %}
+                    {% if modaldp.bidang_keahlian3 %}
+                    <span class="label label-success"> S3 : {{modaldp.bidang_keahlian3}}</span>
+                    {% endif %}
+                   </center>
+                   <hr>
+                   <p class="text-left"><strong><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pendidikan :</strong>
+                  <br>
+                  <ol class="list-unstyled">
+                  {% if modaldp.pendidikan1 %}
+                    <li><b>&nbsp;S-1&nbsp;{{modaldp.pendidikan1}} </b></li>
+                    {% endif %}
+                    {% if modaldp.pendidikan2 %}
+                    <li><b>&nbsp;S-2&nbsp; {{modaldp.pendidikan2}}</b></li>
+                    {% endif %}
+                    {% if modaldp.pendidikan3 %}
+                    <li><b>&nbsp;S-3&nbsp; {{modaldp.pendidikan3}}</b></li>
+                    {% endif %}
+                  </ol>
+                  </p>
+                 
+
+                   <br>
+                   {% if modaldp.biografi %}
+                   <p class="text-left"><strong>Bio: </strong><br>
+                       {{modaldp.biografi}}</p>
+                    {% endif %}
+                   <br>
+               </div>
+               <div class="modal-footer">
+                   <center>
+                    {% if modaldp.penelitian %}
+                    <a type="button" class="btn btn-info" href="{{modaldp.penelitian}}">Cari Penelitian</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                {% endif %}
+                    
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
+                    </center>
+               </div>
+           </div>
+       </div>
+   </div>
+   {% endfor %}
+
+   {% for modalstaff in staff %}
+<div class="modal fade" id="staff{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                   <h4 class="modal-title">Detail Profil Staff</h4>
+                   </div>
+               <div class="modal-body">
+                   <center>
+                   {% if modalstaff.foto %}
+                   <img src="{{modalstaff.foto.url}}" name="aboutme" width="140" height="140" border="0" class="img-rounded img-responsive"></a>
+                   {% endif %}
+                  <br />
+                   <h3 class="media-heading">{{modalstaff.nama}} <small>
+                   {% if modalstaff.gelar1%}{{modalstaff.gelar1}}{% endif %}, {% if modalstaff.gelar2%} {{modalstaff.gelar2}}{% endif %}, {% if modalstaff.gelar3%} {{modalstaff.gelar3}}{% endif %}</small></h3>
+                    <h4>{{modalstaff.jabatan}}</h4>
+                    <span><strong>Skills: </strong></span>
+                    {% if modalstaff.bidang_keahlian1 %}
+                    <span class="label label-success"> S1 : {{modalstaff.bidang_keahlian1}}</span>
+                    {% endif %}
+                    {% if modalstaff.bidang_keahlian2 %}
+                     <span class="label label-success"> S2 : {{modalstaff.bidang_keahlian2}}</span>
+                    {% endif %}
+                    {% if modalstaff.bidang_keahlian3 %}
+                    <span class="label label-success"> S3 : {{modalstaff.bidang_keahlian3}}</span>
+                    {% endif %}
+                   </center>
+                   <hr>
+                   <p class="text-left"><strong><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pendidikan :</strong>
+                  <br>
+                  <ol class="list-unstyled">
+                  {% if modalstaff.pendidikan1 %}
+                    <li><b>&nbsp;S-1&nbsp;{{modalstaff.pendidikan1}} </b></li>
+                    {% endif %}
+                    {% if modalstaff.pendidikan2 %}
+                    <li><b>&nbsp;S-2&nbsp; {{modalstaff.pendidikan2}}</b></li>
+                    {% endif %}
+                    {% if modalstaff.pendidikan3 %}
+                    <li><b>&nbsp;S-3&nbsp; {{modalstaff.pendidikan3}}</b></li>
+                    {% endif %}
+                  </ol>
+                  </p>
+                 
+
+                   <br>
+                   {% if modalstaff.biografi %}
+                   <p class="text-left"><strong>Bio:</strong><br>
+                       {{modalstaff.biografi}}</p> 
+                    {% endif %}
+                   <br>
+               </div>
+               <div class="modal-footer">
+                   <center>
+                    {% if modalstaff.penelitian %}
+                    <a type="button" class="btn btn-info" href="{{modalstaff.penelitian}}">Cari Penelitian</a> &nbsp;&nbsp;&nbsp;&nbsp;
                     
                 {% endif %}
                     

@@ -32,9 +32,11 @@
           Program Studi Informatika UMS berdiri pada Kampus 2 Universitas Muhammadiyah Surakarta. Dengan gedung kokoh yang berlokasi tidak jauh dari Gedung Olah Raga dan Masjid, menjadikan Program Studi Informatika sebagai tempat yang nyaman untuk belajar dan beraktifitas. Lokasi yang tidak jauh dari danau dan taman juga menambah kehijauan lingkungan sekitar gedung program studi ini.
       </p>
       <br>
-      <a href="{% url 'home:staff' %}" >
+      {% for dt in himatif %}
+      <a href="{{dt.link_himatif}}" >
         <button class="btn btn-ghost-black btn-lg" role="button">WEBSITE HIMATIF</button>
       </a>
+      {% endfor %}
     </div>
 
   </div>

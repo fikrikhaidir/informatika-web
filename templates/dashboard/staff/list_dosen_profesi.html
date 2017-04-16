@@ -27,7 +27,7 @@
 
 
                     <div class="col-lg-12">
-                     <a href="{% url 'dashboard:tambah_staff' %}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Staff</a><br/><br/>
+                     <a href="{% url 'dashboard:tambah_dosen_profesi' %}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Dosen Profesi</a><br/><br/>
 
                 <div class="table-responsive">
                     <table class="table">
@@ -53,7 +53,7 @@
                             <td>{{dt.pendidikan1|capfirst}}<br/>{{dt.pendidikan2|capfirst}}<br/>{{dt.pendidikan3|capfirst}}</td>
                             <td>{{dt.bidang_keahlian1|capfirst}}<br/>{{dt.bidang_keahlian2|capfirst}}<br/>{{dt.bidang_keahlian3|capfirst}}</td>
                             <td><a href="{{dt.penelitian}}">Link Google Scholar</td>
-                            <td> <a href="" data-target="#modal_staff{{forloop.counter}}" data-toggle="modal" class="btn btn-primary"><i class="fa fa-eye"></i></a> <a href="{% url 'dashboard:hapus_staff' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <td> <a href="" data-target="#modal_staff{{forloop.counter}}" data-toggle="modal" class="btn btn-primary"><i class="fa fa-eye"></i></a> <a href="{% url 'dashboard:hapus_dosen_profesi' dt.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
 
                         </tr>
@@ -75,7 +75,7 @@
            <div class="modal-content">
                <div class="modal-header">
                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                   <h4 class="modal-title" id="myModalLabel">Detail Profil Staff</h4>
+                   <h4 class="modal-title" id="myModalLabel">Detail Profil Pengajar</h4>
                    </div>
                <div class="modal-body">
                    <center>
@@ -123,12 +123,12 @@
                </div>
                <div class="modal-footer">
                    <center>
-                   <a href="{% url 'dashboard:edit_staff' modal.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                   <a href="{% url 'dashboard:edit_dosen_profesi' modal.id %}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                    {% if modal.penelitian %}
                     <a type="button" class="btn btn-info" href="{{modal.penelitian}}">Cari Penelitian</a>
                     
                 {% endif %}
-                    <a href="{% url 'dashboard:hapus_staff' modal.id %}"  class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                    <a href="{% url 'dashboard:hapus_dosen_profesi' modal.id %}"  class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     </center>
                </div>
            </div>
