@@ -75,7 +75,7 @@ def detail_berita(request,slug=None):
     return render(request,"berita/berita-detail.html",context)
 
 def pengumuman(request):
-    list_pengumuman_list = berita_model.objects.filter(draft=False).filter(tag='Pengumuman').filter(publish__lte=timezone.now())
+    list_pengumuman_list = berita_model.objects.filter(tag='Pengumuman').filter(draft=False).filter(publish__lte=timezone.now())
     judul="Pengumuman"
     subJudul= "Kabar Keadaan Terbaru Prodi Informatika"
     #pagination

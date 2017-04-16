@@ -485,12 +485,14 @@ def pengumuman_edit(request,slug=None):
         isi_berita = form_berita.save(commit=False)
         isi_berita.save()
         # messages.success(request,'Pengumuman berhasil diedit')
-        return HttpResponseRedirect('../..')
+        return HttpResponseRedirect('../../')
     context={
     'form_berita':form_berita,
     'judul':'Edit Berita',
     }
     return render(request,'dashboard/berita/buat_berita.html',context)
+
+
 
 @login_required()
 def pengumuman_hapus(request,slug=None):
