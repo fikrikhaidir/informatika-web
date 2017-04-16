@@ -20,6 +20,7 @@ url(r'^dashboard/berita/hapus_berita/(?P<slug>[\w-]+)/$',views.berita_hapus, nam
 url(r'^dashboard/berita/$',views.list_berita, name='berita'),
 url(r'^dashboard/berita/(?P<slug>[\w-]+)/$',views.berita_detail,name='detail_berita'),
 url(r'^dashboard/pengumuman/$',views.list_pengumuman, name='pengumuman'),
+url(r'^dashboard/ukm/$',views.ukm, name='ukm'),
 url(r'^dashboard/kurikulum/$',views.kurikulum, name='kurikulum'),
 url(r'^dashboard/tambah_kurikulum/$',views.kurikulum_tambah, name='tambah_kurikulum'),
 url(r'^dashboard/edit_kurikulum/(?P<id>\d+)/$',views.kurikulum_edit, name='edit_kurikulum'),
@@ -33,4 +34,3 @@ url(r'^dashboard/dokumen/hapus/(?P<id>\d+)/$',views.dokumen_hapus, name='hapus_d
 url(r'^dashboard/dokumen/edit/(?P<id>\d+)/$',views.dokumen_edit, name='edit_dokumen'),
 
 ]
-
