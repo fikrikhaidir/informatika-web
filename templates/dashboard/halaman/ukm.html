@@ -31,7 +31,7 @@
                     <div class="panel-body">
                     {% for dt in ukm %}
                         <h5>Link Fosti : {{dt.link_fosti}}</h5>
-                        <h5>Link Fosti : {{dt.link_himatif}}</h5>
+                        <h5>Link Himatif : {{dt.link_himatif}}</h5>
                         <a href="{% url 'dashboard:edit_ukm' dt.id %}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit LINK </a>
                     {% endfor %}
                     </div>

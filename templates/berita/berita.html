@@ -19,22 +19,35 @@
 
     <div class="col-md-10 col-md-offset-1">
         <div class="row">
+
             <div class="col-md-12">
             {% if beritas %}
-            <form class="form-group" method='GET' action=''>
-                    <input type='text' name='q' placeholder='Cari Berita' value='{{ request.GET.q }}'/>
-                    <input type='submit' class="btn btn-sm btn-primary" value='Cari' />
-
-                </form>
-
+            <form role="form" method='GET' action='' id="form-buscar">
+            <div class="form-group">
+            <div class="input-group">
+            <input id="1" class="form-control" type="text" name="search" placeholder="Cari Berita dan Pengumuman" value='{{ request.GET.q }}'/>
+            <span class="input-group-btn">
+            <button class="btn btn-info" type="submit">
+            <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Cari
+            </button>
+            </span>
+            </div>
+            </div>
+            </form>
 
             <section id="pinBoot">
                 {% for berita in beritas %}
                 <article class="white-panel">{% if berita.image %}<img src="{{berita.image.url}}" alt=""> {% endif %}
                     <h4><a href="{% url 'home:detail_berita' berita.slug %}">{{berita.judul}}</a>
-                    <h5>Dipublish {{berita.publish|date:"d M Y"}}&nbsp; <span class="label label-info">BERITA</span></h5>
+                    <h5>Dipublish {{berita.publish|date:"d M Y"}}</h5><br />
+                    {% if berita.tag == 'Berita' %}
+                    <h5><span class="label label-info">BERITA</span></h5>
+                    {% endif %}
+                    {% if berita.tag == 'Pengumuman' %}
+                    <h5><span class="label label-warning">PENGUMUMAN</span></h5>
+                    {% endif %}
+
                     <p>{{berita.content|truncatechars:200}}</p>
-                    <!-- <h5>Diupdate {{berita.updated|date:"d M Y"}}</h5> -->
                 </article>
 
                {% endfor %}

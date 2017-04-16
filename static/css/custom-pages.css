@@ -43,3 +43,33 @@
   border: 2px #205081 solid;
   /*border: 2px #0D47A1 solid;*/
 }
+
+
+/*search*/
+#form-buscar >.form-group >.input-group > .form-control {
+    height: 40px;
+}
+#form-buscar >.form-group >.input-group > .input-group-btn > .btn{
+        height: 40px;
+        font-size: 16px;
+        font-weight: 300;
+
+
+}
+#form-buscar >.form-group >.input-group > .input-group-btn > .btn .glyphicon{
+ margin-right:12px;
+}
+
+
+#form-buscar >.form-group >.input-group > .form-control {
+    font-size: 16px;
+    font-weight: 300;
+
+}
+
+#form-buscar >.form-group >.input-group > .form-control:focus {
+  border-color: #205081;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 1px #205081;
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 1px #205081;
+}

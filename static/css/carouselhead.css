@@ -8,7 +8,7 @@
 .fade-carousel .carousel-indicators > li {
     margin: 0 2px;
     background-color: gray;
-    border-color: #205081 ;
+    border-color: white ;
     opacity: .7;
 }
 .fade-carousel .carousel-indicators > li.active {

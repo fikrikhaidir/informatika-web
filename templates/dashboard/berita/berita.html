@@ -38,26 +38,26 @@
                 <div class="panel panel-default">
                 <div class="panel-body">
 
-                        
+
                         <!-- <img src="{{dt.image.url}}" width="200" height="180"> -->
                         <h3><strong>{{dt.judul}}</strong></h3>
-                        <p>{{dt.content|truncatechars:20}}</p>
+                        <p>{{dt.content|truncatechars:125}}</p>
                          {% if dt.draft %}
                         <p style="color:red"><strong>Draft</strong></p>
                         {% endif %}
-                        
+
                         <a href="{{dt.get_absolute_url}}" class="btn btn-primary">Selengkapnya..</a>
 
                         </div>
                         <div class="panel-footer">
-                       
+
                         <a href="{% url 'dashboard:edit_berita' slug=dt.slug %}" class="btn btn-primary"><i class="fa fa-edit"></i>Edit </a>
                         <a href="{% url 'dashboard:hapus_berita' slug=dt.slug %}" class="btn btn-danger"><i class="fa fa-trash"></i>Hapus</a>
-                        
+
                         </div>
 
 
-                        
+
 
                 </div>
 
