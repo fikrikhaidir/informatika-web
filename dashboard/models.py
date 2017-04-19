@@ -103,7 +103,7 @@ class gallery_model(models.Model):
 class kurikulum_model(models.Model):
 	semester = models.PositiveIntegerField(default='',null=False,validators=[MaxValueValidator(9)],verbose_name='Semester')
 	makul = models.CharField(default='',null=False,max_length=40,verbose_name='Nama Mata Kuliah')
-	kode = models.CharField(default='',null=False,max_length=5,verbose_name='Kode MK')
+	kode = models.CharField(default='',null=False,max_length=10,verbose_name='Kode MK')
 	sks = models.PositiveIntegerField(default='',null=False,validators=[MaxValueValidator(9)],verbose_name='SKS')
 	wajib = models.BooleanField(default='False',verbose_name='Mata Kuliah Wajib/Pilihan (*Jika Wajib Dicentang)')
 
