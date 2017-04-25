@@ -33,12 +33,12 @@
             </span>
             </div>
             </div>
-            </form>
+           </form>
 
             <section id="pinBoot">
                 {% for berita in beritas %}
                 <article class="white-panel">{% if berita.image %}<img src="{{berita.image.url}}" alt=""> {% endif %}
-                    <h4><a href="{% url 'home:detail_berita' berita.slug %}">{{berita.judul}}</a>
+                    <h4><a href="{% url 'home:detail_berita' berita.slug %}">{{berita.judul}}</a></h4>  
                     <h5>Dipublish {{berita.publish|date:"d M Y"}}</h5><br />
                     {% if berita.tag == 'Berita' %}
                     <h5><span class="label label-info">BERITA</span></h5>
