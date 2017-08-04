@@ -17,7 +17,7 @@ class berita_model(models.Model):
 	judul = models.CharField(default='', max_length=200)
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
 	slug = models.SlugField(unique=True)
-	image = StdImageField(upload_to='upload/berita',validators=[MaxSizeValidator(1028, 768)],blank=True)
+	image = StdImageField(upload_to='upload/berita',validators=[MaxSizeValidator(1300, 1300)],blank=True)
 	content = models.TextField()
 	draft = models.BooleanField(default=False)
 	publish = models.DateField(auto_now=False, auto_now_add=False)
@@ -64,8 +64,8 @@ class staff_model(models.Model):
 	nidn = models.CharField(default='',null=False,max_length=10,verbose_name='NIDN')
 	jabatan = models.CharField(default='',null=False,max_length=30,verbose_name='Jabatan Akademik')
 	gelar1 = models.CharField(default='',null=False,max_length=30,verbose_name='Gelar Pendidikan S1')
-	gelar2 = models.CharField(default='',blank=True,max_length=30,verbose_name='Gelar Pendidikan S2')  
-	gelar3 = models.CharField(default='',blank=True,max_length=30,verbose_name='Gelar Pendidikan S3') 
+	gelar2 = models.CharField(default='',blank=True,max_length=30,verbose_name='Gelar Pendidikan S2')
+	gelar3 = models.CharField(default='',blank=True,max_length=30,verbose_name='Gelar Pendidikan S3')
 	pendidikan1 = models.CharField(default='',null=False,max_length=100,verbose_name='Universitas Jenjang SI')
 	pendidikan2 = models.CharField(default='',blank=True,max_length=100,verbose_name='Universitas Jenjang S2')
 	pendidikan3 = models.CharField(default='',blank=True,max_length=100,verbose_name='Universitas Jenjang S3')
@@ -98,7 +98,7 @@ class gallery_model(models.Model):
 
 	class Meta:
 		ordering = ["-timestamp"]
-	
+
 
 class kurikulum_model(models.Model):
 	semester = models.PositiveIntegerField(default='',null=False,validators=[MaxValueValidator(9)],verbose_name='Semester')
@@ -124,6 +124,4 @@ class ukm_model(models.Model):
 	link_himatif = models.CharField(default='',null=False,verbose_name='Link HIMATIF',max_length=300)
 
 	def __unicode__(self):
-		return '%s' % self.link_fosti 
-
-
+		return '%s' % self.link_fosti
