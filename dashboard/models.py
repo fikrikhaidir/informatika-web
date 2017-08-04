@@ -90,7 +90,7 @@ class staff_model(models.Model):
 class gallery_model(models.Model):
 	judul = models.CharField(default='',null=False,max_length=20,verbose_name='Judul Foto')
 	caption = models.CharField(default='',null=False,max_length=300,verbose_name='Caption Foto')
-	image = StdImageField(upload_to='upload/gallery',validators=[MaxSizeValidator(1028, 768)],verbose_name='Foto',blank=True)
+	image = StdImageField(upload_to='upload/gallery',validators=[MaxSizeValidator(1300, 1300)],verbose_name='Foto',blank=True)
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
 	def __unicode__(self):
